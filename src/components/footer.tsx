@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Github, Twitter, MessageSquare } from 'lucide-react';
 
 const Logo = () => (
-  <Image src="/exnus.jpg" alt="Exnus Protocol Logo" width={150} height={70} />
+  <Image src="/exnus.png" alt="Exnus Protocol Logo" width={150} height={70} />
 );
 
 
