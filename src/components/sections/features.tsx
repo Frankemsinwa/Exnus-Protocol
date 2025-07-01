@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Award, Users, TrendingUp, Zap } from 'lucide-react';
+import ParticleBackground from "@/components/particle-background";
 
 const features = [
   {
@@ -26,8 +27,9 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-20 sm:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" className="relative py-20 sm:py-32 bg-background overflow-hidden">
+      <ParticleBackground />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-headline text-3xl sm:text-4xl font-bold text-white tracking-tight">Protocol Features</h2>
           <p className="mt-4 text-lg text-muted-foreground">
