@@ -46,7 +46,7 @@ export default function Header() {
           </nav>
           <div className="hidden md:flex items-center">
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-              <Link href="/#newsletter">Newsletter</Link>
+              <Link href="/#newsletter">Join Airdrop</Link>
             </Button>
           </div>
           <div className="md:hidden">
@@ -72,7 +72,7 @@ export default function Header() {
                   </nav>
                   <div className="mt-auto">
                     <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-                      <Link href="/#newsletter">Newsletter</Link>
+                      <Link href="/#newsletter">Join Airdrop</Link>
                     </Button>
                   </div>
                 </div>
