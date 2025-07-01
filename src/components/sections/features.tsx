@@ -1,26 +1,26 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ShieldCheck, Zap, ArrowDownUp, InfinityIcon } from 'lucide-react';
+import { Award, Users, TrendingUp, Zap } from 'lucide-react';
 
 const features = [
   {
-    icon: <ShieldCheck className="w-8 h-8 text-primary" />,
-    title: 'Unrivaled Security',
-    description: 'Built with a security-first mindset, our protocol employs state-of-the-art cryptographic techniques to ensure asset safety.',
+    icon: <Award className="w-8 h-8 text-primary" />,
+    title: 'Incentivized Participation',
+    description: 'Our protocol recognizes and rewards diverse community efforts, from development to governance, fostering active engagement.',
+  },
+  {
+    icon: <Users className="w-8 h-8 text-primary" />,
+    title: 'Shared Governance',
+    description: "Empower users with a genuine sense of ownership and a voice in the protocol's evolution and future direction.",
+  },
+  {
+    icon: <TrendingUp className="w-8 h-8 text-primary" />,
+    title: 'Collaborative Growth',
+    description: 'By aligning individual incentives with network success, we drive innovation that benefits all stakeholders.',
   },
   {
     icon: <Zap className="w-8 h-8 text-primary" />,
-    title: 'Blazing-Fast Speed',
-    description: 'Experience near-instantaneous transaction finality, enabling real-time applications and superior user experiences.',
-  },
-  {
-    icon: <ArrowDownUp className="w-8 h-8 text-primary" />,
-    title: 'Seamless Interoperability',
-    description: 'Natively connect with other blockchains, allowing for fluid asset and data transfer across the entire Web3 ecosystem.',
-  },
-  {
-    icon: <InfinityIcon className="w-8 h-8 text-primary" />,
-    title: 'Infinite Scalability',
-    description: 'Our unique sharding architecture allows for horizontal scaling, ensuring low fees and high throughput as the network grows.',
+    title: 'Built on Solana',
+    description: 'Leveraging the power and scalability of the Solana blockchain for a seamless, high-performance experience.',
   },
 ];
 

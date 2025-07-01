@@ -9,17 +9,17 @@ export default function About() {
             About Exnus Protocol
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Our mission is to provide the foundational layer for a new internet of value, enabling seamless, secure, and decentralized interactions.
+            Our mission is to cultivate a vibrant, inclusive, and user-owned ecosystem by rewarding meaningful participation and collaboration.
           </p>
         </div>
         <div className="mt-16 max-w-5xl mx-auto">
           <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
             <CardContent className="p-8 md:p-12 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
-                Exnus Protocol is born from the belief that the future of digital interaction should be open, transparent, and owned by its users. We are a team of dedicated engineers, cryptographers, and designers committed to pushing the boundaries of what's possible with blockchain technology. We're building a highly performant, scalable, and developer-friendly protocol that abstracts away the complexities of Web3, allowing creators to focus on building innovative applications.
+                The rapid evolution of decentralized technologies has transformed how communities operate, emphasizing user participation and shared governance. Within this landscape, Exnus Protocol introduces an innovative reward system designed to actively incentivize meaningful contributions to the ecosystem's growth. Unlike traditional models that often prioritize passive engagement, Exnus fosters a culture of collaboration and continuous improvement by recognizing and rewarding the diverse efforts of its community members.
               </p>
               <p className="mt-6">
-                Our vision is to foster a vibrant ecosystem where developers and users can collaborate to create a more equitable and decentralized world. By providing robust infrastructure and powerful tools, Exnus aims to be the catalyst for the next wave of decentralized innovation.
+                At its core, the Exnus protocol aims to cultivate a vibrant and inclusive environment where users feel a genuine sense of ownership. By aligning individual incentives with the collective success of the network, Exnus not only encourages sustained participation but also drives innovation that benefits all stakeholders, leveraging the power and scalability of the Solana blockchain.
               </p>
             </CardContent>
           </Card>

@@ -6,7 +6,7 @@ import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Exnus Protocol Landing",
-  description: "The Future of Decentralized Finance is Here.",
+  description: "Redefining user engagement and community rewards on the Solana blockchain.",
 };
 
 export default function RootLayout({

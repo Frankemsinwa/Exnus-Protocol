@@ -11,10 +11,10 @@ export default function Hero() {
       />
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 sm:pt-32 sm:pb-40 text-center">
         <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 leading-tight tracking-tighter">
-          The Future of Decentralized<br/> Autonomy is Here
+          Reward Meaningful Contribution.<br/> Build a Stronger Ecosystem.
         </h1>
         <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Exnus Protocol is a cutting-edge Web3 framework empowering developers to build sophisticated, secure, and scalable decentralized applications.
+          Exnus introduces an innovative reward system to actively incentivize meaningful community contributions, fostering a culture of collaboration and shared ownership on the Solana blockchain.
         </p>
         <div className="mt-10 flex justify-center items-center gap-4">
           <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 transform hover:scale-105">

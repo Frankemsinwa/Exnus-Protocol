@@ -1,20 +1,20 @@
-import { Code, Link, Layers } from 'lucide-react';
+import { Handshake, Coins, Vote } from 'lucide-react';
 
 const steps = [
   {
-    icon: <Code className="w-10 h-10 text-primary" />,
-    title: 'Build with SDKs',
-    description: 'Utilize our comprehensive Software Development Kits (SDKs) in your favorite languages to start building on Exnus with ease.'
+    icon: <Handshake className="w-10 h-10 text-primary" />,
+    title: 'Contribute to the Ecosystem',
+    description: 'Participate in governance, contribute to projects, or help grow the community. All meaningful efforts are valued and tracked.'
   },
   {
-    icon: <Layers className="w-10 h-10 text-primary" />,
-    title: 'Deploy to the Network',
-    description: 'Deploy your smart contracts to our high-throughput, low-cost network, optimized for performance and scalability.'
+    icon: <Coins className="w-10 h-10 text-primary" />,
+    title: 'Earn EXNUS Rewards',
+    description: "Our protocol's mechanics track contributions and distribute rewards automatically, ensuring fair compensation for your efforts."
   },
   {
-    icon: <Link className="w-10 h-10 text-primary" />,
-    title: 'Integrate with the Ecosystem',
-    description: 'Connect your application to a growing ecosystem of wallets, DeFi protocols, and services, unlocking new possibilities.'
+    icon: <Vote className="w-10 h-10 text-primary" />,
+    title: 'Shape the Future',
+    description: 'Use your rewards and influence to vote on proposals and guide the future direction of the Exnus Protocol.'
   }
 ];
 
@@ -25,7 +25,7 @@ export default function HowItWorks() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-headline text-3xl sm:text-4xl font-bold text-white tracking-tight">How It Works</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            A simplified overview of the protocol's mechanics for developers.
+            A simplified overview of how you can participate and earn rewards.
           </p>
         </div>
 
