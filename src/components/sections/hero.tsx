@@ -24,7 +24,7 @@ export default function Hero() {
         <div className="mt-10 flex justify-center items-center gap-4">
           <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 transform hover:scale-105">
             <a href="#newsletter">
-              Subscribe Now <ArrowRight className="ml-2 h-5 w-5" />
+              Join Airdrop <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
           <Button size="lg" variant="outline" asChild className="border-white/30 bg-black/20 text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300 transform hover:scale-105">
