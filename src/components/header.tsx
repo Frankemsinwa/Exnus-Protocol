@@ -2,35 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const Logo = () => (
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="url(#paint0_linear_1_1)" strokeWidth="2"/>
-    <path d="M12.5 11L14 8" stroke="url(#paint1_linear_1_1)" strokeWidth="1.5" strokeLinecap="round"/>
-    <path d="M19.5 11L18 8" stroke="url(#paint2_linear_1_1)" strokeWidth="1.5" strokeLinecap="round"/>
-    <path d="M16 9.5L16 6" stroke="url(#paint3_linear_1_1)" strokeWidth="1.5" strokeLinecap="round"/>
-    <defs>
-      <linearGradient id="paint0_linear_1_1" x1="16" y1="4" x2="16" y2="28" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#D4AF37"/>
-        <stop offset="1" stopColor="#B8860B"/>
-      </linearGradient>
-      <linearGradient id="paint1_linear_1_1" x1="13.25" y1="8" x2="13.25" y2="11" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#D4AF37"/>
-        <stop offset="1" stopColor="#B8860B"/>
-      </linearGradient>
-      <linearGradient id="paint2_linear_1_1" x1="18.75" y1="8" x2="18.75" y2="11" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#D4AF37"/>
-        <stop offset="1" stopColor="#B8860B"/>
-      </linearGradient>
-       <linearGradient id="paint3_linear_1_1" x1="16" y1="6" x2="16" y2="9.5" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#D4AF37"/>
-        <stop offset="1" stopColor="#B8860B"/>
-      </linearGradient>
-    </defs>
-  </svg>
+  <Image src="/logo.png" alt="Exnus Protocol Logo" width={32} height={32} />
 );
 
 export default function Header() {
