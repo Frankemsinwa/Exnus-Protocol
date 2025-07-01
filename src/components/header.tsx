@@ -8,7 +8,7 @@ import { Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const Logo = () => (
-  <Image src="/logo.png" alt="Exnus Protocol Logo" width={32} height={32} />
+  <Image src="/exnus.jpg" alt="Exnus Protocol Logo" width={32} height={32} />
 );
 
 export default function Header() {
@@ -61,7 +61,7 @@ export default function Header() {
                   <div className="flex justify-between items-center mb-8">
                     <Link href="/" className="flex items-center gap-2 text-xl font-bold">
                       <Logo />
-                      <span className="text-white">Exnus</span>
+                      <span className="text-white">Exnus Protocol</span>
                     </Link>
                   </div>
                   <nav className="flex flex-col space-y-6">
