@@ -5,16 +5,20 @@ import Image from 'next/image';
 export default function Hero() {
   return (
     <section className="relative bg-background overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
-      <div 
-        className="absolute -top-1/2 left-1/2 -translate-x-1/2 w-[200%] h-[150%] 
-                   bg-radial-gradient-gold opacity-10 blur-[100px] pointer-events-none"
+      <Image
+        src="/hero.jpg"
+        alt="Hero Background"
+        fill
+        priority
+        className="object-cover object-center w-full h-full -z-10"
       />
+      <div className="absolute inset-0 bg-black/60 -z-10" />
+      
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 sm:pt-32 sm:pb-24 text-center">
         <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 leading-tight tracking-tighter">
           Reward Meaningful Contribution.<br/> Build a Stronger Ecosystem.
         </h1>
-        <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
+        <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-300">
           Exnus introduces an innovative reward system to actively incentivize meaningful community contributions, fostering a culture of collaboration and shared ownership on the Solana blockchain.
         </p>
         <div className="mt-10 flex justify-center items-center gap-4">
@@ -23,23 +27,14 @@ export default function Hero() {
               Join the Waitlist <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
-          <Button size="lg" variant="outline" asChild className="border-border hover:bg-white/5 hover:text-white transition-all duration-300 transform hover:scale-105">
+          <Button size="lg" variant="outline" asChild className="border-white/30 bg-black/20 text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300 transform hover:scale-105">
             <a href="#how-it-works">
               Learn More
             </a>
           </Button>
         </div>
-        <div className="mt-16">
-          <Image
-            src="/hero.jpg"
-            alt="Exnus Protocol hero image"
-            width={1200}
-            height={600}
-            className="rounded-xl mx-auto shadow-2xl shadow-primary/20"
-            data-ai-hint="futuristic blockchain"
-          />
-        </div>
       </div>
+      
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
       <div 
         className="absolute bottom-[-1px] left-0 w-full h-[120px]"
