@@ -41,7 +41,7 @@ const roadmapData = [
 
 export default function Roadmap() {
   return (
-    <section id="roadmap" className="py-20 sm:py-32 bg-background">
+    <section id="roadmap" className="py-20 sm:py-32 bg-background bg-roadmap-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-headline text-3xl sm:text-4xl font-bold text-white tracking-tight">Exnus Roadmap</h2>
