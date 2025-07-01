@@ -10,7 +10,7 @@ export default function Hero() {
         alt="Hero Background"
         fill
         priority
-       
+        className="object-cover object-center"
       />
       <div className="absolute inset-0 bg-black/50 -z-10" />
       
@@ -36,14 +36,6 @@ export default function Hero() {
       </div>
       
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
-      <div 
-        className="absolute bottom-[-1px] left-0 w-full h-[120px]"
-        style={{
-          background: `url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1440 120H0V0C480 80 960 80 1440 0V120Z" fill="%23121212"/></svg>')`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-        }}
-      ></div>
     </section>
   );
 }
