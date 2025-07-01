@@ -8,7 +8,7 @@ import { Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const Logo = () => (
-  <Image src="/exnus.jpg" alt="Exnus Protocol Logo" width={32} height={32} />
+  <Image src="/exnus.jpg" alt="Exnus Protocol Logo" width={150} height={70} />
 );
 
 export default function Header() {
@@ -23,10 +23,10 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Features', href: '#features' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Tokenomics', href: '#tokenomics' },
+    { name: 'About', href: '/about' },
+    { name: 'Features', href: '/#features' },
+    { name: 'How It Works', href: '/#how-it-works' },
+    { name: 'Tokenomics', href: '/#tokenomics' },
   ];
 
   return (
@@ -35,18 +35,18 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-2 text-xl font-bold">
             <Logo />
-            <span className="text-white">Exnus Protocol</span>
+            
           </Link>
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+              <Link key={link.name} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
           <div className="hidden md:flex items-center">
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-              <a href="#waitlist">Join Waitlist</a>
+              <Link href="/#waitlist">Join Waitlist</Link>
             </Button>
           </div>
           <div className="md:hidden">
@@ -61,19 +61,18 @@ export default function Header() {
                   <div className="flex justify-between items-center mb-8">
                     <Link href="/" className="flex items-center gap-2 text-xl font-bold">
                       <Logo />
-                      <span className="text-white">Exnus Protocol</span>
                     </Link>
                   </div>
                   <nav className="flex flex-col space-y-6">
                     {navLinks.map((link) => (
-                      <a key={link.name} href={link.href} className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors">
+                      <Link key={link.name} href={link.href} className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors">
                         {link.name}
-                      </a>
+                      </Link>
                     ))}
                   </nav>
                   <div className="mt-auto">
                     <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-                      <a href="#waitlist">Join Waitlist</a>
+                      <Link href="/#waitlist">Join Waitlist</Link>
                     </Button>
                   </div>
                 </div>
