@@ -28,17 +28,17 @@ export default function Waitlist() {
     setEmail('');
     toast({
       title: "Success!",
-      description: "You've been added to the waitlist. We'll be in touch!",
+      description: "You've subscribed to our newsletter. We'll be in touch!",
     });
   };
 
   return (
-    <section id="waitlist" className="py-20 sm:py-32 bg-background">
+    <section id="newsletter" className="py-20 sm:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-white tracking-tight">Join the Waitlist</h2>
+          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-white tracking-tight">Subscribe to Our Newsletter</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Be the first to know about our launch, product updates, and exclusive community events.
+            Stay up to date with the latest news, product updates, and exclusive community events.
           </p>
         </div>
         <div className="mt-12 max-w-xl mx-auto">
@@ -52,11 +52,11 @@ export default function Waitlist() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={loading}
-                aria-label="Email for waitlist"
+                aria-label="Email for newsletter"
               />
             </div>
             <Button type="submit" size="lg" className="h-12 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30" disabled={loading}>
-              {loading ? 'Submitting...' : 'Join Now'}
+              {loading ? 'Subscribing...' : 'Subscribe'}
             </Button>
           </form>
         </div>
