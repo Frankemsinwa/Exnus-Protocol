@@ -1,15 +1,24 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function About() {
   return (
-    <section id="about" className="py-20 sm:py-32 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="relative py-20 sm:py-32 overflow-hidden">
+      <Image
+        src="/about.jpg"
+        alt="Abstract network lines"
+        data-ai-hint="abstract network"
+        fill
+        className="object-cover object-center -z-20"
+      />
+      <div className="absolute inset-0 bg-black/70 -z-10" />
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-headline text-3xl sm:text-4xl font-bold text-white tracking-tight">
             <Link href="/about" className="hover:text-primary transition-colors">About Exnus Protocol</Link>
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-lg text-gray-300">
             Our mission is to cultivate a vibrant, inclusive, and user-owned ecosystem by rewarding meaningful participation and collaboration.
           </p>
         </div>
