@@ -8,7 +8,7 @@ import { Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const Logo = () => (
-  <Image src="/exnus.jpg" alt="Exnus Protocol Logo" width={32} height={32} />
+  <Image src="/exnus.png" alt="Exnus Protocol Logo" width={32} height={32} />
 );
 
 export default function Header() {
