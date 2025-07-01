@@ -8,7 +8,7 @@ import { Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const Logo = () => (
-  <Image src="/exnus.jpg" alt="Exnus Protocol Logo" width={50} height={50} />
+  <Image src="/exnus.jpg" alt="Exnus Protocol Logo" width={150} height={70} />
 );
 
 export default function Header() {
@@ -25,6 +25,7 @@ export default function Header() {
   const navLinks = [
     { name: 'About', href: '/about' },
     { name: 'Features', href: '/#features' },
+    { name: 'Roadmap', href: '/#roadmap' },
     { name: 'How It Works', href: '/#how-it-works' },
   ];
 
