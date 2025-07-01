@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -9,7 +10,7 @@ export default function Hero() {
         className="absolute -top-1/2 left-1/2 -translate-x-1/2 w-[200%] h-[150%] 
                    bg-radial-gradient-gold opacity-10 blur-[100px] pointer-events-none"
       />
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 sm:pt-32 sm:pb-40 text-center">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 sm:pt-32 sm:pb-24 text-center">
         <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 leading-tight tracking-tighter">
           Reward Meaningful Contribution.<br/> Build a Stronger Ecosystem.
         </h1>
@@ -27,6 +28,16 @@ export default function Hero() {
               Learn More
             </a>
           </Button>
+        </div>
+        <div className="mt-16">
+          <Image
+            src="/hero.jpg"
+            alt="Exnus Protocol hero image"
+            width={1200}
+            height={600}
+            className="rounded-xl mx-auto shadow-2xl shadow-primary/20"
+            data-ai-hint="futuristic blockchain"
+          />
         </div>
       </div>
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
