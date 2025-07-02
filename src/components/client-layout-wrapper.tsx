@@ -9,7 +9,7 @@ export default function ClientLayoutWrapper({ children }: { children: ReactNode 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // 2 seconds
+    }, 3000); // 3 seconds
 
     return () => clearTimeout(timer);
   }, []);
