@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-background">
       {/* Layer 1: Lottie Animation (at the very back) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <iframe
