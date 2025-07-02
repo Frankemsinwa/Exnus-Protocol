@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative bg-background overflow-hidden">
+    <section className="relative overflow-hidden">
       <div className="absolute inset-0 -z-20 pointer-events-none">
         <iframe
           src="https://lottie.host/embed/22cd6b47-b228-4ef8-9622-e1dce5631c1e/Ok2IAICHom.lottie"
