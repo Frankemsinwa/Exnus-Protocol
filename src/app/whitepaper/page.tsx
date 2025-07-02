@@ -38,7 +38,8 @@ import {
   Users,
   Lock,
   ArrowDown,
-  Vote
+  Vote,
+  BadgeCheck
 } from 'lucide-react';
 import SectionInView from '@/components/section-in-view';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -330,6 +331,31 @@ export default function WhitepaperPage() {
               <li><strong className="text-foreground/90">Sybil Attack Prevention:</strong> The protocol incorporates identity verification and contribution validation techniques to prevent manipulation through fake accounts.</li>
               <li><strong className="text-foreground/90">Immutable Logic:</strong> Once deployed, core contract logic is immutable, ensuring consistent and tamper-proof enforcement of reward and governance rules.</li>
             </ul>
+             <div className="mt-12">
+                <h3 className="font-headline text-2xl font-bold mt-6 mb-8 text-center text-foreground">Security Measures Overview</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <Card className="p-6 text-center bg-card/50 border-border/50">
+                        <ShieldCheck className="w-10 h-10 text-primary mx-auto mb-4" />
+                        <h4 className="font-bold text-lg text-foreground">Comprehensive Audits</h4>
+                    </Card>
+                    <Card className="p-6 text-center bg-card/50 border-border/50">
+                        <BadgeCheck className="w-10 h-10 text-primary mx-auto mb-4" />
+                        <h4 className="font-bold text-lg text-foreground">Formal Verification</h4>
+                    </Card>
+                    <Card className="p-6 text-center bg-card/50 border-border/50">
+                        <ShieldAlert className="w-10 h-10 text-primary mx-auto mb-4" />
+                        <h4 className="font-bold text-lg text-foreground">Fail-safe Mechanisms</h4>
+                    </Card>
+                    <Card className="p-6 text-center bg-card/50 border-border/50">
+                        <Users className="w-10 h-10 text-primary mx-auto mb-4" />
+                        <h4 className="font-bold text-lg text-foreground">Sybil Attack Prevention</h4>
+                    </Card>
+                    <Card className="p-6 text-center bg-card/50 border-border/50">
+                        <Lock className="w-10 h-10 text-primary mx-auto mb-4" />
+                        <h4 className="font-bold text-lg text-foreground">Immutable Logic</h4>
+                    </Card>
+                </div>
+            </div>
           </>
         ),
       },
@@ -560,7 +586,41 @@ management, and governance voting. Contracts are designed for modularity and sec
                     <li><strong className="text-foreground/90">Blockchain Infrastructure Layer:</strong> Solana’s high-performance blockchain underpins the protocol, providing fast transaction processing, low fees, and robust security. This layer ensures decentralized consensus and immutable record-keeping for all protocol activities.</li>
                     <li><strong className="text-foreground/90">Off-Chain Services Layer:</strong> Includes oracles, data aggregation APIs, and analytics tools that supplement on-chain data with external inputs. These services enable accurate tracking of user contributions and provide insights for governance and reward optimization.</li>
                 </ol>
-                <h3 className="font-headline text-2xl font-bold mt-6 mb-4 text-foreground">Data Flow Overview</h3>
+                 <div className="mt-12">
+                    <h3 className="font-headline text-2xl font-bold mb-8 text-center text-foreground">Architectural Layers Diagram</h3>
+                    <div className="flex flex-col items-center gap-4">
+                        <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-lg">
+                            <Users className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h4 className="font-bold text-lg text-foreground">User Interaction Layer</h4>
+                            <p className="text-sm text-muted-foreground mt-1">Web & Mobile Apps</p>
+                        </Card>
+                        <ArrowDown className="w-8 h-8 text-muted-foreground" />
+                        <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-lg">
+                            <Code className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h4 className="font-bold text-lg text-foreground">Application Logic Layer</h4>
+                            <p className="text-sm text-muted-foreground mt-1">Contribution Validation, Reward Calculation</p>
+                        </Card>
+                        <ArrowDown className="w-8 h-8 text-muted-foreground" />
+                        <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-lg">
+                            <Package className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h4 className="font-bold text-lg text-foreground">Smart Contract Layer</h4>
+                            <p className="text-sm text-muted-foreground mt-1">Token Distribution, Staking, Governance</p>
+                        </Card>
+                        <ArrowDown className="w-8 h-8 text-muted-foreground" />
+                        <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-4 text-primary"><path d="M10.66 4.93a1.8 1.8 0 0 1 2.68 0l6.33 4.93a1.8 1.8 0 0 1 0 3.28l-6.33 4.93a1.8 1.8 0 0 1-2.68 0L4.33 13.14a1.8 1.8 0 0 1 0-3.28z"/><path d="m4.33 6.86 6.33-4.93a1.8 1.8 0 0 1 2.68 0l6.33 4.93"/><path d="m20.67 17.14-6.33 4.93a1.8 1.8 0 0 1-2.68 0L5.33 17.14"/></svg>
+                            <h4 className="font-bold text-lg text-foreground">Blockchain Infrastructure Layer</h4>
+                            <p className="text-sm text-muted-foreground mt-1">Solana Network</p>
+                        </Card>
+                        <ArrowDown className="w-8 h-8 text-muted-foreground" />
+                        <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-lg">
+                            <Network className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h4 className="font-bold text-lg text-foreground">Off-Chain Services Layer</h4>
+                            <p className="text-sm text-muted-foreground mt-1">Oracles, APIs, Analytics</p>
+                        </Card>
+                    </div>
+                </div>
+                <h3 className="font-headline text-2xl font-bold mt-12 mb-4 text-foreground">Data Flow Overview</h3>
                 <ul className="list-disc pl-6 space-y-2 mt-4">
                     <li>Users perform actions via the User Interaction Layer.</li>
                     <li>Actions are validated by the Application Logic Layer, which communicates with smart contracts.</li>
