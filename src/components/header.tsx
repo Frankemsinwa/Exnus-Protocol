@@ -41,7 +41,8 @@ export default function Header() {
               <Link href="/#newsletter">Join Airdrop</Link>
             </Button>
           </div>
-          <div className="md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -54,7 +55,6 @@ export default function Header() {
                     <Link href="/" className="flex items-center gap-2 text-xl font-bold">
                       <Logo />
                     </Link>
-                    <ThemeToggle />
                   </div>
                   <nav className="flex flex-col space-y-6">
                     {navLinks.map((link) => (
