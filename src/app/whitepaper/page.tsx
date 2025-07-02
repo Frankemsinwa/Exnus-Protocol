@@ -480,6 +480,53 @@ export default function WhitepaperPage() {
                     <li><strong className="text-foreground/90">Governance Rights:</strong> Staked tokens confer voting power in the protocol’s decentralized governance system, empowering users to influence decisions such as protocol upgrades, reward adjustments, and ecosystem initiatives.</li>
                     <li><strong className="text-foreground/90">Flexible Staking Options:</strong> The protocol supports multiple staking tiers with varying lock-up durations and reward rates, providing users with options that balance liquidity needs and reward optimization.</li>
                 </ul>
+
+                <div className="my-12">
+                  <h3 className="font-headline text-2xl font-bold text-center text-foreground mb-8">Staking Process Overview</h3>
+                  <div className="flex flex-col items-center gap-6">
+                    <Card className="p-4 bg-card/50 border-border/50 w-full max-w-md">
+                      <div className="flex items-center gap-4">
+                        <Users className="w-10 h-10 text-primary" />
+                        <div>
+                          <h4 className="font-bold text-lg text-foreground">1. User Stakes Tokens</h4>
+                          <p className="text-sm text-muted-foreground">EXNUS tokens are locked in the staking contract.</p>
+                        </div>
+                      </div>
+                    </Card>
+                    
+                    <ArrowDown className="w-12 h-12 text-muted-foreground" />
+
+                    <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-md">
+                      <Lock className="w-10 h-10 text-primary mx-auto mb-4" />
+                      <h4 className="font-bold text-lg text-foreground">2. Staking Contract</h4>
+                      <p className="text-sm text-muted-foreground mt-2">Tokens are secured for a chosen period.</p>
+                    </Card>
+
+                    <ArrowDown className="w-12 h-12 text-muted-foreground" />
+                    
+                    <div className="w-full max-w-md grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <Card className="p-6 text-center bg-card/50 border-border/50">
+                          <Gift className="w-10 h-10 text-primary mx-auto mb-4" />
+                          <h4 className="font-bold text-lg text-foreground">Reward Accrual</h4>
+                          <p className="text-sm text-muted-foreground mt-2">Earn passive income through staking rewards.</p>
+                      </Card>
+                       <Card className="p-6 text-center bg-card/50 border-border/50">
+                          <Vote className="w-10 h-10 text-primary mx-auto mb-4" />
+                          <h4 className="font-bold text-lg text-foreground">Governance Rights</h4>
+                          <p className="text-sm text-muted-foreground mt-2">Participate in key protocol decisions.</p>
+                      </Card>
+                    </div>
+
+                    <ArrowDown className="w-12 h-12 text-muted-foreground" />
+
+                     <Card className="p-6 text-center bg-primary/10 border-primary/20 w-full max-w-md">
+                        <ShieldCheck className="w-10 h-10 text-primary mx-auto mb-4" />
+                        <h4 className="font-bold text-lg text-primary">Ecosystem Benefits</h4>
+                        <p className="text-sm text-muted-foreground mt-2">Enhanced network security and stability.</p>
+                    </Card>
+                  </div>
+                </div>
+
                 <h3 className="font-headline text-2xl font-bold mt-6 mb-4 text-foreground">Security and Fairness</h3>
                 <ul className="list-disc pl-6 space-y-2 mt-4">
                     <li><strong className="text-foreground/90">Slashing Mechanisms:</strong> To discourage malicious behavior or protocol violations, the staking contract includes slashing provisions that can penalize bad actors by reducing their staked tokens.</li>
@@ -508,7 +555,8 @@ export default function WhitepaperPage() {
                 <ol className="list-decimal pl-6 space-y-2 mt-4">
                     <li><strong className="text-foreground/90">User Interaction Layer:</strong> This layer comprises web and mobile applications through which users engage with the protocol. It provides interfaces for contribution tracking, reward claiming, staking management, and governance participation. The design emphasizes usability and transparency, enabling users to monitor their activities and rewards in real-time.</li>
                     <li><strong className="text-foreground/90">Application Logic Layer:</strong> Hosting the core business logic, this layer includes modules for contribution validation, reward calculation, staking operations, and governance workflows. It interfaces directly with smart contracts and off-chain services to process user inputs and execute protocol functions.</li>
-                    <li><strong className="text-foreground/90">Smart Contract Layer:</strong> Deployed on the Solana blockchain, this layer automates critical functions such as token minting, reward distribution, staking management, and governance voting. Contracts are designed for modularity and security, ensuring reliable and tamper-proof execution.</li>
+                    <li><strong className="text-foreground/90">Smart Contract Layer:</strong> Deployed on the Solana blockchain, this layer automates critical functions such as token minting, reward distribution, staking
+management, and governance voting. Contracts are designed for modularity and security, ensuring reliable and tamper-proof execution.</li>
                     <li><strong className="text-foreground/90">Blockchain Infrastructure Layer:</strong> Solana’s high-performance blockchain underpins the protocol, providing fast transaction processing, low fees, and robust security. This layer ensures decentralized consensus and immutable record-keeping for all protocol activities.</li>
                     <li><strong className="text-foreground/90">Off-Chain Services Layer:</strong> Includes oracles, data aggregation APIs, and analytics tools that supplement on-chain data with external inputs. These services enable accurate tracking of user contributions and provide insights for governance and reward optimization.</li>
                 </ol>
