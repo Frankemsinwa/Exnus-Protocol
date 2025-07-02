@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section className="relative bg-background overflow-hidden">
       <Image
-        src="/hero.jpg"
+        src="/about.jpg"
         alt="Hero Background"
         fill
         priority

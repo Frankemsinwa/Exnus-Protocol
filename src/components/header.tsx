@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const Logo = () => (
@@ -12,16 +12,6 @@ const Logo = () => (
 );
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const navLinks = [
     { name: 'About', href: '/about' },
     { name: 'Features', href: '/#features' },
@@ -30,7 +20,7 @@ export default function Header() {
   ];
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-sm border-b border-border/50' : 'bg-transparent'}`}>
+    <header className="sticky top-0 z-50 bg-white text-gray-800 border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-2 text-xl font-bold">
@@ -39,7 +29,7 @@ export default function Header() {
           </Link>
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+              <Link key={link.name} href={link.href} className="text-sm font-medium text-gray-600 hover:text-primary transition-colors">
                 {link.name}
               </Link>
             ))}
@@ -56,7 +46,7 @@ export default function Header() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-background border-l-border/50">
+              <SheetContent side="right" className="bg-white text-gray-800 border-l border-gray-200">
                 <div className="flex flex-col h-full p-4">
                   <div className="flex justify-between items-center mb-8">
                     <Link href="/" className="flex items-center gap-2 text-xl font-bold">
@@ -65,7 +55,7 @@ export default function Header() {
                   </div>
                   <nav className="flex flex-col space-y-6">
                     {navLinks.map((link) => (
-                      <Link key={link.name} href={link.href} className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors">
+                      <Link key={link.name} href={link.href} className="text-lg font-medium text-gray-600 hover:text-primary transition-colors">
                         {link.name}
                       </Link>
                     ))}

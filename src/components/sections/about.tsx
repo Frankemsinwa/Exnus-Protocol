@@ -5,13 +5,7 @@ import Image from 'next/image';
 export default function About() {
   return (
     <section id="about" className="relative py-20 sm:py-32 overflow-hidden">
-      <Image
-        src="/about.jpg"
-        alt="Abstract network lines"
-        data-ai-hint="abstract network"
-        fill
-        className="object-cover object-center -z-20"
-      />
+     
       <div className="absolute inset-0 bg-black/70 -z-10" />
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
