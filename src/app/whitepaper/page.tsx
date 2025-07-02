@@ -10,12 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  type CarouselApi,
-} from '@/components/ui/carousel';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   FileText,
   Lightbulb,
@@ -29,7 +24,8 @@ import {
   Gift,
   Zap,
   Landmark,
-  Network
+  Network,
+  Loader2,
 } from 'lucide-react';
 import SectionInView from '@/components/section-in-view';
 
@@ -412,9 +408,8 @@ const tocItems = sections.map((section, index) => ({
 
 export default function WhitepaperPage() {
     const [currentDate, setCurrentDate] = React.useState('');
-    const [api, setApi] = React.useState<CarouselApi>();
-    const [current, setCurrent] = React.useState(0);
-    const [count, setCount] = React.useState(0);
+    const [activeIndex, setActiveIndex] = React.useState(0);
+    const [isTransitioning, setIsTransitioning] = React.useState(false);
 
     React.useEffect(() => {
       setCurrentDate(new Date().toLocaleDateString('en-US', {
@@ -424,30 +419,18 @@ export default function WhitepaperPage() {
       }));
     }, []);
 
-    React.useEffect(() => {
-        if (!api) {
+    const handleNavigation = (newIndex: number) => {
+        if (isTransitioning || newIndex < 0 || newIndex >= sections.length) {
             return;
         }
-
-        setCount(api.scrollSnapList().length);
-        setCurrent(api.selectedScrollSnap() + 1);
-
-        api.on("select", () => {
-            setCurrent(api.selectedScrollSnap() + 1);
-        });
-    }, [api]);
-
-    const handleTocClick = (index: number) => {
-        api?.scrollTo(index);
+        setIsTransitioning(true);
+        setTimeout(() => {
+            setActiveIndex(newIndex);
+            setIsTransitioning(false);
+        }, 2000);
     };
-
-    const scrollPrev = React.useCallback(() => {
-        api?.scrollPrev()
-    }, [api]);
-
-    const scrollNext = React.useCallback(() => {
-        api?.scrollNext()
-    }, [api]);
+    
+    const currentSection = sections[activeIndex];
 
   return (
     <div className="bg-background text-foreground py-20 sm:py-32">
@@ -476,60 +459,80 @@ export default function WhitepaperPage() {
                 {tocItems.map((item, index) => (
                   <li key={item.id}>
                     <button
-                      onClick={() => handleTocClick(index)}
+                      onClick={() => handleNavigation(index)}
                       className={`w-full text-left transition-colors ${
-                        current === index + 1
+                        activeIndex === index
                           ? 'text-primary font-semibold'
                           : 'text-muted-foreground hover:text-primary'
                       }`}
+                      disabled={isTransitioning}
                     >
                       {item.number}. {item.title}
                     </button>
                   </li>
                 ))}
               </ul>
-              { count > 0 && 
-                <p className="text-sm text-muted-foreground mt-8">
-                  Page {current} of {count}
-                </p>
-              }
+              <p className="text-sm text-muted-foreground mt-8">
+                Page {activeIndex + 1} of {sections.length}
+              </p>
             </div>
           </aside>
 
           <main className="lg:col-span-3">
-             <Carousel setApi={setApi} className="w-full" opts={{ align: "start", loop: false }}>
-                <CarouselContent>
-                    {sections.map((section, index) => (
-                        <CarouselItem key={section.id}>
-                            <Card className="bg-card/50 border-border/50 backdrop-blur-sm min-h-[60vh] flex flex-col">
-                                <CardContent className="p-8 md:p-12 flex flex-col flex-grow">
-                                    <WhitepaperContentBlock
-                                        title={section.title}
-                                        icon={section.icon}
-                                    >
-                                        {section.content}
-                                    </WhitepaperContentBlock>
-                                    <div className="mt-8 flex justify-between pt-8 border-t border-border/20">
-                                        <Button onClick={scrollPrev} disabled={index === 0} variant="outline">
+             <AnimatePresence mode="wait">
+                <motion.div
+                    key={activeIndex}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <Card className="bg-card/50 border-border/50 backdrop-blur-sm min-h-[60vh] flex flex-col">
+                        <CardContent className="p-8 md:p-12 flex flex-col flex-grow">
+                            <WhitepaperContentBlock
+                                title={currentSection.title}
+                                icon={currentSection.icon}
+                            >
+                                {currentSection.content}
+                            </WhitepaperContentBlock>
+                            <div className="mt-8 flex justify-between pt-8 border-t border-border/20">
+                                <Button onClick={() => handleNavigation(activeIndex - 1)} disabled={isTransitioning || activeIndex === 0} variant="outline">
+                                    {isTransitioning ? (
+                                        <>
+                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                            Loading...
+                                        </>
+                                    ) : (
+                                        <>
                                             <ArrowLeft className="mr-2 h-4 w-4" /> Previous
-                                        </Button>
-                                        {index < sections.length - 1 ? (
-                                            <Button onClick={scrollNext}>
-                                                Next <ArrowRight className="ml-2 h-4 w-4" />
-                                            </Button>
+                                        </>
+                                    )}
+                                </Button>
+                                {activeIndex < sections.length - 1 ? (
+                                    <Button onClick={() => handleNavigation(activeIndex + 1)} disabled={isTransitioning}>
+                                         {isTransitioning ? (
+                                            <>
+                                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                Loading...
+                                            </>
                                         ) : (
-                                            <Button disabled>End</Button>
+                                            <>
+                                                Next <ArrowRight className="ml-2 h-4 w-4" />
+                                            </>
                                         )}
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
-             </Carousel>
+                                    </Button>
+                                ) : (
+                                    <Button disabled>End</Button>
+                                )}
+                            </div>
+                        </CardContent>
+                    </Card>
+                </motion.div>
+             </AnimatePresence>
           </main>
         </div>
       </div>
     </div>
   );
 }
+
