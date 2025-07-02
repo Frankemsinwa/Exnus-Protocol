@@ -33,10 +33,12 @@ const WhitepaperContentBlock = ({
   title,
   icon,
   children,
+  scrollRef,
 }: {
   title: string;
   icon: ReactNode;
   children: ReactNode;
+  scrollRef: React.RefObject<HTMLDivElement>;
 }) => (
   <div className="flex-grow flex flex-col min-h-0">
     <div className="flex items-center gap-4 mb-6">
@@ -45,7 +47,10 @@ const WhitepaperContentBlock = ({
         {title}
       </h2>
     </div>
-    <div className="space-y-4 text-muted-foreground text-lg leading-relaxed overflow-y-auto pr-4 flex-grow">
+    <div
+      ref={scrollRef}
+      className="space-y-4 text-muted-foreground text-lg leading-relaxed overflow-y-auto pr-4 flex-grow"
+    >
       {children}
     </div>
   </div>
@@ -410,6 +415,7 @@ export default function WhitepaperPage() {
     const [currentDate, setCurrentDate] = React.useState('');
     const [activeIndex, setActiveIndex] = React.useState(0);
     const [isTransitioning, setIsTransitioning] = React.useState(false);
+    const contentRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
       setCurrentDate(new Date().toLocaleDateString('en-US', {
@@ -418,6 +424,12 @@ export default function WhitepaperPage() {
           day: 'numeric',
       }));
     }, []);
+
+    React.useEffect(() => {
+        if (contentRef.current) {
+            contentRef.current.scrollTop = 0;
+        }
+    }, [activeIndex]);
 
     const handleNavigation = (newIndex: number) => {
         if (isTransitioning || newIndex < 0 || newIndex >= sections.length) {
@@ -490,6 +502,7 @@ export default function WhitepaperPage() {
                     <Card className="bg-card/50 border-border/50 backdrop-blur-sm min-h-[60vh] flex flex-col">
                         <CardContent className="p-8 md:p-12 flex flex-col flex-grow">
                             <WhitepaperContentBlock
+                                scrollRef={contentRef}
                                 title={currentSection.title}
                                 icon={currentSection.icon}
                             >
@@ -535,4 +548,3 @@ export default function WhitepaperPage() {
     </div>
   );
 }
-
