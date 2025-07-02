@@ -1,6 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Award, Users, TrendingUp, Zap } from 'lucide-react';
-import ParticleBackground from "@/components/particle-background";
 
 const features = [
   {
@@ -28,8 +27,16 @@ const features = [
 export default function Features() {
   return (
     <section id="features" className="relative py-20 sm:py-32 bg-background overflow-hidden">
-      <ParticleBackground />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <iframe
+          src="https://lottie.host/embed/22cd6b47-b228-4ef8-9622-e1dce5631c1e/Ok2IAICHom.lottie"
+          className="w-full h-full object-cover"
+          allowFullScreen
+          title="Features Background Animation"
+        ></iframe>
+      </div>
+      <div className="absolute inset-0 z-10 bg-black/70" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-headline text-3xl sm:text-4xl font-bold text-foreground tracking-tight">Protocol Features</h2>
           <p className="mt-4 text-lg text-muted-foreground">
@@ -38,7 +45,7 @@ export default function Features() {
         </div>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="bg-card/50 border-border/50 hover:border-primary/50 hover:bg-card/80 transition-all duration-300 transform hover:-translate-y-1">
+            <Card key={index} className="bg-card/50 border-border/50 hover:border-primary/50 hover:bg-card/80 transition-all duration-300 transform hover:-translate-y-1 backdrop-blur-sm">
               <CardHeader className="p-8">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">{feature.icon}</div>
