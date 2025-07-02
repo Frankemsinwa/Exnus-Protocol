@@ -33,6 +33,12 @@ import {
   Archive,
   Wallet,
   Menu,
+  ChevronDown,
+  Code,
+  Users,
+  Lock,
+  ArrowDown,
+  Vote
 } from 'lucide-react';
 import SectionInView from '@/components/section-in-view';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -278,6 +284,35 @@ export default function WhitepaperPage() {
               <li><strong className="text-foreground/90">Governance Contract:</strong> Facilitates decentralized decision-making by allowing token holders to submit proposals, vote, and implement changes to protocol parameters or upgrades.</li>
               <li><strong className="text-foreground/90">Access Control Contract:</strong> Implements role-based permissions to restrict administrative functions and protect against unauthorized contract interactions.</li>
             </ol>
+            <div className="mt-12 text-center">
+              <h3 className="font-headline text-2xl font-bold mb-8 text-foreground">Smart Contract Modules Overview</h3>
+              <div className="flex justify-center items-center mb-4">
+                  <Card className="p-4 bg-primary/10 border-primary/20 w-64">
+                      <CardTitle className="text-lg text-primary">Exnus Protocol Core</CardTitle>
+                  </Card>
+              </div>
+              <div className="flex justify-center items-center">
+                  <ChevronDown className="w-12 h-12 text-muted-foreground" />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
+                  <Card className="p-6 text-center bg-card/50 border-border/50">
+                      <Gift className="w-10 h-10 text-primary mx-auto mb-4" />
+                      <h4 className="font-bold text-lg text-foreground">Reward Distribution</h4>
+                  </Card>
+                  <Card className="p-6 text-center bg-card/50 border-border/50">
+                      <Landmark className="w-10 h-10 text-primary mx-auto mb-4" />
+                      <h4 className="font-bold text-lg text-foreground">Staking</h4>
+                  </Card>
+                  <Card className="p-6 text-center bg-card/50 border-border/50">
+                      <Vote className="w-10 h-10 text-primary mx-auto mb-4" />
+                      <h4 className="font-bold text-lg text-foreground">Governance</h4>
+                  </Card>
+                  <Card className="p-6 text-center bg-card/50 border-border/50">
+                      <KeyRound className="w-10 h-10 text-primary mx-auto mb-4" />
+                      <h4 className="font-bold text-lg text-foreground">Access Control</h4>
+                  </Card>
+              </div>
+            </div>
           </>
         ),
       },
@@ -320,6 +355,72 @@ export default function WhitepaperPage() {
                     <li><strong className="text-foreground/90">Governance Participation:</strong> Voting on proposals, submitting governance initiatives, and active involvement in decision-making processes earn users additional rewards.</li>
                     <li><strong className="text-foreground/90">Staking Participation:</strong> Users who stake their tokens to support network security and stability gain rewards that compound their holdings and enhance governance influence.</li>
                 </ol>
+
+                <div className="my-12">
+                    <h3 className="font-headline text-2xl font-bold mt-6 mb-8 text-center text-foreground">Reward Flow Diagram</h3>
+                    <p className="text-center text-muted-foreground mb-8">User contributions are processed by the Reward Calculation Engine to distribute EXNUS tokens.</p>
+                    <div className="relative md:grid md:grid-cols-3 md:items-center md:gap-8">
+                        <div className="space-y-4">
+                            <Card className="p-4 bg-card/50 border-border/50">
+                                <div className="flex items-center gap-4">
+                                    <Code className="w-8 h-8 text-primary" />
+                                    <div>
+                                        <h4 className="font-bold text-md text-foreground">Development</h4>
+                                        <p className="text-sm text-muted-foreground">Code, fixes, proposals</p>
+                                    </div>
+                                </div>
+                            </Card>
+                            <Card className="p-4 bg-card/50 border-border/50">
+                                <div className="flex items-center gap-4">
+                                    <Users className="w-8 h-8 text-primary" />
+                                     <div>
+                                        <h4 className="font-bold text-md text-foreground">Community</h4>
+                                        <p className="text-sm text-muted-foreground">Engagement, support</p>
+                                    </div>
+                                </div>
+                            </Card>
+                            <Card className="p-4 bg-card/50 border-border/50">
+                                <div className="flex items-center gap-4">
+                                    <Vote className="w-8 h-8 text-primary" />
+                                     <div>
+                                        <h4 className="font-bold text-md text-foreground">Governance</h4>
+                                        <p className="text-sm text-muted-foreground">Voting, initiatives</p>
+                                    </div>
+                                </div>
+                            </Card>
+                            <Card className="p-4 bg-card/50 border-border/50">
+                                <div className="flex items-center gap-4">
+                                    <Lock className="w-8 h-8 text-primary" />
+                                     <div>
+                                        <h4 className="font-bold text-md text-foreground">Staking</h4>
+                                        <p className="text-sm text-muted-foreground">Network security</p>
+                                    </div>
+                                </div>
+                            </Card>
+                        </div>
+
+                        <div className="flex justify-center items-center my-6 md:my-0">
+                             <ArrowRight className="w-12 h-12 text-muted-foreground transform md:-rotate-0 rotate-90" />
+                        </div>
+                        
+                        <div className="space-y-8">
+                            <Card className="p-6 text-center bg-card/50 border-border/50">
+                                <Cpu className="w-10 h-10 text-primary mx-auto mb-4" />
+                                <h4 className="font-bold text-lg text-foreground">Reward Calculation Engine</h4>
+                                 <p className="text-sm text-muted-foreground mt-2">Processes all contributions</p>
+                            </Card>
+                             <div className="flex justify-center items-center">
+                                <ArrowDown className="w-12 h-12 text-muted-foreground" />
+                            </div>
+                            <Card className="p-6 text-center bg-primary/10 border-primary/20">
+                                <Gift className="w-10 h-10 text-primary mx-auto mb-4" />
+                                <h4 className="font-bold text-lg text-primary">EXNUS Token Rewards</h4>
+                                <p className="text-sm text-muted-foreground mt-2">Distributed to users</p>
+                            </Card>
+                        </div>
+                    </div>
+                </div>
+
                 <h3 className="font-headline text-2xl font-bold mt-6 mb-4 text-foreground">Reward Distribution Mechanism</h3>
                 <ul className="list-disc pl-6 space-y-2 mt-4">
                     <li><strong className="text-foreground/90">Dynamic Reward Calculation:</strong> The protocol’s reward engine uses weighted algorithms that factor in contribution type, consistency, and community impact, enabling adaptive incentives aligned with evolving ecosystem priorities.</li>
