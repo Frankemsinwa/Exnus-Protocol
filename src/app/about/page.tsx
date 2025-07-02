@@ -36,12 +36,11 @@ export default function AboutPage() {
            </SectionInView>
            <SectionInView>
              <Image
-                src="https://placehold.co/600x400.png"
+                src="/about1.jpg"
                 alt="Staking on Solana Blockchain"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-lg shadow-primary/10"
-                data-ai-hint="blockchain network"
               />
            </SectionInView>
         </div>
