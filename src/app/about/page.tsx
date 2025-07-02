@@ -5,7 +5,7 @@ import SectionInView from "@/components/section-in-view";
 
 export default function AboutPage() {
   return (
-    <div className="bg-background text-white py-20 sm:py-32">
+    <div className="bg-background text-foreground py-20 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionInView>
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -81,7 +81,7 @@ export default function AboutPage() {
                 <div className="bg-primary/10 p-3 rounded-full">
                   <ShieldCheck className="w-10 h-10 text-primary" />
                 </div>
-                <CardTitle className="font-headline text-3xl text-white">
+                <CardTitle className="font-headline text-3xl text-card-foreground">
                   A Robust & Inclusive Platform
                 </CardTitle>
               </div>

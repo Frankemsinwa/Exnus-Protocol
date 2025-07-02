@@ -31,7 +31,7 @@ export default function Features() {
       <ParticleBackground />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-white tracking-tight">Protocol Features</h2>
+          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-foreground tracking-tight">Protocol Features</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             The core innovations that set Exnus Protocol apart.
           </p>
@@ -43,7 +43,7 @@ export default function Features() {
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">{feature.icon}</div>
                   <div className="flex-grow">
-                    <CardTitle className="font-headline text-xl text-white">{feature.title}</CardTitle>
+                    <CardTitle className="font-headline text-xl text-card-foreground">{feature.title}</CardTitle>
                     <CardDescription className="mt-2 text-muted-foreground">
                       {feature.description}
                     </CardDescription>

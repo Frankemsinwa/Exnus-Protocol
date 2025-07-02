@@ -37,7 +37,7 @@ export default function Tokenomics() {
     <section id="tokenomics" className="py-20 sm:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-white tracking-tight">Tokenomics</h2>
+          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-foreground tracking-tight">Tokenomics</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             The total supply of Exnus tokens is strategically allocated to ensure sustainability, community engagement, and rewards for stakeholders.
           </p>
@@ -45,7 +45,7 @@ export default function Tokenomics() {
         <div className="mt-16 max-w-6xl mx-auto">
           <Card className="bg-card/50 border-border/50">
             <CardHeader>
-              <CardTitle className="font-headline text-white text-center text-2xl">EXNUS Token Distribution</CardTitle>
+              <CardTitle className="font-headline text-card-foreground text-center text-2xl">EXNUS Token Distribution</CardTitle>
               <CardDescription className="text-center !mt-2">Total Supply: 2.5 Billion Tokens</CardDescription>
             </CardHeader>
             <CardContent className="p-8">
@@ -84,7 +84,7 @@ export default function Tokenomics() {
                     <div key={item.name} className="flex items-center gap-4 p-2 rounded-md hover:bg-white/5 transition-colors">
                       <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
                       <div className="flex-1 flex justify-between">
-                        <span className="font-medium text-white">{item.name}</span>
+                        <span className="font-medium text-foreground">{item.name}</span>
                         <span className="text-muted-foreground font-semibold">{item.percentage}%</span>
                       </div>
                     </div>
@@ -93,12 +93,12 @@ export default function Tokenomics() {
               </div>
 
               <div className="mt-20">
-                <h3 className="text-2xl font-bold text-center text-white mb-8">Allocation Breakdown</h3>
+                <h3 className="text-2xl font-bold text-center text-foreground mb-8">Allocation Breakdown</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {tokenDistribution.map((item) => (
                     <Card key={item.name} className="bg-card/50 border-border/50 flex flex-col">
                       <CardHeader>
-                        <CardTitle className="text-lg text-white">{item.name} ({item.percentage}%)</CardTitle>
+                        <CardTitle className="text-lg text-card-foreground">{item.name} ({item.percentage}%)</CardTitle>
                         <CardDescription>{item.tokens} Tokens</CardDescription>
                       </CardHeader>
                       <CardContent className="flex-1">
