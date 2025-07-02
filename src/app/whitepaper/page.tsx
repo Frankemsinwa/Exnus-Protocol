@@ -6,10 +6,14 @@ import type { ReactNode } from 'react';
 import {
   Card,
   CardContent,
-  CardHeader,
-  CardTitle,
 } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
+import { Button } from '@/components/ui/button';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from '@/components/ui/carousel';
 import {
   FileText,
   Target,
@@ -19,34 +23,33 @@ import {
   Map,
   Users,
   CheckCircle,
+  ArrowLeft,
+  ArrowRight
 } from 'lucide-react';
 import SectionInView from '@/components/section-in-view';
 
-const WhitepaperSection = ({
-  id,
+const WhitepaperContentBlock = ({
   title,
   icon,
   children,
 }: {
-  id: string;
   title: string;
   icon: ReactNode;
   children: ReactNode;
 }) => (
-  <SectionInView>
-    <section id={id} className="mb-16 scroll-mt-24">
-      <div className="flex items-center gap-4 mb-6">
-        <div className="bg-primary/10 p-3 rounded-full">{icon}</div>
-        <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground">
-          {title}
-        </h2>
-      </div>
-      <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
-        {children}
-      </div>
-    </section>
-  </SectionInView>
+  <div className="flex-grow flex flex-col min-h-0">
+    <div className="flex items-center gap-4 mb-6">
+      <div className="bg-primary/10 p-3 rounded-full">{icon}</div>
+      <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground">
+        {title}
+      </h2>
+    </div>
+    <div className="space-y-4 text-muted-foreground text-lg leading-relaxed overflow-y-auto pr-4 flex-grow">
+      {children}
+    </div>
+  </div>
 );
+
 
 const sections = [
   {
@@ -322,6 +325,9 @@ const tocItems = sections.map((section, index) => ({
 
 export default function WhitepaperPage() {
     const [currentDate, setCurrentDate] = React.useState('');
+    const [api, setApi] = React.useState<CarouselApi>();
+    const [current, setCurrent] = React.useState(0);
+    const [count, setCount] = React.useState(0);
 
     React.useEffect(() => {
       setCurrentDate(new Date().toLocaleDateString('en-US', {
@@ -331,11 +337,36 @@ export default function WhitepaperPage() {
       }));
     }, []);
 
+    React.useEffect(() => {
+        if (!api) {
+            return;
+        }
+
+        setCount(api.scrollSnapList().length);
+        setCurrent(api.selectedScrollSnap() + 1);
+
+        api.on("select", () => {
+            setCurrent(api.selectedScrollSnap() + 1);
+        });
+    }, [api]);
+
+    const handleTocClick = (index: number) => {
+        api?.scrollTo(index);
+    };
+
+    const scrollPrev = React.useCallback(() => {
+        api?.scrollPrev()
+    }, [api]);
+
+    const scrollNext = React.useCallback(() => {
+        api?.scrollNext()
+    }, [api]);
+
   return (
     <div className="bg-background text-foreground py-20 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionInView>
-          <div className="max-w-4xl mx-auto text-center mb-24">
+          <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-block bg-primary/10 p-4 rounded-full mb-6">
               <FileText className="w-12 h-12 text-primary" />
             </div>
@@ -355,35 +386,60 @@ export default function WhitepaperPage() {
                 Table of Contents
               </h3>
               <ul className="space-y-2">
-                {tocItems.map((item) => (
+                {tocItems.map((item, index) => (
                   <li key={item.id}>
-                    <a
-                      href={`#${item.id}`}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                    <button
+                      onClick={() => handleTocClick(index)}
+                      className={`w-full text-left transition-colors ${
+                        current === index + 1
+                          ? 'text-primary font-semibold'
+                          : 'text-muted-foreground hover:text-primary'
+                      }`}
                     >
                       {item.number}. {item.title}
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
+              { count > 0 && 
+                <p className="text-sm text-muted-foreground mt-8">
+                  Page {current} of {count}
+                </p>
+              }
             </div>
           </aside>
 
           <main className="lg:col-span-3">
-            {sections.map((section, index) => (
-              <React.Fragment key={section.id}>
-                <WhitepaperSection
-                  id={section.id}
-                  title={section.title}
-                  icon={section.icon}
-                >
-                  {section.content}
-                </WhitepaperSection>
-                {[2, 4, 7].includes(index) && (
-                  <Separator className="my-16" />
-                )}
-              </React.Fragment>
-            ))}
+             <Carousel setApi={setApi} className="w-full" opts={{ align: "start", loop: false }}>
+                <CarouselContent>
+                    {sections.map((section, index) => (
+                        <CarouselItem key={section.id}>
+                            <Card className="bg-card/50 border-border/50 backdrop-blur-sm min-h-[60vh] flex flex-col">
+                                <CardContent className="p-8 md:p-12 flex flex-col flex-grow">
+                                    <WhitepaperContentBlock
+                                        title={section.title}
+                                        icon={section.icon}
+                                    >
+                                        {section.content}
+                                    </WhitepaperContentBlock>
+                                    <div className="mt-8 flex justify-between pt-8 border-t border-border/20">
+                                        <Button onClick={scrollPrev} disabled={index === 0} variant="outline">
+                                            <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+                                        </Button>
+                                        {index < sections.length - 1 ? (
+                                            <Button onClick={scrollNext}>
+                                                Next <ArrowRight className="ml-2 h-4 w-4" />
+                                            </Button>
+                                        ) : (
+                                            <Button disabled>End</Button>
+                                        )}
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+             </Carousel>
           </main>
         </div>
       </div>
