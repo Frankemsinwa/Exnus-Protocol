@@ -36,6 +36,13 @@ import {
 } from 'lucide-react';
 import SectionInView from '@/components/section-in-view';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
+import { PieChart, Pie, Cell } from "recharts";
 
 const WhitepaperContentBlock = ({
   title,
@@ -71,6 +78,23 @@ const WhitepaperContentBlock = ({
     </div>
   );
 };
+
+const tokenDistribution = [
+  { name: 'Staking Rewards', percentage: 46.8, color: "hsl(var(--chart-1))" },
+  { name: 'Pre-sale Allocation', percentage: 28, color: "hsl(var(--chart-2))" },
+  { name: 'Liquidity Provision', percentage: 16, color: "hsl(var(--chart-3))" },
+  { name: 'Community Airdrop', percentage: 4, color: "hsl(var(--chart-4))" },
+  { name: 'Team Allocation', percentage: 2.4, color: "hsl(var(--chart-5))" },
+  { name: 'DAO Treasury', percentage: 2, color: "hsl(var(--accent))" },
+  { name: 'Advisors Allocation', percentage: 0.8, color: "hsl(var(--secondary-foreground))" },
+];
+
+const chartConfig = {
+  percentage: {
+    label: "Percentage",
+  },
+  ...Object.fromEntries(tokenDistribution.map(item => [item.name, {label: item.name, color: item.color}]))
+} satisfies ChartConfig;
 
 
 const sections = [
@@ -415,6 +439,48 @@ const sections = [
                 <li><strong className="text-foreground/90">Advisors Allocation:</strong> 20 Million Tokens (0.8%)</li>
                 <li><strong className="text-foreground/90">Staking Rewards:</strong> 1.170 Billion Tokens (46.8%)</li>
             </ul>
+            <div className="mt-12">
+                <h3 className="font-headline text-2xl font-bold mt-6 mb-4 text-center text-foreground">Token Allocation Visualized</h3>
+                <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+                    <ChartContainer
+                        config={chartConfig}
+                        className="mx-auto aspect-square h-[250px]"
+                    >
+                        <PieChart>
+                            <ChartTooltip
+                                cursor={false}
+                                content={<ChartTooltipContent
+                                    formatter={(value) => `${value}%`}
+                                    hideLabel
+                                    indicator="dot"
+                                />}
+                            />
+                            <Pie
+                                data={tokenDistribution}
+                                dataKey="percentage"
+                                nameKey="name"
+                                innerRadius={60}
+                                strokeWidth={2}
+                            >
+                                {tokenDistribution.map((entry) => (
+                                    <Cell key={`cell-${entry.name}`} fill={entry.color} />
+                                ))}
+                            </Pie>
+                        </PieChart>
+                    </ChartContainer>
+                    <div className="w-full md:w-1/2 flex flex-col gap-2">
+                        {tokenDistribution.map((item) => (
+                            <div key={item.name} className="flex items-center gap-3 text-sm">
+                                <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
+                                <div className="flex-1 flex justify-between">
+                                    <span className="font-medium text-muted-foreground">{item.name}</span>
+                                    <span className="text-foreground font-semibold">{item.percentage}%</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </>
     ),
   },
