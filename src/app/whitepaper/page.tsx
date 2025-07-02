@@ -32,8 +32,10 @@ import {
   ShieldAlert,
   Archive,
   Wallet,
+  Menu,
 } from 'lucide-react';
 import SectionInView from '@/components/section-in-view';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const WhitepaperContentBlock = ({
   title,
@@ -50,7 +52,7 @@ const WhitepaperContentBlock = ({
     if (scrollRef.current) {
       scrollRef.current.scrollTop = 0;
     }
-  }, [children]);
+  }, [children, title]);
 
   return (
     <div className="flex-grow flex flex-col min-h-0">
@@ -466,6 +468,7 @@ export default function WhitepaperPage() {
     const [currentDate, setCurrentDate] = React.useState('');
     const [activeIndex, setActiveIndex] = React.useState(0);
     const [isTransitioning, setIsTransitioning] = React.useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
     React.useEffect(() => {
       setCurrentDate(new Date().toLocaleDateString('en-US', {
@@ -484,6 +487,11 @@ export default function WhitepaperPage() {
             setActiveIndex(newIndex);
             setIsTransitioning(false);
         }, 2000);
+    };
+
+    const handleMobileNavigation = (newIndex: number) => {
+      handleNavigation(newIndex);
+      setIsMobileMenuOpen(false);
     };
     
     const currentSection = sections[activeIndex];
@@ -504,6 +512,42 @@ export default function WhitepaperPage() {
             </p>
           </div>
         </SectionInView>
+
+        {/* Mobile TOC Button */}
+        <div className="lg:hidden mb-8">
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="outline" className="w-full justify-start text-left">
+                <Menu className="mr-2 h-4 w-4" />
+                Table of Contents
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[300px] sm:w-[350px] p-0">
+              <div className="p-6 h-full overflow-y-auto">
+                 <h3 className="font-headline text-xl font-bold mb-4 text-foreground pt-6">
+                  Table of Contents
+                </h3>
+                <ul className="space-y-2">
+                  {tocItems.map((item, index) => (
+                    <li key={item.id}>
+                      <button
+                        onClick={() => handleMobileNavigation(index)}
+                        className={`w-full text-left transition-colors py-1 ${
+                          activeIndex === index
+                            ? 'text-primary font-semibold'
+                            : 'text-muted-foreground hover:text-primary'
+                        }`}
+                        disabled={isTransitioning}
+                      >
+                        {item.number}. {item.title}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-12">
           <aside className="hidden lg:block lg:col-span-1">
