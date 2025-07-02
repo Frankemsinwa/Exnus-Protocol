@@ -36,7 +36,7 @@ export default function AboutPage() {
            </SectionInView>
            <SectionInView>
              <Image
-                src="/about1.jpg"
+                src="/about1.png"
                 alt="Staking on Solana Blockchain"
                 width={600}
                 height={400}
