@@ -26,6 +26,12 @@ import {
   Landmark,
   Network,
   Loader2,
+  Package,
+  KeyRound,
+  Combine,
+  ShieldAlert,
+  Archive,
+  Wallet,
 } from 'lucide-react';
 import SectionInView from '@/components/section-in-view';
 
@@ -44,7 +50,7 @@ const WhitepaperContentBlock = ({
     if (scrollRef.current) {
       scrollRef.current.scrollTop = 0;
     }
-  }, []);
+  }, [children]);
 
   return (
     <div className="flex-grow flex flex-col min-h-0">
@@ -168,8 +174,8 @@ const sections = [
     ),
   },
   {
-    id: 'technical-architecture',
-    title: 'Technical Architecture',
+    id: 'tech-architecture-components',
+    title: 'Technical Architecture: Core Components',
     icon: <Cpu className="w-8 h-8 text-primary" />,
     content: (
         <>
@@ -184,6 +190,15 @@ const sections = [
                 <li><strong className="text-foreground/90">Governance Interface:</strong> A decentralized governance module enables token holders to propose and vote on protocol upgrades, reward adjustments, and ecosystem initiatives, ensuring community-driven development.</li>
                 <li><strong className="text-foreground/90">Analytics and Reporting Dashboard:</strong> Provides real-time insights into user contributions, reward distributions, staking statistics, and overall network health. Transparency is maintained through accessible on-chain data and user-friendly interfaces.</li>
             </ol>
+        </>
+    ),
+  },
+   {
+    id: 'tech-architecture-integration-security',
+    title: 'Technical Architecture: Integration & Security',
+    icon: <Combine className="w-8 h-8 text-primary" />,
+    content: (
+        <>
             <h3 className="font-headline text-2xl font-bold mt-6 mb-4 text-foreground">Integration Layers</h3>
             <ul className="list-disc pl-6 space-y-2 mt-4">
                 <li><strong className="text-foreground/90">Blockchain Layer:</strong> Utilizes Solana’s high-throughput blockchain to ensure secure, fast, and low-cost transaction processing.</li>
@@ -200,9 +215,9 @@ const sections = [
     ),
   },
   {
-    id: 'smart-contracts',
-    title: 'Smart Contract Design & Security',
-    icon: <ShieldCheck className="w-8 h-8 text-primary" />,
+    id: 'smart-contracts-design-modules',
+    title: 'Smart Contracts: Design & Modules',
+    icon: <Package className="w-8 h-8 text-primary" />,
     content: (
       <>
         <p>
@@ -221,6 +236,15 @@ const sections = [
           <li><strong className="text-foreground/90">Governance Contract:</strong> Facilitates decentralized decision-making by allowing token holders to submit proposals, vote, and implement changes to protocol parameters or upgrades.</li>
           <li><strong className="text-foreground/90">Access Control Contract:</strong> Implements role-based permissions to restrict administrative functions and protect against unauthorized contract interactions.</li>
         </ol>
+      </>
+    ),
+  },
+  {
+    id: 'smart-contracts-security',
+    title: 'Smart Contracts: Security Measures',
+    icon: <ShieldCheck className="w-8 h-8 text-primary" />,
+    content: (
+      <>
         <h3 className="font-headline text-2xl font-bold mt-6 mb-4 text-foreground">Security Measures</h3>
         <ul className="list-disc pl-6 space-y-2 mt-4">
           <li><strong className="text-foreground/90">Comprehensive Audits:</strong> All smart contracts undergo multiple rounds of security audits by reputable third-party firms specializing in blockchain vulnerabilities.</li>
@@ -361,13 +385,13 @@ const sections = [
     ),
   },
   {
-    id: 'tokenomics',
-    title: 'Tokenomics',
+    id: 'tokenomics-distribution',
+    title: 'Tokenomics: Supply & Distribution',
     icon: <CircleDollarSign className="w-8 h-8 text-primary" />,
     content: (
         <>
             <p>
-                The total supply of Exnus tokens is strategically allocated to ensure sustainability, community engagement, and rewards for stakeholders.
+                The total supply of Exnus tokens is strategically allocated to ensure sustainability, community engagement, and rewards for stakeholders. Below is a summary of the token allocation:
             </p>
             <Card className="my-6 bg-card/50 border-border/50">
                 <CardHeader>
@@ -379,15 +403,34 @@ const sections = [
                     </ul>
                 </CardContent>
             </Card>
-            <h3 className="font-headline text-2xl font-bold mt-6 mb-4 text-foreground">Allocation Breakdown</h3>
+            <h3 className="font-headline text-2xl font-bold mt-6 mb-4 text-foreground">Allocation Summary</h3>
             <ul className="list-disc pl-6 space-y-2 mt-4">
-                <li><strong className="text-foreground/90">Community Airdrop (4%):</strong> 100 Million Tokens. A significant portion of tokens is reserved for community engagement through airdrops, incentivizing early adopters and community members.</li>
-                <li><strong className="text-foreground/90">Pre-sale Allocation (28%):</strong> 700 Million Tokens. The pre-sale serves as a crucial fundraising mechanism that allows investors to acquire tokens at an early stage, providing liquidity for the project’s development and marketing efforts.</li>
-                <li><strong className="text-foreground/90">Team Allocation (2.4%):</strong> 60 Million Tokens. A small allocation to the team ensures that the core development group is incentivized and aligned with the long-term success of Exnus Protocol.</li>
-                <li><strong className="text-foreground/90">DAO Treasury (2%):</strong> 50 Million Tokens. The DAO treasury is designed to fund community-driven initiatives and governance proposals, fostering decentralization and community participation.</li>
-                <li><strong className="text-foreground/90">Liquidity Provision (16%):</strong> 400 Million Tokens. A substantial allocation to liquidity provision ensures that there will be sufficient tokens available in the market, enhancing trading efficiency and stability.</li>
-                <li><strong className="text-foreground/90">Advisors Allocation (0.8%):</strong> 20 Million Tokens. This allocation rewards strategic advisors for their guidance and expertise in the project's development and market strategy.</li>
-                <li><strong className="text-foreground/90">Staking Rewards (46.8%):</strong> 1.170 Billion Tokens. The largest portion of tokens is set aside for staking rewards, encouraging token holders to participate in network validation and governance while earning additional tokens.</li>
+                <li><strong className="text-foreground/90">Community Airdrop:</strong> 100 Million Tokens (4%)</li>
+                <li><strong className="text-foreground/90">Pre-sale Allocation:</strong> 700 Million Tokens (28%)</li>
+                <li><strong className="text-foreground/90">Team Allocation:</strong> 60 Million Tokens (2.4%)</li>
+                <li><strong className="text-foreground/90">DAO Treasury:</strong> 50 Million Tokens (2%)</li>
+                <li><strong className="text-foreground/90">Liquidity Provision:</strong> 400 Million Tokens (16%)</li>
+                <li><strong className="text-foreground/90">Advisors Allocation:</strong> 20 Million Tokens (0.8%)</li>
+                <li><strong className="text-foreground/90">Staking Rewards:</strong> 1.170 Billion Tokens (46.8%)</li>
+            </ul>
+        </>
+    ),
+  },
+   {
+    id: 'tokenomics-rationale',
+    title: 'Tokenomics: Allocation Rationale',
+    icon: <Wallet className="w-8 h-8 text-primary" />,
+    content: (
+        <>
+            <h3 className="font-headline text-2xl font-bold mt-6 mb-4 text-foreground">Allocation Rationale</h3>
+            <ul className="list-disc pl-6 space-y-2 mt-4">
+                <li><strong className="text-foreground/90">Community Airdrop (4%):</strong> A significant portion of tokens is reserved for community engagement through airdrops, incentivizing early adopters and community members.</li>
+                <li><strong className="text-foreground/90">Pre-sale Allocation (28%):</strong> The pre-sale serves as a crucial fundraising mechanism that allows investors to acquire tokens at an early stage, providing liquidity for the project’s development and marketing efforts.</li>
+                <li><strong className="text-foreground/90">Team Allocation (2.4%):</strong> A small allocation to the team ensures that the core development group is incentivized and aligned with the long-term success of Exnus Protocol.</li>
+                <li><strong className="text-foreground/90">DAO Treasury (2%):</strong> The DAO treasury is designed to fund community-driven initiatives and governance proposals, fostering decentralization and community participation.</li>
+                <li><strong className="text-foreground/90">Liquidity Provision (16%):</strong> A substantial allocation to liquidity provision ensures that there will be sufficient tokens available in the market, enhancing trading efficiency and stability.</li>
+                <li><strong className="text-foreground/90">Advisors Allocation (0.8%):</strong> This allocation rewards strategic advisors for their guidance and expertise in the project's development and market strategy.</li>
+                <li><strong className="text-foreground/90">Staking Rewards (46.8%):</strong> The largest portion of tokens is set aside for staking rewards, encouraging token holders to participate in network validation and governance while earning additional tokens.</li>
             </ul>
              <p className="mt-6">
                 The Exnus Protocol tokenomics is carefully crafted to ensure a balanced and sustainable ecosystem. The pre-sale is a pivotal opportunity for early investors to participate in the project's growth, as it provides access to tokens before they become limited and potentially more expensive after the pre-sale concludes. As interest in the Exnus token grows and its utility in the ecosystem expands, we anticipate an increase in demand, ultimately leading to a scarcity that enhances its value. We encourage all potential investors to seize the opportunity to participate in the upcoming pre-sale event.
