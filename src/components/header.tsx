@@ -14,10 +14,8 @@ const Logo = () => (
 
 export default function Header() {
   const navLinks = [
+    { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Features', href: '/#features' },
-    { name: 'Roadmap', href: '/#roadmap' },
-    { name: 'How It Works', href: '/#how-it-works' },
   ];
 
   return (
