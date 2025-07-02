@@ -3,16 +3,19 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background">
-      {/* Layer 1: Lottie Animation (at the very back) */}
+    <section className="relative overflow-hidden bg-white dark:bg-background">
+      {/* Layer 1: Video Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <iframe
-          src="https://lottie.host/embed/22cd6b47-b228-4ef8-9622-e1dce5631c1e/Ok2IAICHom.lottie"
-          className="w-full h-full"
-          frameBorder="0"
-          allowFullScreen
-          title="Hero Background Animation"
-        ></iframe>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       {/* Layer 2: Dark Overlay */}
