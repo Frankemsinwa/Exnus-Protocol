@@ -3,7 +3,6 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import ClientLayoutWrapper from "@/components/client-layout-wrapper";
 
 export const metadata: Metadata = {
   title: "Exnus Protocol Landing",
@@ -26,11 +25,9 @@ export default function RootLayout({
         ></link>
       </head>
       <body className="font-body antialiased bg-background text-foreground">
-        <ClientLayoutWrapper>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </ClientLayoutWrapper>
+        <Header />
+        <main>{children}</main>
+        <Footer />
         <Toaster />
       </body>
     </html>

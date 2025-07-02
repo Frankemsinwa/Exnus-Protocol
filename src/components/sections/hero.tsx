@@ -1,18 +1,19 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 
 export default function Hero() {
   return (
     <section className="relative bg-background overflow-hidden">
-      <Image
-        src="/about.jpg"
-        alt="Hero Background"
-        fill
-        priority
-        className="object-cover object-center"
-      />
-      <div className="absolute inset-0 bg-black/50 -z-10" />
+      <div className="absolute inset-0 -z-20 pointer-events-none">
+        <iframe
+          src="https://lottie.host/embed/22cd6b47-b228-4ef8-9622-e1dce5631c1e/Ok2IAICHom.lottie"
+          className="w-full h-full"
+          frameBorder="0"
+          allowFullScreen
+          title="Hero Background Animation"
+        ></iframe>
+      </div>
+      <div className="absolute inset-0 bg-black/70 -z-10" />
       
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 sm:pt-32 sm:pb-24 text-center">
         <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 leading-tight tracking-tighter">
