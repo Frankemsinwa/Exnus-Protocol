@@ -4,7 +4,8 @@ import { ArrowRight } from 'lucide-react';
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 -z-20 pointer-events-none">
+      {/* Layer 1: Lottie Animation (at the very back) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <iframe
           src="https://lottie.host/embed/22cd6b47-b228-4ef8-9622-e1dce5631c1e/Ok2IAICHom.lottie"
           className="w-full h-full"
@@ -13,9 +14,12 @@ export default function Hero() {
           title="Hero Background Animation"
         ></iframe>
       </div>
-      <div className="absolute inset-0 bg-black/70 -z-10" />
-      
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 sm:pt-32 sm:pb-24 text-center">
+
+      {/* Layer 2: Dark Overlay */}
+      <div className="absolute inset-0 z-10 bg-black/70" />
+
+      {/* Layer 3: Content (on top of the overlay) */}
+      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 sm:pt-32 sm:pb-24 text-center">
         <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 leading-tight tracking-tighter">
           Reward Meaningful Contribution.<br/> Build a Stronger Ecosystem.
         </h1>
@@ -36,7 +40,8 @@ export default function Hero() {
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+      {/* Layer 4: Fading Gradient (on top of everything at the bottom) */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent pointer-events-none z-30" />
     </section>
   );
 }
