@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 
 const Logo = () => (
   <>
-    <Image src="/exnus-logo.png" alt="Exnus Logo" width={60} height={60} className="h-[60px] w-[60px]" />
+    <Image src="/exnus-logo.png" alt="Exnus Logo" width={50} height={50} className="h-[50px] w-[50px]" />
     <span className="font-bold text-xl">EXNUS</span>
   </>
 );
@@ -33,7 +33,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white dark:bg-background text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <a href="/" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-1">
             <Logo />
           </a>
           <nav className="hidden md:flex items-center space-x-8">
@@ -73,7 +73,7 @@ export default function Header() {
                 <div className="flex flex-col h-full p-4">
                   <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                   <div className="flex justify-between items-center mb-8">
-                    <a href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
+                    <a href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-1">
                       <Logo />
                     </a>
                   </div>
