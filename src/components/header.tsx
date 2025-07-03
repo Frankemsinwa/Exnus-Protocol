@@ -3,7 +3,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
@@ -12,7 +11,7 @@ import { ThemeToggle } from './theme-toggle';
 import { cn } from '@/lib/utils';
 
 const Logo = () => (
-  <Image src="/exnus.jpg" alt="Exnus Protocol Logo" width={150} height={70} />
+  <span className="tracking-tight">EXNUS PROTOCOL</span>
 );
 
 export default function Header() {
