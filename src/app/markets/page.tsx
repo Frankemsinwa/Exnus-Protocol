@@ -200,41 +200,48 @@ export default function MarketsPage() {
     return () => clearInterval(interval);
   }, [fetchDefaultCoins, page, isSearching]);
   
-  const handleSearchSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  useEffect(() => {
+    const searchCoins = async () => {
+        setLoading(true);
+        setError(null);
+        setIsSearching(true);
+        try {
+            const searchResponse = await fetch(`https://api.coingecko.com/api/v3/search?query=${searchTerm}`);
+            if (!searchResponse.ok) throw new Error('Failed to search for coins.');
+            const searchData = await searchResponse.json();
+
+            if (!searchData.coins || searchData.coins.length === 0) {
+                setSearchResults([]);
+                return;
+            }
+
+            const coinIds = searchData.coins.map((c: any) => c.id);
+            const marketsResponse = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinIds.join(',')}`);
+            if (!marketsResponse.ok) throw new Error('Failed to fetch market data for searched coins.');
+
+            const marketsData = await marketsResponse.json();
+            setSearchResults(marketsData);
+        } catch (err) {
+            if (err instanceof Error) setError(err.message);
+            else setError('An unknown search error occurred');
+            setSearchResults([]);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     if (!searchTerm.trim()) {
         setIsSearching(false);
         setSearchResults([]);
-        if (coins.length === 0) fetchDefaultCoins(1);
         return;
     }
-    setLoading(true);
-    setError(null);
-    setIsSearching(true);
-    try {
-        const searchResponse = await fetch(`https://api.coingecko.com/api/v3/search?query=${searchTerm}`);
-        if (!searchResponse.ok) throw new Error('Failed to search for coins.');
-        const searchData = await searchResponse.json();
 
-        if (!searchData.coins || searchData.coins.length === 0) {
-            setSearchResults([]);
-            return;
-        }
+    const debounceTimer = setTimeout(() => {
+        searchCoins();
+    }, 500);
 
-        const coinIds = searchData.coins.map((c: any) => c.id);
-        const marketsResponse = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinIds.join(',')}`);
-        if (!marketsResponse.ok) throw new Error('Failed to fetch market data for searched coins.');
-
-        const marketsData = await marketsResponse.json();
-        setSearchResults(marketsData);
-    } catch (err) {
-        if (err instanceof Error) setError(err.message);
-        else setError('An unknown search error occurred');
-        setSearchResults([]);
-    } finally {
-        setLoading(false);
-    }
-  };
+    return () => clearTimeout(debounceTimer);
+  }, [searchTerm]);
 
 
   const handleSort = (key: keyof Coin) => {
@@ -304,18 +311,16 @@ export default function MarketsPage() {
         <SectionInView>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
                 <h2 className="font-headline text-2xl text-foreground flex-shrink-0">Market Overview</h2>
-                <form onSubmit={handleSearchSubmit} className="flex w-full md:max-w-sm items-center gap-2">
+                <div className="relative w-full md:max-w-sm">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input
                         type="text"
                         placeholder="Search for a cryptocurrency..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full"
+                        className="w-full pl-10"
                     />
-                    <Button type="submit" disabled={loading}>
-                        {loading && isSearching ? 'Searching...' : 'Search'}
-                    </Button>
-                </form>
+                </div>
             </div>
 
             {error && <p className="text-destructive text-center py-4">{error}</p>}
