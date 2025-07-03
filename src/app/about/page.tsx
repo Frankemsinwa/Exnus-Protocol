@@ -3,39 +3,15 @@
 
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Vote, ShieldCheck } from "lucide-react";
+import { Zap, Vote, ShieldCheck, FilePlus, Users, CheckCircle, ArrowDown } from "lucide-react";
 import SectionInView from "@/components/section-in-view";
 import Lottie from 'lottie-react';
 import { Skeleton } from '@/components/ui/skeleton';
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from "@/components/ui/chart";
-import { PieChart, Pie, Cell } from "recharts";
-
-const governanceData = [
-  { type: 'Protocol Upgrades', value: 45, fill: 'hsl(var(--chart-1))' },
-  { type: 'Ecosystem Grants', value: 30, fill: 'hsl(var(--chart-2))' },
-  { type: 'Community Initiatives', value: 15, fill: 'hsl(var(--chart-3))' },
-  { type: 'Treasury Diversification', value: 10, fill: 'hsl(var(--chart-4))' },
-];
-
-const chartConfig = {
-  value: {
-    label: 'Value',
-  },
-  ...Object.fromEntries(governanceData.map(item => [item.type, {label: item.type, color: item.fill}]))
-} satisfies ChartConfig;
-
 
 export default function AboutPage() {
   const [animationData, setAnimationData] = useState(null);
-  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
     fetch('/about.json')
       .then((response) => {
         if (!response.ok) {
@@ -90,41 +66,62 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
           <SectionInView>
-             <Card className="bg-card/50 border-border/50 backdrop-blur-sm w-full h-full">
-                <CardHeader>
-                    <CardTitle className="font-headline text-xl text-card-foreground text-center">DAO Proposal Distribution</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    {isClient ? (
-                      <ChartContainer
-                          config={chartConfig}
-                          className="mx-auto aspect-square h-[250px]"
-                      >
-                          <PieChart>
-                          <ChartTooltip
-                              cursor={false}
-                              content={<ChartTooltipContent hideLabel formatter={(value, name) => `${name}: ${value}%`} />}
-                          />
-                          <Pie
-                              data={governanceData}
-                              dataKey="value"
-                              nameKey="type"
-                              innerRadius={60}
-                              strokeWidth={2}
-                          >
-                              {governanceData.map((entry) => (
-                              <Cell key={`cell-${entry.type}`} fill={entry.fill} />
-                              ))}
-                          </Pie>
-                          </PieChart>
-                      </ChartContainer>
-                    ) : (
-                      <div className="mx-auto aspect-square h-[250px] flex items-center justify-center">
-                        <Skeleton className="w-full h-full rounded-full" />
-                      </div>
-                    )}
-                </CardContent>
-             </Card>
+            <div className="bg-card/50 border-border/50 backdrop-blur-sm p-8 rounded-lg w-full h-full flex flex-col justify-center">
+              <h3 className="font-headline text-xl text-card-foreground text-center mb-8">The Governance Process</h3>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
+                    <FilePlus className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground">1. Proposal Submission</h4>
+                    <p className="text-muted-foreground text-base">Community members submit proposals for protocol upgrades or new initiatives.</p>
+                  </div>
+                </div>
+                
+                <div className="pl-4">
+                  <ArrowDown className="w-8 h-8 text-primary/30" />
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
+                    <Users className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground">2. Community Discussion</h4>
+                    <p className="text-muted-foreground text-base">The community discusses, debates, and refines the proposal through open forums.</p>
+                  </div>
+                </div>
+
+                <div className="pl-4">
+                  <ArrowDown className="w-8 h-8 text-primary/30" />
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
+                    <Vote className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground">3. DAO Voting</h4>
+                    <p className="text-muted-foreground text-base">EXNUS token holders use their voting power to decide on the proposal's outcome.</p>
+                  </div>
+                </div>
+                
+                <div className="pl-4">
+                  <ArrowDown className="w-8 h-8 text-primary/30" />
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
+                    <CheckCircle className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground">4. Implementation</h4>
+                    <p className="text-muted-foreground text-base">If passed, the proposal is funded from the DAO treasury and implemented.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </SectionInView>
           <SectionInView>
             <div className="space-y-6">
