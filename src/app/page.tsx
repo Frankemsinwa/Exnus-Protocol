@@ -5,6 +5,7 @@ import HowItWorks from "@/components/sections/how-it-works";
 import Waitlist from "@/components/sections/waitlist";
 import SectionInView from "@/components/section-in-view";
 import Roadmap from "@/components/sections/roadmap";
+import CryptoTicker from "@/components/sections/cryptoticker";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <SectionInView>
         <Waitlist />
       </SectionInView>
+      <CryptoTicker />
     </>
   );
 }
