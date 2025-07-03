@@ -42,7 +42,7 @@ import {
   BadgeCheck
 } from 'lucide-react';
 import SectionInView from '@/components/section-in-view';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle as RadixSheetTitle } from '@/components/ui/sheet';
 import {
   ChartContainer,
   ChartTooltip,
@@ -50,6 +50,8 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart";
 import { PieChart, Pie, Cell } from "recharts";
+
+const SheetTitle = RadixSheetTitle;
 
 const WhitepaperContentBlock = ({
   title,
@@ -803,9 +805,9 @@ management, and governance voting. Contracts are designed for modularity and sec
             </SheetTrigger>
             <SheetContent side="left" className="w-[300px] sm:w-[350px] p-0">
               <div className="p-6 h-full overflow-y-auto">
-                 <h3 className="font-headline text-xl font-bold mb-4 text-foreground pt-6">
+                 <SheetTitle as="h3" className="font-headline text-xl font-bold mb-4 text-foreground pt-6">
                   Table of Contents
-                </h3>
+                </SheetTitle>
                 <ul className="space-y-2">
                   {tocItems.map((item, index) => (
                     <li key={item.id}>

@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { ThemeToggle } from './theme-toggle';
 import { cn } from '@/lib/utils';
 
@@ -68,6 +68,7 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="bg-white dark:bg-background text-gray-800 dark:text-gray-200 border-l border-gray-200 dark:border-border/50">
                 <div className="flex flex-col h-full p-4">
+                  <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                   <div className="flex justify-between items-center mb-8">
                     <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 text-xl font-bold">
                       <Logo />
