@@ -3,6 +3,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
@@ -11,7 +12,10 @@ import { ThemeToggle } from './theme-toggle';
 import { cn } from '@/lib/utils';
 
 const Logo = () => (
-  <span className="tracking-tight">EXNUS PROTOCOL</span>
+  <>
+    <Image src="/exnus-logo.png" alt="Exnus Logo" width={32} height={32} className="h-8 w-8" />
+    <span className="font-bold text-xl">EXNUS</span>
+  </>
 );
 
 export default function Header() {
@@ -29,7 +33,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white dark:bg-background text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2 text-xl font-bold">
+          <Link href="/" className="flex items-center gap-2">
             <Logo />
           </Link>
           <nav className="hidden md:flex items-center space-x-8">
@@ -69,7 +73,7 @@ export default function Header() {
                 <div className="flex flex-col h-full p-4">
                   <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                   <div className="flex justify-between items-center mb-8">
-                    <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 text-xl font-bold">
+                    <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
                       <Logo />
                     </Link>
                   </div>
