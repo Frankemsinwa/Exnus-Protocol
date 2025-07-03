@@ -744,7 +744,7 @@ management, and governance voting. Contracts are designed for modularity and sec
           <>
             <h3 className="font-headline text-2xl font-bold mb-4 text-foreground">Key Milestones</h3>
             <p>
-                The Exnus Protocol is dedicated to achieving significant milestones that mark the project's growth and development. The pre-sale presents a critical opportunity for investors to secure their tokens at an advantageous price before they become scarce in the open market.
+                The Exnus Protocol is dedicated to achieving significant milestones that mark the project's growth and airdrop. The pre-sale presents a critical opportunity for investors to secure their tokens at an advantageous price before they become scarce in the open market.
             </p>
             <h3 className="font-headline text-2xl font-bold mt-6 mb-4 text-foreground">Conclusion</h3>
             <p>
@@ -768,7 +768,7 @@ management, and governance voting. Contracts are designed for modularity and sec
         setTimeout(() => {
             setActiveIndex(newIndex);
             setIsTransitioning(false);
-        }, 500);
+        }, 300);
     };
 
     const handleMobileNavigation = (newIndex: number) => {
@@ -867,49 +867,47 @@ management, and governance voting. Contracts are designed for modularity and sec
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.3 }}
                 >
-                    <Card className="bg-card/50 border-border/50 backdrop-blur-sm min-h-[60vh] flex flex-col">
-                        <CardContent className="p-8 md:p-12 flex flex-col flex-grow">
-                            <WhitepaperContentBlock
-                                scrollRef={contentScrollRef}
-                                title={currentSection.title}
-                                icon={currentSection.icon}
-                            >
-                                {currentSection.content}
-                            </WhitepaperContentBlock>
-                            <div className="mt-8 flex justify-between pt-8 border-t border-border/20">
-                                <Button onClick={() => handleNavigation(activeIndex - 1)} disabled={isTransitioning || activeIndex === 0} variant="outline">
-                                    {isTransitioning ? (
+                    <div className="min-h-[60vh] flex flex-col p-8 md:p-12">
+                        <WhitepaperContentBlock
+                            scrollRef={contentScrollRef}
+                            title={currentSection.title}
+                            icon={currentSection.icon}
+                        >
+                            {currentSection.content}
+                        </WhitepaperContentBlock>
+                        <div className="mt-8 flex justify-between pt-8 border-t border-border/20">
+                            <Button onClick={() => handleNavigation(activeIndex - 1)} disabled={isTransitioning || activeIndex === 0} variant="outline">
+                                {isTransitioning ? (
+                                    <>
+                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                        Loading...
+                                    </>
+                                ) : (
+                                    <>
+                                        <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+                                    </>
+                                )}
+                            </Button>
+                            {activeIndex < sections.length - 1 ? (
+                                <Button onClick={() => handleNavigation(activeIndex + 1)} disabled={isTransitioning}>
+                                     {isTransitioning ? (
                                         <>
                                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                                             Loading...
                                         </>
                                     ) : (
                                         <>
-                                            <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+                                            Next: {sections[activeIndex + 1].title} <ArrowRight className="ml-2 h-4 w-4" />
                                         </>
                                     )}
                                 </Button>
-                                {activeIndex < sections.length - 1 ? (
-                                    <Button onClick={() => handleNavigation(activeIndex + 1)} disabled={isTransitioning}>
-                                         {isTransitioning ? (
-                                            <>
-                                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                Loading...
-                                            </>
-                                        ) : (
-                                            <>
-                                                Next: {sections[activeIndex + 1].title} <ArrowRight className="ml-2 h-4 w-4" />
-                                            </>
-                                        )}
-                                    </Button>
-                                ) : (
-                                    <Button disabled>End</Button>
-                                )}
-                            </div>
-                        </CardContent>
-                    </Card>
+                            ) : (
+                                <Button disabled>End</Button>
+                            )}
+                        </div>
+                    </div>
                 </motion.div>
              </AnimatePresence>
           </main>
