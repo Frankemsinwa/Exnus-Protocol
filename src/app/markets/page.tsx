@@ -162,8 +162,11 @@ export default function MarketsPage() {
   const [sortConfig, setSortConfig] = useState<SortConfig>({ key: 'market_cap', direction: 'descending' });
   const [error, setError] = useState<string | null>(null);
   const [selectedCoin, setSelectedCoin] = useState<Coin | null>(null);
+  const [searchResults, setSearchResults] = useState<Coin[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
 
-  const fetchData = useCallback(async (currentPage: number) => {
+
+  const fetchDefaultCoins = useCallback(async (currentPage: number) => {
     setLoading(true);
     setError(null);
     try {
@@ -186,10 +189,53 @@ export default function MarketsPage() {
   }, []);
 
   useEffect(() => {
-    fetchData(page);
-    const interval = setInterval(() => fetchData(page), 60000); // Refresh every 60 seconds
+    if (!isSearching) {
+        fetchDefaultCoins(page);
+    }
+    const interval = setInterval(() => {
+        if (!isSearching) {
+            fetchDefaultCoins(page)
+        }
+    }, 60000); 
     return () => clearInterval(interval);
-  }, [fetchData, page]);
+  }, [fetchDefaultCoins, page, isSearching]);
+  
+  const handleSearchSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchTerm.trim()) {
+        setIsSearching(false);
+        setSearchResults([]);
+        if (coins.length === 0) fetchDefaultCoins(1);
+        return;
+    }
+    setLoading(true);
+    setError(null);
+    setIsSearching(true);
+    try {
+        const searchResponse = await fetch(`https://api.coingecko.com/api/v3/search?query=${searchTerm}`);
+        if (!searchResponse.ok) throw new Error('Failed to search for coins.');
+        const searchData = await searchResponse.json();
+
+        if (!searchData.coins || searchData.coins.length === 0) {
+            setSearchResults([]);
+            return;
+        }
+
+        const coinIds = searchData.coins.map((c: any) => c.id);
+        const marketsResponse = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinIds.join(',')}`);
+        if (!marketsResponse.ok) throw new Error('Failed to fetch market data for searched coins.');
+
+        const marketsData = await marketsResponse.json();
+        setSearchResults(marketsData);
+    } catch (err) {
+        if (err instanceof Error) setError(err.message);
+        else setError('An unknown search error occurred');
+        setSearchResults([]);
+    } finally {
+        setLoading(false);
+    }
+  };
+
 
   const handleSort = (key: keyof Coin) => {
     let direction: 'ascending' | 'descending' = 'ascending';
@@ -199,16 +245,10 @@ export default function MarketsPage() {
     setSortConfig({ key, direction });
   };
 
-  const sortedAndFilteredCoins = useMemo(() => {
-    let sortableItems = [...coins];
-    if (searchTerm) {
-        sortableItems = sortableItems.filter(coin =>
-            coin.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-    }
+  const displayedCoins = useMemo(() => {
+    const itemsToSort = isSearching ? [...searchResults] : [...coins];
     if (sortConfig.key !== null) {
-      sortableItems.sort((a, b) => {
+      itemsToSort.sort((a, b) => {
         const aValue = a[sortConfig.key!];
         const bValue = b[sortConfig.key!];
 
@@ -224,8 +264,8 @@ export default function MarketsPage() {
         return 0;
       });
     }
-    return sortableItems;
-  }, [coins, searchTerm, sortConfig]);
+    return itemsToSort;
+  }, [coins, searchResults, isSearching, sortConfig]);
   
   const SortableHeader = ({ columnKey, title }: { columnKey: keyof Coin; title: string }) => {
     const isSorted = sortConfig.key === columnKey;
@@ -264,16 +304,18 @@ export default function MarketsPage() {
         <SectionInView>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
                 <h2 className="font-headline text-2xl text-foreground flex-shrink-0">Market Overview</h2>
-                <div className="relative w-full md:max-w-xs">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <form onSubmit={handleSearchSubmit} className="flex w-full md:max-w-sm items-center gap-2">
                     <Input
                         type="text"
-                        placeholder="Search coin..."
+                        placeholder="Search for a cryptocurrency..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10"
+                        className="w-full"
                     />
-                </div>
+                    <Button type="submit" disabled={loading}>
+                        {loading && isSearching ? 'Searching...' : 'Search'}
+                    </Button>
+                </form>
             </div>
 
             {error && <p className="text-destructive text-center py-4">{error}</p>}
@@ -301,10 +343,10 @@ export default function MarketsPage() {
                                     <TableCell><Skeleton className="h-4 w-24" /></TableCell>
                                 </TableRow>
                             ))
-                        ) : (
-                            sortedAndFilteredCoins.map((coin) => (
+                        ) : displayedCoins.length > 0 ? (
+                            displayedCoins.map((coin) => (
                                 <TableRow key={coin.id} onClick={() => handleCoinClick(coin)} className="cursor-pointer bg-card/20 hover:bg-card/40 border-border/20">
-                                    <TableCell className="font-medium text-muted-foreground">{coin.market_cap_rank}</TableCell>
+                                    <TableCell className="font-medium text-muted-foreground">{coin.market_cap_rank || 'N/A'}</TableCell>
                                     <TableCell>
                                         <div className="flex items-center gap-3">
                                             <Image src={coin.image} alt={coin.name} width={24} height={24} className="rounded-full" />
@@ -320,16 +362,23 @@ export default function MarketsPage() {
                                     <TableCell>{formatLargeNumber(coin.total_volume)}</TableCell>
                                 </TableRow>
                             ))
+                        ) : (
+                            <TableRow>
+                                <TableCell colSpan={6} className="h-24 text-center">
+                                    {isSearching ? 'No results found for your search.' : 'No data to display.'}
+                                </TableCell>
+                            </TableRow>
                         )}
                     </TableBody>
                 </Table>
             </div>
-            <div className="flex items-center justify-center gap-4 mt-8">
-                <Button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1 || loading}>Previous</Button>
-                <span className="font-medium text-muted-foreground">Page {page}</span>
-                <Button onClick={() => setPage(p => p + 1)} disabled={loading}>Next</Button>
-            </div>
-
+            {!isSearching && (
+                <div className="flex items-center justify-center gap-4 mt-8">
+                    <Button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1 || loading}>Previous</Button>
+                    <span className="font-medium text-muted-foreground">Page {page}</span>
+                    <Button onClick={() => setPage(p => p + 1)} disabled={loading}>Next</Button>
+                </div>
+            )}
              <Dialog open={!!selectedCoin} onOpenChange={(isOpen) => !isOpen && setSelectedCoin(null)}>
                 <DialogContent className="max-w-3xl w-[90vw] sm:w-full p-4 sm:p-6">
                     {selectedCoin && <CoinChartDialogContent coin={selectedCoin} />}
