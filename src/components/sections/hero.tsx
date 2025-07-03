@@ -36,8 +36,8 @@ export default function Hero() {
             </a>
           </Button>
           <Button size="lg" variant="outline" asChild className="border-white/30 bg-black/20 text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300 transform hover:scale-105">
-            <a href="#how-it-works">
-              Learn More
+            <a href="/presale">
+              Buy Presale
             </a>
           </Button>
         </div>
