@@ -1,17 +1,41 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, Vote, ShieldCheck } from "lucide-react";
-import Image from "next/image";
 import SectionInView from "@/components/section-in-view";
 import Lottie from 'lottie-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from "@/components/ui/chart";
+import { PieChart, Pie, Cell } from "recharts";
+
+const governanceData = [
+  { type: 'Protocol Upgrades', value: 45, fill: 'hsl(var(--chart-1))' },
+  { type: 'Ecosystem Grants', value: 30, fill: 'hsl(var(--chart-2))' },
+  { type: 'Community Initiatives', value: 15, fill: 'hsl(var(--chart-3))' },
+  { type: 'Treasury Diversification', value: 10, fill: 'hsl(var(--chart-4))' },
+];
+
+const chartConfig = {
+  value: {
+    label: 'Value',
+  },
+  ...Object.fromEntries(governanceData.map(item => [item.type, {label: item.type, color: item.fill}]))
+} satisfies ChartConfig;
+
 
 export default function AboutPage() {
   const [animationData, setAnimationData] = useState(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     fetch('/about.json')
       .then((response) => {
         if (!response.ok) {
@@ -54,28 +78,56 @@ export default function AboutPage() {
             </div>
            </SectionInView>
            <SectionInView>
-             <Image
-                src="/about1.png"
-                alt="Staking on Solana Blockchain"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg shadow-primary/10 w-full h-auto"
-              />
-           </SectionInView>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
-          <SectionInView>
-             <div className="rounded-lg shadow-lg shadow-primary/10 md:order-last flex items-center justify-center w-full max-w-[600px] mx-auto" style={{ aspectRatio: '3 / 2'}}>
+             <div className="rounded-lg shadow-lg shadow-primary/10 flex items-center justify-center w-full max-w-[600px] mx-auto" style={{ aspectRatio: '3 / 2'}}>
                 {animationData ? (
                   <Lottie animationData={animationData} loop={true} className="w-full h-full" />
                 ) : (
                   <Skeleton className="h-full w-full" />
                 )}
              </div>
+           </SectionInView>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
+          <SectionInView>
+             <Card className="bg-card/50 border-border/50 backdrop-blur-sm w-full h-full">
+                <CardHeader>
+                    <CardTitle className="font-headline text-xl text-card-foreground text-center">DAO Proposal Distribution</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    {isClient ? (
+                      <ChartContainer
+                          config={chartConfig}
+                          className="mx-auto aspect-square h-[250px]"
+                      >
+                          <PieChart>
+                          <ChartTooltip
+                              cursor={false}
+                              content={<ChartTooltipContent hideLabel formatter={(value, name) => `${name}: ${value}%`} />}
+                          />
+                          <Pie
+                              data={governanceData}
+                              dataKey="value"
+                              nameKey="type"
+                              innerRadius={60}
+                              strokeWidth={2}
+                          >
+                              {governanceData.map((entry) => (
+                              <Cell key={`cell-${entry.type}`} fill={entry.fill} />
+                              ))}
+                          </Pie>
+                          </PieChart>
+                      </ChartContainer>
+                    ) : (
+                      <div className="mx-auto aspect-square h-[250px] flex items-center justify-center">
+                        <Skeleton className="w-full h-full rounded-full" />
+                      </div>
+                    )}
+                </CardContent>
+             </Card>
           </SectionInView>
           <SectionInView>
-            <div className="space-y-6 md:order-first">
+            <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <div className="bg-primary/10 p-3 rounded-full">
                   <Vote className="w-8 h-8 text-primary" />
