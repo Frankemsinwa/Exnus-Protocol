@@ -230,7 +230,7 @@ export default function MarketsPage() {
   const SortableHeader = ({ columnKey, title }: { columnKey: keyof Coin; title: string }) => {
     const isSorted = sortConfig.key === columnKey;
     return (
-      <TableHead className="cursor-pointer hover:bg-muted/50" onClick={() => handleSort(columnKey)}>
+      <TableHead className="cursor-pointer hover:bg-card/30" onClick={() => handleSort(columnKey)}>
         <div className="flex items-center gap-2">
           {title}
           {isSorted && (
@@ -246,8 +246,12 @@ export default function MarketsPage() {
   };
 
   return (
-    <div className="bg-background text-foreground py-20 sm:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative bg-background text-foreground py-20 sm:py-32 overflow-hidden">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="star-field" />
+        <div className="absolute inset-0 bg-radial-gradient-gold opacity-20" />
+      </div>
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionInView>
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight">
@@ -274,10 +278,10 @@ export default function MarketsPage() {
             </div>
 
             {error && <p className="text-destructive text-center py-4">{error}</p>}
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto rounded-lg border border-border/20 bg-card/10 backdrop-blur-sm">
                 <Table>
                     <TableHeader>
-                        <TableRow>
+                        <TableRow className="border-border/20 hover:bg-transparent">
                             <TableHead className="w-[50px]">#</TableHead>
                             <SortableHeader columnKey="name" title="Name" />
                             <SortableHeader columnKey="current_price" title="Price" />
@@ -289,7 +293,7 @@ export default function MarketsPage() {
                     <TableBody>
                         {loading ? (
                             Array.from({ length: 20 }).map((_, i) => (
-                                <TableRow key={i}>
+                                <TableRow key={i} className="bg-card/20 border-border/20">
                                     <TableCell><Skeleton className="h-6 w-6 rounded-full" /></TableCell>
                                     <TableCell><div className="flex items-center gap-2"><Skeleton className="h-6 w-6 rounded-full" /><Skeleton className="h-4 w-24" /></div></TableCell>
                                     <TableCell><Skeleton className="h-4 w-20" /></TableCell>
@@ -300,7 +304,7 @@ export default function MarketsPage() {
                             ))
                         ) : (
                             sortedAndFilteredCoins.map((coin) => (
-                                <TableRow key={coin.id} onClick={() => handleCoinClick(coin)} className="cursor-pointer">
+                                <TableRow key={coin.id} onClick={() => handleCoinClick(coin)} className="cursor-pointer bg-card/20 hover:bg-card/40 border-border/20">
                                     <TableCell className="font-medium text-muted-foreground">{coin.market_cap_rank}</TableCell>
                                     <TableCell>
                                         <div className="flex items-center gap-3">
