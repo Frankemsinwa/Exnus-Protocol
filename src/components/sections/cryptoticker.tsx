@@ -114,19 +114,19 @@ export default function CryptoTicker() {
         
         const data = await response.json();
         
-        const updatedData = cryptoData.map(coin => {
-          const apiData = data[coin.id];
-          if (apiData) {
-            return {
-              ...coin,
-              price: apiData.usd,
-              change: apiData.usd_24h_change || coin.change,
-            };
-          }
-          return coin;
-        });
-
-        setCryptoData(updatedData);
+        setCryptoData(currentData =>
+          currentData.map(coin => {
+            const apiData = data[coin.id];
+            if (apiData) {
+              return {
+                ...coin,
+                price: apiData.usd,
+                change: apiData.usd_24h_change ?? coin.change,
+              };
+            }
+            return coin;
+          })
+        );
       } catch (error) {
         console.error("Error fetching crypto data from CoinGecko:", error);
       }
@@ -136,7 +136,7 @@ export default function CryptoTicker() {
     const interval = setInterval(fetchCryptoData, 60000); // Update every 60 seconds
 
     return () => clearInterval(interval);
-  }, [cryptoData]);
+  }, []);
 
   return (
     <div className="relative w-full overflow-hidden bg-background py-4 border-y border-border/50">
