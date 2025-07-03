@@ -24,6 +24,7 @@ const SolanaIcon = () => (
 );
 
 type CryptoData = {
+  id: string;
   name: string;
   ticker: string;
   price: number;
@@ -33,6 +34,7 @@ type CryptoData = {
 
 const initialCryptoData: CryptoData[] = [
   {
+    id: 'bitcoin',
     name: 'Bitcoin',
     ticker: 'BTC',
     price: 68245.80,
@@ -40,6 +42,7 @@ const initialCryptoData: CryptoData[] = [
     logo: <BitcoinIcon />,
   },
   {
+    id: 'ethereum',
     name: 'Ethereum',
     ticker: 'ETH',
     price: 3567.12,
@@ -47,6 +50,7 @@ const initialCryptoData: CryptoData[] = [
     logo: <EthereumIcon />,
   },
   {
+    id: 'solana',
     name: 'Solana',
     ticker: 'SOL',
     price: 150.45,
@@ -54,6 +58,7 @@ const initialCryptoData: CryptoData[] = [
     logo: <SolanaIcon />,
   },
   {
+    id: 'cardano',
     name: 'Cardano',
     ticker: 'ADA',
     price: 0.45,
@@ -61,6 +66,7 @@ const initialCryptoData: CryptoData[] = [
     logo: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>,
   },
   {
+    id: 'ripple',
     name: 'Ripple',
     ticker: 'XRP',
     price: 0.52,
@@ -70,7 +76,7 @@ const initialCryptoData: CryptoData[] = [
 ];
 
 const TickerItem = ({ item }: { item: CryptoData }) => {
-    const formattedPrice = item.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    const formattedPrice = item.price > 0 ? item.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) : '...';
     const changeType = item.change >= 0 ? 'positive' : 'negative';
     const formattedChange = `${item.change >= 0 ? '+' : ''}${item.change.toFixed(2)}%`;
 
@@ -97,22 +103,40 @@ export default function CryptoTicker() {
   const [cryptoData, setCryptoData] = useState<CryptoData[]>(initialCryptoData);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      // This is a simulation. For a real app, you would fetch data from a crypto API.
-      // e.g., const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=...&vs_currencies=usd');
-      setCryptoData(prevData =>
-        prevData.map(coin => {
-          const changeFactor = (Math.random() - 0.5) * 0.01; // Small random change
-          const priceChange = coin.price * changeFactor;
-          const newPrice = coin.price + priceChange;
-          const newChange = coin.change + (Math.random() - 0.5) * 0.1;
-          return { ...coin, price: newPrice, change: newChange };
-        })
-      );
-    }, 2000); // Update every 2 seconds
+    const fetchCryptoData = async () => {
+      try {
+        const ids = initialCryptoData.map(coin => coin.id).join(',');
+        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch crypto data: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        const updatedData = cryptoData.map(coin => {
+          const apiData = data[coin.id];
+          if (apiData) {
+            return {
+              ...coin,
+              price: apiData.usd,
+              change: apiData.usd_24h_change || coin.change,
+            };
+          }
+          return coin;
+        });
 
-    return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, []);
+        setCryptoData(updatedData);
+      } catch (error) {
+        console.error("Error fetching crypto data from CoinGecko:", error);
+      }
+    };
+
+    fetchCryptoData();
+    const interval = setInterval(fetchCryptoData, 60000); // Update every 60 seconds
+
+    return () => clearInterval(interval);
+  }, [cryptoData]);
 
   return (
     <div className="relative w-full overflow-hidden bg-background py-4 border-y border-border/50">
