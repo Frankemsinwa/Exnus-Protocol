@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 const BitcoinIcon = () => (
@@ -22,68 +23,97 @@ const SolanaIcon = () => (
     </svg>
 );
 
-const cryptoData = [
+type CryptoData = {
+  name: string;
+  ticker: string;
+  price: number;
+  change: number;
+  logo: JSX.Element;
+};
+
+const initialCryptoData: CryptoData[] = [
   {
     name: 'Bitcoin',
     ticker: 'BTC',
-    price: '$68,245.80',
-    change: '+1.25%',
-    changeType: 'positive' as const,
+    price: 68245.80,
+    change: 1.25,
     logo: <BitcoinIcon />,
   },
   {
     name: 'Ethereum',
     ticker: 'ETH',
-    price: '$3,567.12',
-    change: '+2.89%',
-    changeType: 'positive' as const,
+    price: 3567.12,
+    change: 2.89,
     logo: <EthereumIcon />,
   },
   {
     name: 'Solana',
     ticker: 'SOL',
-    price: '$150.45',
-    change: '-0.57%',
-    changeType: 'negative' as const,
+    price: 150.45,
+    change: -0.57,
     logo: <SolanaIcon />,
   },
   {
     name: 'Cardano',
     ticker: 'ADA',
-    price: '$0.45',
-    change: '+0.15%',
-    changeType: 'positive' as const,
+    price: 0.45,
+    change: 0.15,
     logo: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>,
   },
   {
     name: 'Ripple',
     ticker: 'XRP',
-    price: '$0.52',
-    change: '-1.10%',
-    changeType: 'negative' as const,
+    price: 0.52,
+    change: -1.10,
     logo: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400"><circle cx="12" cy="12" r="10"/><path d="m14.5 9.5-5 5m0-5 5 5"/></svg>,
   },
 ];
 
-const TickerItem = ({ item }: { item: typeof cryptoData[0] }) => (
-  <div className="flex items-center gap-4 mx-6 flex-shrink-0">
-    <div className="flex-shrink-0">{item.logo}</div>
-    <div className="flex items-baseline gap-2">
-      <span className="font-bold text-foreground text-lg">{item.ticker}</span>
-      <span className="text-muted-foreground text-md">{item.price}</span>
-    </div>
-    <span
-      className={cn(
-        'font-semibold text-md',
-        item.changeType === 'positive' ? 'text-green-500' : 'text-red-500'
-      )}
-    >
-      {item.change}
-    </span>
-  </div>
-);
+const TickerItem = ({ item }: { item: CryptoData }) => {
+    const formattedPrice = item.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    const changeType = item.change >= 0 ? 'positive' : 'negative';
+    const formattedChange = `${item.change >= 0 ? '+' : ''}${item.change.toFixed(2)}%`;
+
+    return (
+      <div className="flex items-center gap-4 mx-6 flex-shrink-0">
+        <div className="flex-shrink-0">{item.logo}</div>
+        <div className="flex items-baseline gap-2">
+          <span className="font-bold text-foreground text-lg">{item.ticker}</span>
+          <span className="text-muted-foreground text-md">{formattedPrice}</span>
+        </div>
+        <span
+          className={cn(
+            'font-semibold text-md',
+            changeType === 'positive' ? 'text-green-500' : 'text-red-500'
+          )}
+        >
+          {formattedChange}
+        </span>
+      </div>
+    );
+};
 
 export default function CryptoTicker() {
+  const [cryptoData, setCryptoData] = useState<CryptoData[]>(initialCryptoData);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // This is a simulation. For a real app, you would fetch data from a crypto API.
+      // e.g., const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=...&vs_currencies=usd');
+      setCryptoData(prevData =>
+        prevData.map(coin => {
+          const changeFactor = (Math.random() - 0.5) * 0.01; // Small random change
+          const priceChange = coin.price * changeFactor;
+          const newPrice = coin.price + priceChange;
+          const newChange = coin.change + (Math.random() - 0.5) * 0.1;
+          return { ...coin, price: newPrice, change: newChange };
+        })
+      );
+    }, 2000); // Update every 2 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
+
   return (
     <div className="relative w-full overflow-hidden bg-background py-4 border-y border-border/50">
       <div className="flex animate-marquee-slow whitespace-nowrap">
