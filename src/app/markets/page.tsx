@@ -62,7 +62,7 @@ const chartConfig = {
     label: "Price",
     color: "hsl(var(--primary))",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 function CoinChartDialogContent({ coin }: { coin: Coin }) {
     const [chartData, setChartData] = useState<any[]>([]);
