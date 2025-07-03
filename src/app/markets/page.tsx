@@ -248,7 +248,6 @@ export default function MarketsPage() {
   return (
     <div className="relative bg-background text-foreground py-20 sm:py-32 overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="star-field" />
         <div className="absolute inset-0 bg-radial-gradient-gold opacity-20" />
       </div>
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
