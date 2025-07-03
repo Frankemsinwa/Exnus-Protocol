@@ -62,11 +62,11 @@ export default function MarketsPage() {
   const [sortConfig, setSortConfig] = useState<SortConfig>({ key: 'market_cap', direction: 'descending' });
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = useCallback(async (currentPage: number) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${page}&sparkline=false`);
+      const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${currentPage}&sparkline=false`);
       if (!response.ok) {
         throw new Error(`Failed to fetch data: ${response.statusText}`);
       }
@@ -82,13 +82,13 @@ export default function MarketsPage() {
     } finally {
       setLoading(false);
     }
-  }, [page]);
+  }, []);
 
   useEffect(() => {
-    fetchData();
-    const interval = setInterval(fetchData, 60000); // Refresh every 60 seconds
+    fetchData(page);
+    const interval = setInterval(() => fetchData(page), 60000); // Refresh every 60 seconds
     return () => clearInterval(interval);
-  }, [fetchData]);
+  }, [fetchData, page]);
 
   const handleSort = (key: keyof Coin) => {
     let direction: 'ascending' | 'descending' = 'ascending';
