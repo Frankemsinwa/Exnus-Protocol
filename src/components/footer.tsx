@@ -27,15 +27,18 @@ export default function Footer() {
              <a href="/" className="flex items-center gap-2 text-xl font-bold">
               <Logo />
             </a>
-            <div className="flex items-center space-x-4">
-              <a href="https://x.com/exnusprotocol?t=jG-V9X-Ah1DrdZp5vFQRjw&s=09" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)" className="hover:text-primary-foreground/80 transition-colors">
+            <div className="flex items-center space-x-8">
+              <a href="https://x.com/exnusprotocol?t=jG-V9X-Ah1DrdZp5vFQRjw&s=09" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)" className="flex flex-col items-center gap-2 text-center hover:text-primary-foreground/80 transition-colors">
                 <XIcon />
+                <span className="text-xs font-medium">X</span>
               </a>
-              <a href="https://discord.gg/27W8A8Ss" target="_blank" rel="noopener noreferrer" aria-label="Discord" className="hover:text-primary-foreground/80 transition-colors">
+              <a href="https://discord.gg/27W8A8Ss" target="_blank" rel="noopener noreferrer" aria-label="Discord" className="flex flex-col items-center gap-2 text-center hover:text-primary-foreground/80 transition-colors">
                 <DiscordIcon />
+                <span className="text-xs font-medium">Discord</span>
               </a>
-              <a href="https://t.me/Exnusprotocol" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="hover:text-primary-foreground/80 transition-colors">
+              <a href="https://t.me/Exnusprotocol" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className="flex flex-col items-center gap-2 text-center hover:text-primary-foreground/80 transition-colors">
                 <SendHorizontal className="h-5 w-5" />
+                <span className="text-xs font-medium">Telegram</span>
               </a>
             </div>
           </div>
