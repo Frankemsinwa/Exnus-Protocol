@@ -1,9 +1,28 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, Vote, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import SectionInView from "@/components/section-in-view";
+import Lottie from 'lottie-react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function AboutPage() {
+  const [animationData, setAnimationData] = useState(null);
+
+  useEffect(() => {
+    fetch('/about.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => setAnimationData(data))
+      .catch(error => console.error("Failed to load Lottie animation:", error));
+  }, []);
+
   return (
     <div className="bg-background text-foreground py-20 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,21 +59,20 @@ export default function AboutPage() {
                 alt="Staking on Solana Blockchain"
                 width={600}
                 height={400}
-                className="rounded-lg shadow-lg shadow-primary/10"
+                className="rounded-lg shadow-lg shadow-primary/10 w-full h-auto"
               />
            </SectionInView>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
           <SectionInView>
-             <Image
-                src="https://placehold.co/600x400.png"
-                alt="Governance DAO"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg shadow-primary/10 md:order-last"
-                 data-ai-hint="community governance"
-              />
+             <div className="rounded-lg shadow-lg shadow-primary/10 md:order-last flex items-center justify-center w-full max-w-[600px] mx-auto" style={{ aspectRatio: '3 / 2'}}>
+                {animationData ? (
+                  <Lottie animationData={animationData} loop={true} className="w-full h-full" />
+                ) : (
+                  <Skeleton className="h-full w-full" />
+                )}
+             </div>
           </SectionInView>
           <SectionInView>
             <div className="space-y-6 md:order-first">
