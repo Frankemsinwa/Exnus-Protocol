@@ -2,7 +2,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -34,14 +33,14 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white dark:bg-background text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2">
             <Logo />
-          </Link>
+          </a>
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
-                <Link
+                <a
                   key={link.name}
                   href={link.href}
                   className={cn(
@@ -52,14 +51,14 @@ export default function Header() {
                   )}
                 >
                   {link.name}
-                </Link>
+                </a>
               );
             })}
           </nav>
           <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-              <Link href="/#newsletter">Join Airdrop</Link>
+              <a href="/#newsletter">Join Airdrop</a>
             </Button>
           </div>
           <div className="flex items-center gap-2 md:hidden">
@@ -74,15 +73,15 @@ export default function Header() {
                 <div className="flex flex-col h-full p-4">
                   <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                   <div className="flex justify-between items-center mb-8">
-                    <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
+                    <a href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
                       <Logo />
-                    </Link>
+                    </a>
                   </div>
                   <nav className="flex flex-col space-y-6">
                     {navLinks.map((link) => {
                       const isActive = pathname === link.href;
                       return (
-                        <Link
+                        <a
                           key={link.name}
                           href={link.href}
                           onClick={() => setIsMobileMenuOpen(false)}
@@ -94,13 +93,13 @@ export default function Header() {
                           )}
                         >
                           {link.name}
-                        </Link>
+                        </a>
                       );
                     })}
                   </nav>
                   <div className="mt-auto">
                     <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-                      <Link href="/#newsletter" onClick={() => setIsMobileMenuOpen(false)}>Join Airdrop</Link>
+                      <a href="/#newsletter" onClick={() => setIsMobileMenuOpen(false)}>Join Airdrop</a>
                     </Button>
                   </div>
                 </div>

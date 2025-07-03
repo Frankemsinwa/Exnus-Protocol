@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
 import Image from 'next/image';
 
 export default function About() {
@@ -12,7 +11,7 @@ export default function About() {
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-headline text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
-            <Link href="/about" className="hover:text-primary transition-colors">About Exnus Protocol</Link>
+            <a href="/about" className="hover:text-primary transition-colors">About Exnus Protocol</a>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Our mission is to cultivate a vibrant, inclusive, and user-owned ecosystem by rewarding meaningful participation and collaboration.
