@@ -6,12 +6,7 @@ export default function About() {
   return (
     <section id="about" className="relative py-20 sm:py-32 overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <iframe
-          src="https://lottie.host/embed/8c8a1b63-9f89-4911-ac61-2a6d884a445e/l3pGvP0j0D.lottie"
-          className="w-full h-full object-cover"
-          allowFullScreen
-          title="Star Particle Background"
-        ></iframe>
+        <div className="star-field" />
       </div>
       <div className="absolute inset-0 z-10 bg-background/80" />
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8">
