@@ -57,19 +57,13 @@ const WhitepaperContentBlock = ({
   title,
   icon,
   children,
+  scrollRef,
 }: {
   title: string;
   icon: ReactNode;
   children: ReactNode;
+  scrollRef: React.RefObject<HTMLDivElement>;
 }) => {
-  const scrollRef = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = 0;
-    }
-  }, [children, title]);
-
   return (
     <div className="flex-grow flex flex-col min-h-0">
       <div className="flex items-center gap-4 mb-6">
@@ -112,6 +106,7 @@ export default function WhitepaperPage() {
     const [isTransitioning, setIsTransitioning] = React.useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const [isClient, setIsClient] = React.useState(false)
+    const contentScrollRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
       setIsClient(true)
@@ -121,6 +116,12 @@ export default function WhitepaperPage() {
           day: 'numeric',
       }));
     }, []);
+
+    React.useEffect(() => {
+      if (contentScrollRef.current) {
+        contentScrollRef.current.scrollTop = 0;
+      }
+    }, [activeIndex]);
 
     const sections = [
       {
@@ -767,7 +768,7 @@ management, and governance voting. Contracts are designed for modularity and sec
         setTimeout(() => {
             setActiveIndex(newIndex);
             setIsTransitioning(false);
-        }, 2000);
+        }, 500);
     };
 
     const handleMobileNavigation = (newIndex: number) => {
@@ -871,6 +872,7 @@ management, and governance voting. Contracts are designed for modularity and sec
                     <Card className="bg-card/50 border-border/50 backdrop-blur-sm min-h-[60vh] flex flex-col">
                         <CardContent className="p-8 md:p-12 flex flex-col flex-grow">
                             <WhitepaperContentBlock
+                                scrollRef={contentScrollRef}
                                 title={currentSection.title}
                                 icon={currentSection.icon}
                             >
@@ -898,7 +900,7 @@ management, and governance voting. Contracts are designed for modularity and sec
                                             </>
                                         ) : (
                                             <>
-                                                Next <ArrowRight className="ml-2 h-4 w-4" />
+                                                Next: {sections[activeIndex + 1].title} <ArrowRight className="ml-2 h-4 w-4" />
                                             </>
                                         )}
                                     </Button>
