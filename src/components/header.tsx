@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-background text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-border/50">
-      <div className="container mx-auto px-2 sm:px-4 lg:px-6">
+      <div className="container mx-auto pr-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-20">
           <a href="/" className="flex items-center gap-1">
             <Logo />
@@ -57,7 +57,7 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-              <a href="/#newsletter">Join Airdrop</a>
+              <a href="https://points.exnus.org">Join Airdrop</a>
             </Button>
           </div>
           <div className="flex items-center gap-2 md:hidden">
