@@ -46,6 +46,7 @@ export default function Footer() {
           <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
              <p>&copy; 2025 Exnus Protocol. All rights reserved.</p>
             <nav className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                <a href="mailto:contact@exnus.org" className="hover:text-primary-foreground/80 transition-colors">contact@exnus.org</a>
                 <a href="/privacy" className="hover:text-primary-foreground/80 transition-colors">Privacy Policy</a>
                 <a href="/terms" className="hover:text-primary-foreground/80 transition-colors">Terms & Conditions</a>
                 <a href="/security" className="hover:text-primary-foreground/80 transition-colors">Security</a>
