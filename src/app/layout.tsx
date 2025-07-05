@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import ClientLayoutWrapper from "@/components/client-layout-wrapper";
 
 export const metadata: Metadata = {
-  title: "EXNUS PROTOCOL",
+  title: "Exnus Protocol",
   description: "Redefining user engagement and community rewards on the Solana blockchain.",
 };
 
