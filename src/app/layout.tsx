@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import ClientLayoutWrapper from "@/components/client-layout-wrapper";
 
 export const metadata: Metadata = {
   title: "Exnus Protocol Landing",
@@ -33,7 +34,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main>{children}</main>
+          <main>
+            <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+          </main>
           <Footer />
           <Toaster />
         </ThemeProvider>
