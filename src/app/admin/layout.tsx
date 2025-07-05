@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import '../globals.css';
 
 export const metadata: Metadata = {
-  title: 'Admin - Exnus Protocol',
-  description: 'Admin dashboard for Exnus Protocol.',
+  title: 'Admin - EXNUS',
+  description: 'Admin dashboard for EXNUS.',
 };
 
 export default function AdminLayout({
