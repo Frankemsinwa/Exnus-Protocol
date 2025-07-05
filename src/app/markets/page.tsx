@@ -297,7 +297,7 @@ export default function MarketsPage() {
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-radial-gradient-gold opacity-20" />
       </div>
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
         <SectionInView>
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight">
