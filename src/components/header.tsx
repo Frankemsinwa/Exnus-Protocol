@@ -19,6 +19,11 @@ const Logo = () => (
 export default function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isClient, setIsClient] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -37,7 +42,7 @@ export default function Header() {
         </a>
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = isClient && pathname === link.href;
             return (
               <a
                 key={link.name}
@@ -78,7 +83,7 @@ export default function Header() {
                 </div>
                 <nav className="flex flex-col space-y-6">
                   {navLinks.map((link) => {
-                    const isActive = pathname === link.href;
+                    const isActive = isClient && pathname === link.href;
                     return (
                       <a
                         key={link.name}
