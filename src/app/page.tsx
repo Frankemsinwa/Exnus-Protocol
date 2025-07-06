@@ -6,6 +6,8 @@ import Waitlist from "@/components/sections/waitlist";
 import SectionInView from "@/components/section-in-view";
 import Roadmap from "@/components/sections/roadmap";
 import CryptoTicker from "@/components/sections/cryptoticker";
+import Tokenomics from "@/components/sections/tokenomics";
+import SmartContracts from "@/components/sections/smart-contracts";
 
 export default function Home() {
   return (
@@ -13,6 +15,7 @@ export default function Home() {
       <SectionInView>
         <Hero />
       </SectionInView>
+      <CryptoTicker />
       <SectionInView>
         <About />
       </SectionInView>
@@ -20,15 +23,20 @@ export default function Home() {
         <Features />
       </SectionInView>
       <SectionInView>
-        <Roadmap />
+        <SmartContracts />
       </SectionInView>
       <SectionInView>
         <HowItWorks />
       </SectionInView>
       <SectionInView>
+        <Tokenomics />
+      </SectionInView>
+      <SectionInView>
+        <Roadmap />
+      </SectionInView>
+      <SectionInView>
         <Waitlist />
       </SectionInView>
-      <CryptoTicker />
     </>
   );
 }

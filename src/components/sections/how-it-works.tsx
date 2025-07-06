@@ -3,18 +3,18 @@ import { Handshake, Coins, Vote } from 'lucide-react';
 const steps = [
   {
     icon: <Handshake className="w-10 h-10 text-primary" />,
-    title: 'Contribute to the Ecosystem',
-    description: 'Participate in governance, contribute to projects, or help grow the community. All meaningful efforts are valued and tracked.'
+    title: '1. Contribute & Participate',
+    description: 'Engage with the ecosystem by participating in governance, contributing to projects, or helping grow the community. All meaningful efforts are valued and tracked on-chain.'
   },
   {
     icon: <Coins className="w-10 h-10 text-primary" />,
-    title: 'Earn EXNUS Rewards',
-    description: "Our protocol's mechanics track contributions and distribute rewards automatically, ensuring fair compensation for your efforts."
+    title: '2. Earn EXNUS Rewards',
+    description: "Our protocol's automated smart contracts track your contributions and distribute rewards directly to your wallet, ensuring fair and transparent compensation for your efforts."
   },
   {
     icon: <Vote className="w-10 h-10 text-primary" />,
-    title: 'Shape the Future',
-    description: 'Use your rewards and influence to vote on proposals and guide the future direction of the Exnus Protocol.'
+    title: '3. Govern & Shape the Future',
+    description: 'Use your EXNUS tokens to vote on key proposals, influence the allocation of treasury funds, and guide the future direction of the Exnus Protocol.'
   }
 ];
 
@@ -23,9 +23,9 @@ export default function HowItWorks() {
     <section id="how-it-works" className="py-20 sm:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-foreground tracking-tight">How It Works</h2>
+          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-foreground tracking-tight">A Simple Path to Ownership</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            A simplified overview of how you can participate and earn rewards.
+            Joining and contributing to the Exnus ecosystem is a straightforward, three-step process.
           </p>
         </div>
 
