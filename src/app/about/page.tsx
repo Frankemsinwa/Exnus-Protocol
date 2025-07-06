@@ -1,28 +1,10 @@
 
-'use client';
-
-import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, Vote, ShieldCheck, FilePlus, Users, CheckCircle, ArrowDown } from "lucide-react";
 import SectionInView from "@/components/section-in-view";
-import Lottie from 'lottie-react';
-import { Skeleton } from '@/components/ui/skeleton';
 
 export default function AboutPage() {
-  const [animationData, setAnimationData] = useState(null);
-
-  useEffect(() => {
-    fetch('/about.json')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => setAnimationData(data))
-      .catch(error => console.error("Failed to load Lottie animation:", error));
-  }, []);
-
   return (
     <div className="bg-transparent text-foreground pt-24 pb-16 sm:pt-32 sm:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,11 +37,14 @@ export default function AboutPage() {
            </SectionInView>
            <SectionInView>
              <div className="rounded-lg shadow-lg shadow-primary/10 flex items-center justify-center w-full max-w-[600px] mx-auto" style={{ aspectRatio: '3 / 2'}}>
-                {animationData ? (
-                  <Lottie animationData={animationData} loop={true} className="w-full h-full" />
-                ) : (
-                  <Skeleton className="h-full w-full" />
-                )}
+                <Image
+                  src="https://placehold.co/600x400.png"
+                  alt="Staking Rewards Illustration"
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover rounded-lg"
+                  data-ai-hint="blockchain technology"
+                />
              </div>
            </SectionInView>
         </div>
