@@ -1,4 +1,5 @@
-import { Handshake, Coins, Vote } from 'lucide-react';
+import { Handshake, Coins, Vote, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const steps = [
   {
@@ -43,6 +44,14 @@ export default function HowItWorks() {
               <div className={`flex-1 ${index % 2 !== 0 ? 'md:order-1' : ''}`}></div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-20 text-center">
+            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 transform hover:scale-105">
+                <a href="/how-it-works">
+                    Learn More <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+            </Button>
         </div>
       </div>
     </section>
