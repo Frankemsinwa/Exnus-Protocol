@@ -779,7 +779,7 @@ management, and governance voting. Contracts are designed for modularity and sec
     const currentSection = sections[activeIndex];
 
   return (
-    <div className="bg-background text-foreground py-20 sm:py-32">
+    <div className="bg-background text-foreground py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionInView>
           <div className="max-w-4xl mx-auto text-center mb-16">
@@ -861,55 +861,58 @@ management, and governance voting. Contracts are designed for modularity and sec
           </aside>
 
           <main className="lg:col-span-3">
-             <AnimatePresence mode="wait">
-                <motion.div
-                    key={activeIndex}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <div className="min-h-[60vh] flex flex-col p-8 md:p-12">
-                        <WhitepaperContentBlock
-                            scrollRef={contentScrollRef}
-                            title={currentSection.title}
-                            icon={currentSection.icon}
-                        >
-                            {currentSection.content}
-                        </WhitepaperContentBlock>
-                        <div className="mt-8 flex justify-between pt-8 border-t border-border/20">
-                            <Button onClick={() => handleNavigation(activeIndex - 1)} disabled={isTransitioning || activeIndex === 0} variant="outline">
-                                {isTransitioning ? (
-                                    <>
-                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                        Loading...
-                                    </>
-                                ) : (
-                                    <>
-                                        <ArrowLeft className="mr-2 h-4 w-4" /> Previous
-                                    </>
-                                )}
-                            </Button>
-                            {activeIndex < sections.length - 1 ? (
-                                <Button onClick={() => handleNavigation(activeIndex + 1)} disabled={isTransitioning}>
-                                     {isTransitioning ? (
-                                        <>
-                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                            Loading...
-                                        </>
-                                    ) : (
-                                        <>
-                                            Next: {sections[activeIndex + 1].title} <ArrowRight className="ml-2 h-4 w-4" />
-                                        </>
-                                    )}
-                                </Button>
-                            ) : (
-                                <Button disabled>End</Button>
-                            )}
-                        </div>
-                    </div>
-                </motion.div>
-             </AnimatePresence>
+            <Card className="bg-card/50 border-border/50 backdrop-blur-sm min-h-[calc(100vh-22rem)] flex flex-col">
+              <AnimatePresence mode="wait">
+                  <motion.div
+                      key={activeIndex}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-grow flex flex-col"
+                  >
+                      <div className="flex-grow flex flex-col p-8 md:p-12">
+                          <WhitepaperContentBlock
+                              scrollRef={contentScrollRef}
+                              title={currentSection.title}
+                              icon={currentSection.icon}
+                          >
+                              {currentSection.content}
+                          </WhitepaperContentBlock>
+                          <div className="mt-8 flex justify-between pt-8 border-t border-border/20">
+                              <Button onClick={() => handleNavigation(activeIndex - 1)} disabled={isTransitioning || activeIndex === 0} variant="outline">
+                                  {isTransitioning ? (
+                                      <>
+                                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                          Loading...
+                                      </>
+                                  ) : (
+                                      <>
+                                          <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+                                      </>
+                                  )}
+                              </Button>
+                              {activeIndex < sections.length - 1 ? (
+                                  <Button onClick={() => handleNavigation(activeIndex + 1)} disabled={isTransitioning}>
+                                      {isTransitioning ? (
+                                          <>
+                                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                              Loading...
+                                          </>
+                                      ) : (
+                                          <>
+                                              Next: {sections[activeIndex + 1].title} <ArrowRight className="ml-2 h-4 w-4" />
+                                          </>
+                                      )}
+                                  </Button>
+                              ) : (
+                                  <Button disabled>End</Button>
+                              )}
+                          </div>
+                      </div>
+                  </motion.div>
+              </AnimatePresence>
+            </Card>
           </main>
         </div>
       </div>
