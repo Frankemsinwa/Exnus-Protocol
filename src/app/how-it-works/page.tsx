@@ -3,8 +3,8 @@
 
 import { Handshake, Coins, Vote, Code, Users, Cpu, ArrowDown } from 'lucide-react';
 import SectionInView from '@/components/section-in-view';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from '@/components/ui/chart';
 
 const rewardsData = [
@@ -16,11 +16,35 @@ const rewardsData = [
   { month: 'Jun', rewards: 600 },
 ];
 
-const chartConfig = {
+const rewardsChartConfig = {
   rewards: {
     label: "Rewards (EXNUS)",
     color: "hsl(var(--primary))",
   },
+} satisfies ChartConfig;
+
+const governanceData = [
+    { name: 'For', votes: 1250, fill: "hsl(var(--chart-1))" },
+    { name: 'Against', votes: 450, fill: "hsl(var(--chart-2))" },
+    { name: 'Abstain', votes: 150, fill: "hsl(var(--muted-foreground))" },
+];
+
+const governanceChartConfig = {
+    votes: {
+        label: "Votes",
+    },
+    For: {
+        label: "For",
+        color: "hsl(var(--chart-1))",
+    },
+    Against: {
+        label: "Against",
+        color: "hsl(var(--chart-2))",
+    },
+    Abstain: {
+        label: "Abstain",
+        color: "hsl(var(--muted-foreground))",
+    },
 } satisfies ChartConfig;
 
 
@@ -128,7 +152,7 @@ export default function HowItWorksPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="h-[85%] -ml-4">
-                        <ChartContainer config={chartConfig} className="w-full h-full">
+                        <ChartContainer config={rewardsChartConfig} className="w-full h-full">
                             <ResponsiveContainer>
                                 <LineChart
                                 data={rewardsData}
@@ -200,8 +224,42 @@ export default function HowItWorksPage() {
                 </ul>
               </div>
               <div className="w-full md:w-1/2">
-                <Card className="bg-transparent border border-border/30 p-8">
-                   <img src="https://placehold.co/600x400.png" alt="DAO Governance illustration" className="rounded-lg" data-ai-hint="community vote" />
+                <Card className="bg-transparent border border-border/30 h-[400px] p-4 sm:p-6">
+                    <CardHeader>
+                        <CardTitle className="text-card-foreground text-center text-xl">
+                            DAO Governance Voting
+                        </CardTitle>
+                        <CardDescription className="text-muted-foreground text-center">
+                            Example Proposal Vote Distribution
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent className="h-[85%] flex items-center justify-center -mt-4">
+                         <ChartContainer
+                            config={governanceChartConfig}
+                            className="mx-auto aspect-square h-[250px]"
+                        >
+                            <PieChart>
+                                <ChartTooltip
+                                    cursor={false}
+                                    content={<ChartTooltipContent
+                                        formatter={(value) => `${(value as number).toLocaleString()} Votes`}
+                                        indicator="dot"
+                                    />}
+                                />
+                                <Pie
+                                    data={governanceData}
+                                    dataKey="votes"
+                                    nameKey="name"
+                                    innerRadius={60}
+                                    strokeWidth={2}
+                                >
+                                    {governanceData.map((entry) => (
+                                        <Cell key={`cell-${entry.name}`} fill={entry.fill} />
+                                    ))}
+                                </Pie>
+                            </PieChart>
+                        </ChartContainer>
+                    </CardContent>
                 </Card>
               </div>
             </div>
