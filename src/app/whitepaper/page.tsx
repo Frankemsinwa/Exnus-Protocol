@@ -291,7 +291,7 @@ export default function WhitepaperPage() {
             <div className="mt-12 text-center">
               <h3 className="font-headline text-2xl font-bold mb-8 text-foreground">Smart Contract Modules Overview</h3>
               <div className="flex justify-center items-center mb-4">
-                  <Card className="p-4 bg-primary/10 border-primary/20 w-64">
+                  <Card className="p-4 bg-transparent border-primary/20 w-64">
                       <CardTitle className="text-lg text-primary">Exnus Protocol Core</CardTitle>
                   </Card>
               </div>
@@ -441,7 +441,7 @@ export default function WhitepaperPage() {
                              <div className="flex justify-center items-center">
                                 <ArrowDown className="w-12 h-12 text-muted-foreground" />
                             </div>
-                            <Card className="p-6 text-center bg-primary/10 border-primary/20">
+                            <Card className="p-6 text-center bg-transparent border-primary/20">
                                 <Gift className="w-10 h-10 text-primary mx-auto mb-4" />
                                 <h4 className="font-bold text-lg text-primary">EXNUS Token Rewards</h4>
                                 <p className="text-sm text-muted-foreground mt-2">Distributed to users</p>
@@ -548,7 +548,7 @@ export default function WhitepaperPage() {
 
                     <ArrowDown className="w-12 h-12 text-muted-foreground" />
 
-                     <Card className="p-6 text-center bg-primary/10 border-primary/20 w-full max-w-md">
+                     <Card className="p-6 text-center bg-transparent border-primary/20 w-full max-w-md">
                         <ShieldCheck className="w-10 h-10 text-primary mx-auto mb-4" />
                         <h4 className="font-bold text-lg text-primary">Ecosystem Benefits</h4>
                         <p className="text-sm text-muted-foreground mt-2">Enhanced network security and stability.</p>
@@ -780,7 +780,7 @@ management, and governance voting. Contracts are designed for modularity and sec
 
   return (
     <div className="bg-transparent text-foreground pt-16 pb-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         {activeIndex === 0 && (
             <SectionInView>
                 <div className="max-w-4xl mx-auto text-center mb-16">
@@ -833,36 +833,7 @@ management, and governance voting. Contracts are designed for modularity and sec
           </Sheet>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-12">
-          <aside className="hidden lg:block lg:col-span-1">
-            <div className="sticky top-24">
-              <h3 className="font-headline text-xl font-bold mb-4 text-foreground">
-                Table of Contents
-              </h3>
-              <ul className="space-y-2">
-                {tocItems.map((item, index) => (
-                  <li key={item.id}>
-                    <button
-                      onClick={() => handleNavigation(index)}
-                      className={`w-full text-left transition-colors ${
-                        activeIndex === index
-                          ? 'text-primary font-semibold'
-                          : 'text-muted-foreground hover:text-primary'
-                      }`}
-                      disabled={isTransitioning}
-                    >
-                      {item.number}. {item.title}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-sm text-muted-foreground mt-8">
-                Page {activeIndex + 1} of {sections.length}
-              </p>
-            </div>
-          </aside>
-
-          <main className="lg:col-span-3">
+        <main className="w-full">
             <Card className="bg-transparent border border-border/30 min-h-[calc(100vh-22rem)] flex flex-col">
               <AnimatePresence mode="wait">
                   <motion.div
@@ -917,7 +888,6 @@ management, and governance voting. Contracts are designed for modularity and sec
             </Card>
           </main>
         </div>
-      </div>
     </div>
   );
 }
