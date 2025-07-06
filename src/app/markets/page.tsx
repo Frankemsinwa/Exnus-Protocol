@@ -299,22 +299,6 @@ export default function MarketsPage() {
       </div>
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
         <SectionInView>
-          <div 
-            className="relative rounded-lg overflow-hidden text-center mb-12 p-12 md:p-20 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/market.jpg)' }}
-          >
-            <div className="absolute inset-0 bg-black/60 z-10" />
-            <div className="relative z-20 max-w-4xl mx-auto">
-              <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight text-white">
-                Cryptocurrency Market
-              </h1>
-              <p className="mt-4 text-lg text-gray-300">
-                Track real-time prices and market data for top cryptocurrencies.
-              </p>
-            </div>
-          </div>
-        </SectionInView>
-        <SectionInView>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
                 <h2 className="font-headline text-2xl text-foreground flex-shrink-0">Market Overview</h2>
                 <div className="relative w-full md:max-w-sm">
