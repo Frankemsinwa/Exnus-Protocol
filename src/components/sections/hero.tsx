@@ -31,7 +31,7 @@ export default function Hero() {
         </p>
         <div className="mt-10 flex justify-center items-center gap-4">
           <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 transform hover:scale-105">
-            <a href="https://points.exnus.org">
+            <a href="https://points.exnus.xyz">
               Join Airdrop <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
