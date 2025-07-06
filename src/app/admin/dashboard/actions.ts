@@ -5,6 +5,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { getNewsletterSubscribers } from '@/services/db';
+import { Resend } from 'resend';
 
 export async function logout() {
   cookies().delete('admin-auth');
@@ -20,6 +21,13 @@ export async function sendAnnouncement(
   prevState: { message: string, success: boolean } | undefined,
   formData: FormData,
 ) {
+    if (!process.env.RESEND_API_KEY) {
+        return {
+            message: "Email sending is not configured. The administrator needs to provide a Resend API key.",
+            success: false,
+        };
+    }
+
     const validatedFields = announcementSchema.safeParse({
         subject: formData.get('subject'),
         message: formData.get('message'),
@@ -44,28 +52,27 @@ export async function sendAnnouncement(
             };
         }
 
-        // --- Email Sending Simulation ---
-        // In a real application, you would integrate an email service like
-        // SendGrid, Resend, or Nodemailer here. For this demo, we'll
-        // just log the action to the console.
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        
+        // Note: To send from your own domain (e.g., contact@exnus.org), 
+        // you must verify it first in your Resend account dashboard.
+        const fromAddress = 'onboarding@resend.dev';
 
-        console.log('--- Sending Announcement ---');
-        console.log('Subject:', subject);
-        console.log('Message:', message);
-        console.log('Recipients:', subscribers);
-        console.log('--------------------------');
-
-        // Simulate a network delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await resend.emails.send({
+            from: fromAddress,
+            to: subscribers,
+            subject: subject,
+            text: message,
+        });
 
         return {
-            message: `Announcement sent to ${subscribers.length} subscriber(s). Check the console for details.`,
+            message: `Announcement sent to ${subscribers.length} subscriber(s).`,
             success: true,
         };
     } catch (error) {
         console.error('Failed to send announcement:', error);
         return {
-            message: 'An unexpected error occurred.',
+            message: 'An unexpected error occurred while sending the email.',
             success: false,
         };
     }
