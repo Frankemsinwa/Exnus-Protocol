@@ -1,6 +1,28 @@
-import { Handshake, Coins, Vote, Code, Users, Cpu, ArrowRight, ArrowDown } from 'lucide-react';
+
+'use client';
+
+import { Handshake, Coins, Vote, Code, Users, Cpu, ArrowDown } from 'lucide-react';
 import SectionInView from '@/components/section-in-view';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from '@/components/ui/chart';
+
+const rewardsData = [
+  { month: 'Jan', rewards: 100 },
+  { month: 'Feb', rewards: 150 },
+  { month: 'Mar', rewards: 220 },
+  { month: 'Apr', rewards: 300 },
+  { month: 'May', rewards: 450 },
+  { month: 'Jun', rewards: 600 },
+];
+
+const chartConfig = {
+  rewards: {
+    label: "Rewards (EXNUS)",
+    color: "hsl(var(--primary))",
+  },
+} satisfies ChartConfig;
+
 
 export default function HowItWorksPage() {
   return (
@@ -98,9 +120,63 @@ export default function HowItWorksPage() {
                     <li><strong className="text-foreground">Real-time Tracking:</strong> Monitor your earned rewards through your personal dashboard.</li>
                 </ul>
               </div>
-              <div className="w-full md:w-1/2">
-                 <Card className="bg-transparent border border-border/30 p-8">
-                   <img src="https://placehold.co/600x400.png" alt="Earning rewards illustration" className="rounded-lg" data-ai-hint="digital currency reward" />
+               <div className="w-full md:w-1/2">
+                 <Card className="bg-transparent border border-border/30 h-[400px] p-4 sm:p-6">
+                    <CardHeader>
+                        <CardTitle className="text-card-foreground text-center text-xl">
+                            Cumulative Reward Growth
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="h-[85%] -ml-4">
+                        <ChartContainer config={chartConfig} className="w-full h-full">
+                            <ResponsiveContainer>
+                                <LineChart
+                                data={rewardsData}
+                                margin={{
+                                    top: 5,
+                                    right: 20,
+                                    left: 10,
+                                    bottom: 5,
+                                }}
+                                >
+                                <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="hsl(var(--border) / 0.5)" />
+                                <XAxis
+                                    dataKey="month"
+                                    tickLine={false}
+                                    axisLine={false}
+                                    tickMargin={8}
+                                    tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                                />
+                                <YAxis
+                                    tickLine={false}
+                                    axisLine={false}
+                                    tickMargin={8}
+                                    tickFormatter={(value) => `${value}`}
+                                    tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                                />
+                                <Tooltip
+                                    cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 1.5 }}
+                                    content={<ChartTooltipContent 
+                                        indicator="dot" 
+                                        formatter={(value) => `${Number(value).toLocaleString()} EXNUS`}
+                                    />}
+                                />
+                                <Line
+                                    dataKey="rewards"
+                                    type="monotone"
+                                    stroke="hsl(var(--primary))"
+                                    strokeWidth={2.5}
+                                    dot={{
+                                      fill: "hsl(var(--background))",
+                                      stroke: "hsl(var(--primary))",
+                                      strokeWidth: 2,
+                                      r: 5,
+                                    }}
+                                />
+                                </LineChart>
+                            </ResponsiveContainer>
+                        </ChartContainer>
+                    </CardContent>
                 </Card>
               </div>
             </div>
