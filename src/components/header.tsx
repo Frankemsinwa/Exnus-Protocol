@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 
 const Logo = () => (
   <>
-    <Image src="/exnus-logo.png" alt="Exnus Logo" width={50} height={50} className="h-[50px] w-[50px]" />
+    <Image src="/exnus-logo.png" alt="Exnus Logo" width={40} height={40} className="h-[40px] w-[40px]" />
     <span className="font-bold text-xl">EXNUS</span>
   </>
 );
