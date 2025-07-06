@@ -49,7 +49,7 @@ export default function About() {
                         Illustrating user activity over time
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="h-[80%] -ml-4 -mt-4">
+                <CardContent className="h-[85%]">
                     <ChartContainer config={engagementChartConfig} className="w-full h-full">
                         <ResponsiveContainer>
                             <LineChart
@@ -57,7 +57,7 @@ export default function About() {
                             margin={{
                                 top: 5,
                                 right: 30,
-                                left: 0,
+                                left: 10,
                                 bottom: 5,
                             }}
                             >
