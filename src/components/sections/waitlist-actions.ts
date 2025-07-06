@@ -1,7 +1,8 @@
+
 'use server';
 
 import { z } from 'zod';
-import { incrementNewsletterSubscribers } from '@/services/db';
+import { addNewsletterSubscriber } from '@/services/db';
 
 const emailSchema = z.string().email({ message: 'Please enter a valid email address.' });
 
@@ -21,7 +22,7 @@ export async function subscribeToNewsletter(
   }
 
   try {
-    await incrementNewsletterSubscribers();
+    await addNewsletterSubscriber(validatedEmail.data);
     return {
       message: "You've subscribed to our newsletter. We'll be in touch!",
       success: true,

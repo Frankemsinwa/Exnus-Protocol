@@ -5,6 +5,7 @@ import { logout } from './actions';
 import { Users, BarChart3, Mail, LineChart, LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { getStats } from '@/services/db';
+import AnnouncementForm from './announcement-form';
 
 
 export default async function DashboardPage() {
@@ -67,7 +68,7 @@ export default async function DashboardPage() {
             </CardContent>
           </Card>
         </div>
-        <div className="mt-8">
+        <div className="mt-8 grid gap-8 md:grid-cols-2">
             <Card>
                 <CardHeader>
                     <CardTitle>Welcome, Admin!</CardTitle>
@@ -75,6 +76,15 @@ export default async function DashboardPage() {
                 </CardHeader>
                 <CardContent>
                     <p className="text-muted-foreground">The statistics displayed are now being read dynamically from `data/db.json`. The next step is to hook up user actions, like newsletter subscriptions, to update these numbers.</p>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Send Announcement</CardTitle>
+                    <CardDescription>Send an email to all newsletter subscribers.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <AnnouncementForm />
                 </CardContent>
             </Card>
         </div>
