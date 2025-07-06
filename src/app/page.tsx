@@ -1,5 +1,4 @@
 import Hero from "@/components/sections/hero";
-import About from "@/components/sections/about";
 import Features from "@/components/sections/features";
 import HowItWorks from "@/components/sections/how-it-works";
 import Waitlist from "@/components/sections/waitlist";
@@ -16,9 +15,6 @@ export default function Home() {
         <Hero />
       </SectionInView>
       <CryptoTicker />
-      <SectionInView>
-        <About />
-      </SectionInView>
       <SectionInView>
         <Features />
       </SectionInView>
