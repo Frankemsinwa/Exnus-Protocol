@@ -1,8 +1,14 @@
 'use client';
 
 import { Rocket, Wrench, Gift, Ticket, Landmark, TrendingUp } from 'lucide-react';
-import { motion } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 const roadmapData: {
     quarter: string;
@@ -57,48 +63,37 @@ export default function Roadmap() {
           <p className="mt-4 text-lg text-muted-foreground">Our journey towards a decentralized and user-owned ecosystem.</p>
         </div>
 
-        <div className="mt-20 max-w-3xl mx-auto">
-          <div className="relative">
-            {/* The vertical timeline */}
-            <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-gradient-to-b from-primary/50 via-primary/30 to-transparent -translate-x-1/2" />
-            
-            <motion.div 
-                className="space-y-16"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ staggerChildren: 0.2 }}
-            >
+        <div className="mt-20">
+          <Carousel
+            opts={{
+              align: 'start',
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4 py-4">
               {roadmapData.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <motion.div 
-                    key={index} 
-                    className="relative pl-12"
-                    variants={{
-                        hidden: { opacity: 0, y: 50 },
-                        visible: { opacity: 1, y: 0 }
-                    }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {/* The dot on the timeline */}
-                    <div className="absolute left-4 top-1 h-4 w-4 rounded-full bg-background border-2 border-primary ring-4 ring-primary/20 -translate-x-1/2" />
-
-                    <div className="flex items-center gap-4">
-                      <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                        <Icon className="w-8 h-8 text-primary" />
+                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                    <div className="h-full p-1">
+                      <div className="flex h-full flex-col p-6 rounded-lg bg-transparent border border-border/30 shadow-lg hover:shadow-primary/20 transition-shadow">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
+                            <Icon className="w-8 h-8 text-primary" />
+                          </div>
+                          <p className="text-primary font-semibold text-lg">{item.quarter}</p>
+                        </div>
+                        <h3 className="font-headline text-2xl font-bold text-foreground">{item.event}</h3>
+                        <p className="text-muted-foreground mt-2 flex-grow">{item.description}</p>
                       </div>
-                      <p className="text-primary font-semibold text-lg">{item.quarter}</p>
                     </div>
-                    <div className="mt-4 p-6 rounded-lg bg-transparent border border-border/30 shadow-lg hover:shadow-primary/20 transition-shadow">
-                      <h3 className="font-headline text-2xl font-bold text-foreground">{item.event}</h3>
-                      <p className="text-muted-foreground mt-2">{item.description}</p>
-                    </div>
-                  </motion.div>
+                  </CarouselItem>
                 );
               })}
-            </motion.div>
-          </div>
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
       </div>
     </section>
