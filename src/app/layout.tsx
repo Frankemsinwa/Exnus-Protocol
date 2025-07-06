@@ -32,12 +32,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative isolate">
-            <div className="fixed inset-0 -z-10 h-full w-full">
-              <div className="star-field"></div>
-            </div>
+          <div className="flex flex-col min-h-screen">
             <Header />
-            <main>{children}</main>
+            <main className="flex-grow">{children}</main>
             <Footer />
             <Toaster />
           </div>

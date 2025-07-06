@@ -277,7 +277,7 @@ export default function MarketsPage() {
   const SortableHeader = ({ columnKey, title }: { columnKey: keyof Coin; title: string }) => {
     const isSorted = sortConfig.key === columnKey;
     return (
-      <TableHead className="cursor-pointer hover:bg-card/30" onClick={() => handleSort(columnKey)}>
+      <TableHead className="cursor-pointer hover:bg-muted/50" onClick={() => handleSort(columnKey)}>
         <div className="flex items-center gap-2">
           {title}
           {isSorted && (
@@ -330,7 +330,7 @@ export default function MarketsPage() {
             </div>
 
             {error && <p className="text-destructive text-center py-4">{error}</p>}
-            <div className="overflow-x-auto rounded-lg border border-border/20 bg-card/70 backdrop-blur-md">
+            <div className="overflow-x-auto rounded-lg border border-border/20 bg-transparent">
                 <Table>
                     <TableHeader>
                         <TableRow className="border-border/20 hover:bg-transparent">
@@ -345,7 +345,7 @@ export default function MarketsPage() {
                     <TableBody>
                         {loading ? (
                             Array.from({ length: 20 }).map((_, i) => (
-                                <TableRow key={i} className="bg-card/20 border-border/20">
+                                <TableRow key={i} className="bg-transparent border-border/20">
                                     <TableCell><Skeleton className="h-6 w-6 rounded-full" /></TableCell>
                                     <TableCell><div className="flex items-center gap-2"><Skeleton className="h-6 w-6 rounded-full" /><Skeleton className="h-4 w-24" /></div></TableCell>
                                     <TableCell><Skeleton className="h-4 w-20" /></TableCell>
@@ -356,7 +356,7 @@ export default function MarketsPage() {
                             ))
                         ) : displayedCoins.length > 0 ? (
                             displayedCoins.map((coin) => (
-                                <TableRow key={coin.id} onClick={() => handleCoinClick(coin)} className="cursor-pointer bg-card/20 hover:bg-card/40 border-border/20">
+                                <TableRow key={coin.id} onClick={() => handleCoinClick(coin)} className="cursor-pointer bg-transparent hover:bg-muted/10 border-border/20">
                                     <TableCell className="font-medium text-muted-foreground">{coin.market_cap_rank || 'N/A'}</TableCell>
                                     <TableCell>
                                         <div className="flex items-center gap-3">

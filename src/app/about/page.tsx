@@ -66,7 +66,7 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
           <SectionInView>
-            <div className="bg-card/70 border border-border/30 backdrop-blur-md p-8 rounded-lg w-full h-full flex flex-col justify-center">
+            <div className="border border-border/30 p-8 rounded-lg w-full h-full flex flex-col justify-center">
               <h3 className="font-headline text-xl text-card-foreground text-center mb-8">The Governance Process</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
@@ -141,7 +141,7 @@ export default function AboutPage() {
         </div>
         
         <SectionInView>
-          <Card className="bg-card/70 border border-border/30 backdrop-blur-md mt-16">
+          <Card className="bg-transparent border border-border/30 mt-16">
             <CardHeader>
               <div className="flex flex-col items-center text-center gap-4">
                 <div className="bg-primary/10 p-3 rounded-full">

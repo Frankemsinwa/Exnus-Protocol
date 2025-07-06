@@ -10,7 +10,7 @@ export default function PrivacyPage() {
             <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight text-center mb-12">
               Privacy Policy
             </h1>
-            <Card className="bg-card/70 border border-border/30 backdrop-blur-md">
+            <Card className="bg-transparent border border-border/30">
               <CardContent className="p-8 md:p-12 space-y-8 text-muted-foreground leading-relaxed">
                 <section>
                   <h2 className="font-headline text-2xl font-bold text-foreground mb-4">1. Introduction</h2>

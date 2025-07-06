@@ -45,7 +45,7 @@ export default function Features() {
         </div>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="bg-card/70 border border-border/30 backdrop-blur-md hover:border-primary/50 hover:bg-card/80 transition-all duration-300 transform hover:-translate-y-1">
+            <Card key={index} className="bg-transparent border border-border/30 hover:border-primary/50 hover:bg-muted/10 transition-all duration-300 transform hover:-translate-y-1">
               <CardHeader className="p-8">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">{feature.icon}</div>

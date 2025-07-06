@@ -73,7 +73,7 @@ export default function ContactPage() {
         </SectionInView>
 
         <SectionInView>
-          <Card className="max-w-2xl mx-auto bg-card/70 border border-border/30 backdrop-blur-md">
+          <Card className="max-w-2xl mx-auto bg-transparent border border-border/30">
             <CardHeader>
               <CardTitle className="font-headline text-2xl text-card-foreground">Send us a Message</CardTitle>
               <CardDescription>Fill out the form below and our team will get back to you as soon as possible.</CardDescription>

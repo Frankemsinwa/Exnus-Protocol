@@ -15,7 +15,7 @@ export default function SecurityPage() {
               At Exnus Protocol, security is not an afterthought; it is a core principle of our design and development process. We are committed to building a secure and resilient platform for our users.
             </p>
             <div className="space-y-12">
-              <Card className="bg-card/70 border border-border/30 backdrop-blur-md">
+              <Card className="bg-transparent border border-border/30">
                 <CardHeader>
                   <div className="flex items-center gap-4">
                     <div className="bg-primary/10 p-3 rounded-full">
@@ -34,7 +34,7 @@ export default function SecurityPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-card/70 border border-border/30 backdrop-blur-md">
+              <Card className="bg-transparent border border-border/30">
                 <CardHeader>
                    <div className="flex items-center gap-4">
                     <div className="bg-primary/10 p-3 rounded-full">
@@ -52,7 +52,7 @@ export default function SecurityPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-card/70 border border-border/30 backdrop-blur-md">
+              <Card className="bg-transparent border border-border/30">
                 <CardHeader>
                   <div className="flex items-center gap-4">
                     <div className="bg-primary/10 p-3 rounded-full">
