@@ -781,19 +781,21 @@ management, and governance voting. Contracts are designed for modularity and sec
   return (
     <div className="bg-background text-foreground py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionInView>
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-block bg-primary/10 p-4 rounded-full mb-6">
-              <FileText className="w-12 h-12 text-primary" />
-            </div>
-            <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-              Exnus Protocol Whitepaper
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Version 1.0 - Last updated: {currentDate}
-            </p>
-          </div>
-        </SectionInView>
+        {activeIndex === 0 && (
+            <SectionInView>
+                <div className="max-w-4xl mx-auto text-center mb-16">
+                    <div className="inline-block bg-primary/10 p-4 rounded-full mb-6">
+                    <FileText className="w-12 h-12 text-primary" />
+                    </div>
+                    <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
+                    Exnus Protocol Whitepaper
+                    </h1>
+                    <p className="mt-4 text-lg text-muted-foreground">
+                    Version 1.0 - Last updated: {currentDate}
+                    </p>
+                </div>
+            </SectionInView>
+        )}
 
         {/* Mobile TOC Button */}
         <div className="lg:hidden mb-8">
