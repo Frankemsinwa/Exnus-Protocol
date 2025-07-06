@@ -32,10 +32,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <Toaster />
+          <div className="relative isolate">
+            <div className="fixed inset-0 -z-10 h-full w-full">
+              <div className="star-field"></div>
+            </div>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <Toaster />
+          </div>
         </ThemeProvider>
       </body>
     </html>

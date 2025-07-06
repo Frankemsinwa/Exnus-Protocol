@@ -4,7 +4,7 @@ import { ShieldCheck, Lock, Code } from "lucide-react";
 
 export default function SecurityPage() {
   return (
-    <div className="bg-background text-foreground py-20 sm:py-32">
+    <div className="bg-transparent text-foreground pt-24 pb-16 sm:pt-32 sm:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionInView>
           <div className="max-w-4xl mx-auto">
@@ -15,7 +15,7 @@ export default function SecurityPage() {
               At Exnus Protocol, security is not an afterthought; it is a core principle of our design and development process. We are committed to building a secure and resilient platform for our users.
             </p>
             <div className="space-y-12">
-              <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
+              <Card className="bg-card/70 border border-border/30 backdrop-blur-md">
                 <CardHeader>
                   <div className="flex items-center gap-4">
                     <div className="bg-primary/10 p-3 rounded-full">
@@ -34,7 +34,7 @@ export default function SecurityPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
+              <Card className="bg-card/70 border border-border/30 backdrop-blur-md">
                 <CardHeader>
                    <div className="flex items-center gap-4">
                     <div className="bg-primary/10 p-3 rounded-full">
@@ -52,7 +52,7 @@ export default function SecurityPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
+              <Card className="bg-card/70 border border-border/30 backdrop-blur-md">
                 <CardHeader>
                   <div className="flex items-center gap-4">
                     <div className="bg-primary/10 p-3 rounded-full">

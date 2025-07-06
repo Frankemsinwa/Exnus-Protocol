@@ -34,7 +34,7 @@ const chartConfig = {
 
 export default function Tokenomics() {
   return (
-    <section id="tokenomics" className="py-20 sm:py-32 bg-background">
+    <section id="tokenomics" className="py-20 sm:py-32 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-headline text-3xl sm:text-4xl font-bold text-foreground tracking-tight">Tokenomics</h2>
@@ -43,7 +43,7 @@ export default function Tokenomics() {
           </p>
         </div>
         <div className="mt-16 max-w-6xl mx-auto">
-          <Card className="bg-card/50 border-border/50">
+          <Card className="bg-card/70 border border-border/30 backdrop-blur-md">
             <CardHeader>
               <CardTitle className="font-headline text-card-foreground text-center text-2xl">EXNUS Token Distribution</CardTitle>
               <CardDescription className="text-center !mt-2">Total Supply: 2.5 Billion Tokens</CardDescription>
@@ -96,7 +96,7 @@ export default function Tokenomics() {
                 <h3 className="text-2xl font-bold text-center text-foreground mb-8">Allocation Breakdown</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {tokenDistribution.map((item) => (
-                    <Card key={item.name} className="bg-card/50 border-border/50 flex flex-col">
+                    <Card key={item.name} className="bg-card/70 border border-border/30 backdrop-blur-md flex flex-col">
                       <CardHeader>
                         <CardTitle className="text-lg text-card-foreground">{item.name} ({item.percentage}%)</CardTitle>
                         <CardDescription>{item.tokens} Tokens</CardDescription>

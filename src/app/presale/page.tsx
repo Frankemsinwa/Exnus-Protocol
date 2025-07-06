@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 export default function PresalePage() {
   return (
-    <div className="bg-background text-foreground py-20 sm:py-32">
+    <div className="bg-transparent text-foreground pt-24 pb-16 sm:pt-32 sm:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center min-h-[60vh]">
         <SectionInView>
           <div className="max-w-3xl mx-auto text-center">

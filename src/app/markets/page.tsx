@@ -293,7 +293,7 @@ export default function MarketsPage() {
   };
 
   return (
-    <div className="relative bg-background text-foreground py-20 sm:py-32 overflow-hidden">
+    <div className="relative bg-transparent text-foreground pt-24 pb-16 sm:pt-32 sm:pb-24 overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-radial-gradient-gold opacity-20" />
       </div>
@@ -330,7 +330,7 @@ export default function MarketsPage() {
             </div>
 
             {error && <p className="text-destructive text-center py-4">{error}</p>}
-            <div className="overflow-x-auto rounded-lg border border-border/20 bg-card/10 backdrop-blur-sm">
+            <div className="overflow-x-auto rounded-lg border border-border/20 bg-card/70 backdrop-blur-md">
                 <Table>
                     <TableHeader>
                         <TableRow className="border-border/20 hover:bg-transparent">

@@ -24,7 +24,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="bg-background text-foreground py-20 sm:py-32">
+    <div className="bg-transparent text-foreground pt-24 pb-16 sm:pt-32 sm:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionInView>
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -66,7 +66,7 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
           <SectionInView>
-            <div className="bg-card/50 border-border/50 backdrop-blur-sm p-8 rounded-lg w-full h-full flex flex-col justify-center">
+            <div className="bg-card/70 border border-border/30 backdrop-blur-md p-8 rounded-lg w-full h-full flex flex-col justify-center">
               <h3 className="font-headline text-xl text-card-foreground text-center mb-8">The Governance Process</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
@@ -141,7 +141,7 @@ export default function AboutPage() {
         </div>
         
         <SectionInView>
-          <Card className="bg-card/50 border-border/50 backdrop-blur-sm mt-16">
+          <Card className="bg-card/70 border border-border/30 backdrop-blur-md mt-16">
             <CardHeader>
               <div className="flex flex-col items-center text-center gap-4">
                 <div className="bg-primary/10 p-3 rounded-full">

@@ -3,14 +3,14 @@ import SectionInView from "@/components/section-in-view";
 
 export default function PrivacyPage() {
   return (
-    <div className="bg-background text-foreground py-20 sm:py-32">
+    <div className="bg-transparent text-foreground pt-24 pb-16 sm:pt-32 sm:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionInView>
           <div className="max-w-4xl mx-auto">
             <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight text-center mb-12">
               Privacy Policy
             </h1>
-            <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
+            <Card className="bg-card/70 border border-border/30 backdrop-blur-md">
               <CardContent className="p-8 md:p-12 space-y-8 text-muted-foreground leading-relaxed">
                 <section>
                   <h2 className="font-headline text-2xl font-bold text-foreground mb-4">1. Introduction</h2>

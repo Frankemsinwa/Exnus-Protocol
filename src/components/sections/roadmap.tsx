@@ -50,7 +50,7 @@ const roadmapData: {
 
 export default function Roadmap() {
   return (
-    <section id="roadmap" className="py-20 sm:py-32 bg-background bg-roadmap-gradient">
+    <section id="roadmap" className="py-20 sm:py-32 bg-transparent bg-roadmap-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Exnus Roadmap</h2>
@@ -90,7 +90,7 @@ export default function Roadmap() {
                       </div>
                       <p className="text-primary font-semibold text-lg">{item.quarter}</p>
                     </div>
-                    <div className="mt-4 p-6 rounded-lg bg-card/50 border border-border/50 backdrop-blur-sm shadow-lg hover:shadow-primary/20 transition-shadow">
+                    <div className="mt-4 p-6 rounded-lg bg-card/70 border border-border/30 backdrop-blur-md shadow-lg hover:shadow-primary/20 transition-shadow">
                       <h3 className="font-headline text-2xl font-bold text-foreground">{item.event}</h3>
                       <p className="text-muted-foreground mt-2">{item.description}</p>
                     </div>

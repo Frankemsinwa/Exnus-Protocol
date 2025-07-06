@@ -59,7 +59,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-background text-foreground py-20 sm:py-32">
+    <div className="bg-transparent text-foreground pt-24 pb-16 sm:pt-32 sm:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionInView>
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -73,7 +73,7 @@ export default function ContactPage() {
         </SectionInView>
 
         <SectionInView>
-          <Card className="max-w-2xl mx-auto bg-card/50 border-border/50 backdrop-blur-sm">
+          <Card className="max-w-2xl mx-auto bg-card/70 border border-border/30 backdrop-blur-md">
             <CardHeader>
               <CardTitle className="font-headline text-2xl text-card-foreground">Send us a Message</CardTitle>
               <CardDescription>Fill out the form below and our team will get back to you as soon as possible.</CardDescription>

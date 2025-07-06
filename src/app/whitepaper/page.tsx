@@ -299,19 +299,19 @@ export default function WhitepaperPage() {
                   <ChevronDown className="w-12 h-12 text-muted-foreground" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-                  <Card className="p-6 text-center bg-card/50 border-border/50">
+                  <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                       <Gift className="w-10 h-10 text-primary mx-auto mb-4" />
                       <h4 className="font-bold text-lg text-foreground">Reward Distribution</h4>
                   </Card>
-                  <Card className="p-6 text-center bg-card/50 border-border/50">
+                  <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                       <Landmark className="w-10 h-10 text-primary mx-auto mb-4" />
                       <h4 className="font-bold text-lg text-foreground">Staking</h4>
                   </Card>
-                  <Card className="p-6 text-center bg-card/50 border-border/50">
+                  <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                       <Vote className="w-10 h-10 text-primary mx-auto mb-4" />
                       <h4 className="font-bold text-lg text-foreground">Governance</h4>
                   </Card>
-                  <Card className="p-6 text-center bg-card/50 border-border/50">
+                  <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                       <KeyRound className="w-10 h-10 text-primary mx-auto mb-4" />
                       <h4 className="font-bold text-lg text-foreground">Access Control</h4>
                   </Card>
@@ -337,23 +337,23 @@ export default function WhitepaperPage() {
              <div className="mt-12">
                 <h3 className="font-headline text-2xl font-bold mt-6 mb-8 text-center text-foreground">Security Measures Overview</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <Card className="p-6 text-center bg-card/50 border-border/50">
+                    <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                         <ShieldCheck className="w-10 h-10 text-primary mx-auto mb-4" />
                         <h4 className="font-bold text-lg text-foreground">Comprehensive Audits</h4>
                     </Card>
-                    <Card className="p-6 text-center bg-card/50 border-border/50">
+                    <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                         <BadgeCheck className="w-10 h-10 text-primary mx-auto mb-4" />
                         <h4 className="font-bold text-lg text-foreground">Formal Verification</h4>
                     </Card>
-                    <Card className="p-6 text-center bg-card/50 border-border/50">
+                    <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                         <ShieldAlert className="w-10 h-10 text-primary mx-auto mb-4" />
                         <h4 className="font-bold text-lg text-foreground">Fail-safe Mechanisms</h4>
                     </Card>
-                    <Card className="p-6 text-center bg-card/50 border-border/50">
+                    <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                         <Users className="w-10 h-10 text-primary mx-auto mb-4" />
                         <h4 className="font-bold text-lg text-foreground">Sybil Attack Prevention</h4>
                     </Card>
-                    <Card className="p-6 text-center bg-card/50 border-border/50">
+                    <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                         <Lock className="w-10 h-10 text-primary mx-auto mb-4" />
                         <h4 className="font-bold text-lg text-foreground">Immutable Logic</h4>
                     </Card>
@@ -390,7 +390,7 @@ export default function WhitepaperPage() {
                     <p className="text-center text-muted-foreground mb-8">User contributions are processed by the Reward Calculation Engine to distribute EXNUS tokens.</p>
                     <div className="relative md:grid md:grid-cols-3 md:items-center md:gap-8">
                         <div className="space-y-4">
-                            <Card className="p-4 bg-card/50 border-border/50">
+                            <Card className="p-4 bg-card/70 border border-border/30 backdrop-blur-md">
                                 <div className="flex items-center gap-4">
                                     <Code className="w-8 h-8 text-primary" />
                                     <div>
@@ -399,7 +399,7 @@ export default function WhitepaperPage() {
                                     </div>
                                 </div>
                             </Card>
-                            <Card className="p-4 bg-card/50 border-border/50">
+                            <Card className="p-4 bg-card/70 border border-border/30 backdrop-blur-md">
                                 <div className="flex items-center gap-4">
                                     <Users className="w-8 h-8 text-primary" />
                                      <div>
@@ -408,7 +408,7 @@ export default function WhitepaperPage() {
                                     </div>
                                 </div>
                             </Card>
-                            <Card className="p-4 bg-card/50 border-border/50">
+                            <Card className="p-4 bg-card/70 border border-border/30 backdrop-blur-md">
                                 <div className="flex items-center gap-4">
                                     <Vote className="w-8 h-8 text-primary" />
                                      <div>
@@ -417,7 +417,7 @@ export default function WhitepaperPage() {
                                     </div>
                                 </div>
                             </Card>
-                            <Card className="p-4 bg-card/50 border-border/50">
+                            <Card className="p-4 bg-card/70 border border-border/30 backdrop-blur-md">
                                 <div className="flex items-center gap-4">
                                     <Lock className="w-8 h-8 text-primary" />
                                      <div>
@@ -433,7 +433,7 @@ export default function WhitepaperPage() {
                         </div>
                         
                         <div className="space-y-8">
-                            <Card className="p-6 text-center bg-card/50 border-border/50">
+                            <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                                 <Cpu className="w-10 h-10 text-primary mx-auto mb-4" />
                                 <h4 className="font-bold text-lg text-foreground">Reward Calculation Engine</h4>
                                  <p className="text-sm text-muted-foreground mt-2">Processes all contributions</p>
@@ -513,7 +513,7 @@ export default function WhitepaperPage() {
                 <div className="my-12">
                   <h3 className="font-headline text-2xl font-bold text-center text-foreground mb-8">Staking Process Overview</h3>
                   <div className="flex flex-col items-center gap-6">
-                    <Card className="p-4 bg-card/50 border-border/50 w-full max-w-md">
+                    <Card className="p-4 bg-card/70 border border-border/30 backdrop-blur-md w-full max-w-md">
                       <div className="flex items-center gap-4">
                         <Users className="w-10 h-10 text-primary" />
                         <div>
@@ -525,7 +525,7 @@ export default function WhitepaperPage() {
                     
                     <ArrowDown className="w-12 h-12 text-muted-foreground" />
 
-                    <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-md">
+                    <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md w-full max-w-md">
                       <Lock className="w-10 h-10 text-primary mx-auto mb-4" />
                       <h4 className="font-bold text-lg text-foreground">2. Staking Contract</h4>
                       <p className="text-sm text-muted-foreground mt-2">Tokens are secured for a chosen period.</p>
@@ -534,12 +534,12 @@ export default function WhitepaperPage() {
                     <ArrowDown className="w-12 h-12 text-muted-foreground" />
                     
                     <div className="w-full max-w-md grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <Card className="p-6 text-center bg-card/50 border-border/50">
+                      <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                           <Gift className="w-10 h-10 text-primary mx-auto mb-4" />
                           <h4 className="font-bold text-lg text-foreground">Reward Accrual</h4>
                           <p className="text-sm text-muted-foreground mt-2">Earn passive income through staking rewards.</p>
                       </Card>
-                       <Card className="p-6 text-center bg-card/50 border-border/50">
+                       <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md">
                           <Vote className="w-10 h-10 text-primary mx-auto mb-4" />
                           <h4 className="font-bold text-lg text-foreground">Governance Rights</h4>
                           <p className="text-sm text-muted-foreground mt-2">Participate in key protocol decisions.</p>
@@ -592,31 +592,31 @@ management, and governance voting. Contracts are designed for modularity and sec
                  <div className="mt-12">
                     <h3 className="font-headline text-2xl font-bold mb-8 text-center text-foreground">Architectural Layers Diagram</h3>
                     <div className="flex flex-col items-center gap-4">
-                        <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-lg">
+                        <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md w-full max-w-lg">
                             <Users className="w-10 h-10 text-primary mx-auto mb-4" />
                             <h4 className="font-bold text-lg text-foreground">User Interaction Layer</h4>
                             <p className="text-sm text-muted-foreground mt-1">Web & Mobile Apps</p>
                         </Card>
                         <ArrowDown className="w-8 h-8 text-muted-foreground" />
-                        <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-lg">
+                        <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md w-full max-w-lg">
                             <Code className="w-10 h-10 text-primary mx-auto mb-4" />
                             <h4 className="font-bold text-lg text-foreground">Application Logic Layer</h4>
                             <p className="text-sm text-muted-foreground mt-1">Contribution Validation, Reward Calculation</p>
                         </Card>
                         <ArrowDown className="w-8 h-8 text-muted-foreground" />
-                        <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-lg">
+                        <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md w-full max-w-lg">
                             <Package className="w-10 h-10 text-primary mx-auto mb-4" />
                             <h4 className="font-bold text-lg text-foreground">Smart Contract Layer</h4>
                             <p className="text-sm text-muted-foreground mt-1">Token Distribution, Staking, Governance</p>
                         </Card>
                         <ArrowDown className="w-8 h-8 text-muted-foreground" />
-                        <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-lg">
+                        <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md w-full max-w-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-4 text-primary"><path d="M10.66 4.93a1.8 1.8 0 0 1 2.68 0l6.33 4.93a1.8 1.8 0 0 1 0 3.28l-6.33 4.93a1.8 1.8 0 0 1-2.68 0L4.33 13.14a1.8 1.8 0 0 1 0-3.28z"/><path d="m4.33 6.86 6.33-4.93a1.8 1.8 0 0 1 2.68 0l6.33 4.93"/><path d="m20.67 17.14-6.33 4.93a1.8 1.8 0 0 1-2.68 0L5.33 17.14"/></svg>
                             <h4 className="font-bold text-lg text-foreground">Blockchain Infrastructure Layer</h4>
                             <p className="text-sm text-muted-foreground mt-1">Solana Network</p>
                         </Card>
                         <ArrowDown className="w-8 h-8 text-muted-foreground" />
-                        <Card className="p-6 text-center bg-card/50 border-border/50 w-full max-w-lg">
+                        <Card className="p-6 text-center bg-card/70 border border-border/30 backdrop-blur-md w-full max-w-lg">
                             <Network className="w-10 h-10 text-primary mx-auto mb-4" />
                             <h4 className="font-bold text-lg text-foreground">Off-Chain Services Layer</h4>
                             <p className="text-sm text-muted-foreground mt-1">Oracles, APIs, Analytics</p>
@@ -647,7 +647,7 @@ management, and governance voting. Contracts are designed for modularity and sec
                 <p>
                     The total supply of Exnus tokens is strategically allocated to ensure sustainability, community engagement, and rewards for stakeholders. Below is a summary of the token allocation:
                 </p>
-                <Card className="my-6 bg-card/50 border-border/50">
+                <Card className="my-6 bg-card/70 border border-border/30 backdrop-blur-md">
                     <CardHeader>
                         <CardTitle className="text-card-foreground">Token Details</CardTitle>
                     </CardHeader>
@@ -779,7 +779,7 @@ management, and governance voting. Contracts are designed for modularity and sec
     const currentSection = sections[activeIndex];
 
   return (
-    <div className="bg-background text-foreground py-16">
+    <div className="bg-transparent text-foreground pt-16 pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {activeIndex === 0 && (
             <SectionInView>
@@ -863,7 +863,7 @@ management, and governance voting. Contracts are designed for modularity and sec
           </aside>
 
           <main className="lg:col-span-3">
-            <Card className="bg-card/50 border-border/50 backdrop-blur-sm min-h-[calc(100vh-22rem)] flex flex-col">
+            <Card className="bg-card/70 border border-border/30 backdrop-blur-md min-h-[calc(100vh-22rem)] flex flex-col">
               <AnimatePresence mode="wait">
                   <motion.div
                       key={activeIndex}
