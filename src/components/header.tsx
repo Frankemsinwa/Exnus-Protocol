@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -27,6 +28,7 @@ export default function Header() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
     { name: 'How It Works', href: '/how-it-works' },
     { name: 'Whitepaper', href: '/whitepaper' },
     { name: 'Markets', href: '/markets' },
