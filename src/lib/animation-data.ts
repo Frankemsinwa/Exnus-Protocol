@@ -1,0 +1,55 @@
+export const stakingRewardsAnimation = {
+  v: '5.5.7',
+  fr: 30,
+  ip: 0,
+  op: 30,
+  w: 200,
+  h: 200,
+  nm: 'Pulsing Dot',
+  ddd: 0,
+  assets: [],
+  layers: [
+    {
+      ddd: 0,
+      ind: 1,
+      ty: 4,
+      nm: 'Dot',
+      sr: 1,
+      ks: {
+        o: { a: 0, k: 100, ix: 11 },
+        r: { a: 0, k: 0, ix: 10 },
+        p: { a: 0, k: [100, 100, 0], ix: 2 },
+        a: { a: 0, k: [10, 10, 0], ix: 1 },
+        s: {
+          a: 1,
+          k: [
+            { i: { x: [0.667], y: [1] }, o: { x: [0.333], y: [0] }, t: 0, s: [100, 100, 100] },
+            { i: { x: [0.667], y: [1] }, o: { x: [0.333], y: [0] }, t: 15, s: [120, 120, 100] },
+            { t: 30, s: [100, 100, 100] },
+          ],
+          ix: 6,
+        },
+      },
+      ao: 0,
+      shapes: [
+        {
+          ty: 'gr',
+          it: [
+            { ind: 0, ty: 'el', ix: 1, ks: { a: 0, k: [20, 20], ix: 2 }, nm: 'Ellipse 1' },
+            { ty: 'fi', c: { a: 0, k: [0.831, 0.686, 0.216, 1] }, o: { a: 0, k: 100 }, r: 1, nm: 'Fill 1' },
+          ],
+          nm: 'Group 1',
+          np: 3,
+          cix: 2,
+          bm: 0,
+          ix: 1,
+          mn: 'ADBE Vector Group',
+        },
+      ],
+      ip: 0,
+      op: 30,
+      st: 0,
+      bm: 0,
+    },
+  ],
+};

@@ -1,8 +1,8 @@
 
-import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, Vote, ShieldCheck, FilePlus, Users, CheckCircle, ArrowDown } from "lucide-react";
 import SectionInView from "@/components/section-in-view";
+import StakingAnimation from "@/components/staking-animation";
 
 export default function AboutPage() {
   return (
@@ -37,14 +37,7 @@ export default function AboutPage() {
            </SectionInView>
            <SectionInView>
              <div className="rounded-lg shadow-lg shadow-primary/10 flex items-center justify-center w-full max-w-[600px] mx-auto" style={{ aspectRatio: '3 / 2'}}>
-                <Image
-                  src="https://placehold.co/600x400.png"
-                  alt="Staking Rewards Illustration"
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover rounded-lg"
-                  data-ai-hint="blockchain technology"
-                />
+                <StakingAnimation />
              </div>
            </SectionInView>
         </div>
