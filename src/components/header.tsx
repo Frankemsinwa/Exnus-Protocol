@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -11,7 +12,7 @@ import { cn } from '@/lib/utils';
 
 const Logo = () => (
   <>
-    <Image src="/exnus-logo.png" alt="Exnus Logo" width={50} height={50} className="h-[50px] w-[50px]" />
+    <Image src="/exnus-logo.png" alt="Exnus Logo" width={40} height={40} className="h-[40px] w-[40px]" />
     <span className="font-bold text-xl">EXNUS</span>
   </>
 );
@@ -19,24 +20,30 @@ const Logo = () => (
 export default function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isClient, setIsClient] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
+    { name: 'How It Works', href: '/how-it-works' },
     { name: 'Whitepaper', href: '/whitepaper' },
     { name: 'Markets', href: '/markets' },
     { name: 'Contact', href: '/contact' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-background text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-border/50">
+    <header className="sticky top-0 z-50 text-gray-800 dark:text-gray-200 border-b border-gray-200 bg-white/80 dark:bg-background/80 dark:border-border/50">
       <div className="flex items-center justify-between h-20 px-2 sm:px-4 lg:px-6">
         <a href="/" className="flex items-center gap-1">
           <Logo />
         </a>
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = isClient && pathname === link.href;
             return (
               <a
                 key={link.name}
@@ -56,7 +63,7 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-2">
           <ThemeToggle />
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-            <a href="https://points.exnus.org">Join Airdrop</a>
+            <a href="https://points.exnus.xyz">Join Airdrop</a>
           </Button>
         </div>
         <div className="flex items-center gap-2 md:hidden">
@@ -77,7 +84,7 @@ export default function Header() {
                 </div>
                 <nav className="flex flex-col space-y-6">
                   {navLinks.map((link) => {
-                    const isActive = pathname === link.href;
+                    const isActive = isClient && pathname === link.href;
                     return (
                       <a
                         key={link.name}
@@ -97,7 +104,7 @@ export default function Header() {
                 </nav>
                 <div className="mt-auto">
                   <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-                    <a href="/#newsletter" onClick={() => setIsMobileMenuOpen(false)}>Join Airdrop</a>
+                    <a href="https://points.exnus.xyz" onClick={() => setIsMobileMenuOpen(false)}>Join Airdrop</a>
                   </Button>
                 </div>
               </div>

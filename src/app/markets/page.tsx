@@ -15,7 +15,6 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ArrowUp, ArrowDown, Search } from 'lucide-react';
-import SectionInView from '@/components/section-in-view';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from '@/components/ui/chart';
@@ -277,7 +276,7 @@ export default function MarketsPage() {
   const SortableHeader = ({ columnKey, title }: { columnKey: keyof Coin; title: string }) => {
     const isSorted = sortConfig.key === columnKey;
     return (
-      <TableHead className="cursor-pointer hover:bg-card/30" onClick={() => handleSort(columnKey)}>
+      <TableHead className="cursor-pointer hover:bg-muted/50" onClick={() => handleSort(columnKey)}>
         <div className="flex items-center gap-2">
           {title}
           {isSorted && (
@@ -293,28 +292,12 @@ export default function MarketsPage() {
   };
 
   return (
-    <div className="relative bg-background text-foreground py-20 sm:py-32 overflow-hidden">
+    <div className="relative bg-transparent text-foreground pt-24 pb-16 sm:pt-32 sm:pb-24 overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-radial-gradient-gold opacity-20" />
       </div>
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-        <SectionInView>
-          <div 
-            className="relative rounded-lg overflow-hidden text-center mb-12 p-12 md:p-20 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/market.jpg)' }}
-          >
-            <div className="absolute inset-0 bg-black/60 z-10" />
-            <div className="relative z-20 max-w-4xl mx-auto">
-              <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight text-white">
-                Cryptocurrency Market
-              </h1>
-              <p className="mt-4 text-lg text-gray-300">
-                Track real-time prices and market data for top cryptocurrencies.
-              </p>
-            </div>
-          </div>
-        </SectionInView>
-        <SectionInView>
+        <div>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
                 <h2 className="font-headline text-2xl text-foreground flex-shrink-0">Market Overview</h2>
                 <div className="relative w-full md:max-w-sm">
@@ -330,7 +313,7 @@ export default function MarketsPage() {
             </div>
 
             {error && <p className="text-destructive text-center py-4">{error}</p>}
-            <div className="overflow-x-auto rounded-lg border border-border/20 bg-card/10 backdrop-blur-sm">
+            <div className="overflow-x-auto rounded-lg border border-border/20 bg-transparent">
                 <Table>
                     <TableHeader>
                         <TableRow className="border-border/20 hover:bg-transparent">
@@ -345,7 +328,7 @@ export default function MarketsPage() {
                     <TableBody>
                         {loading ? (
                             Array.from({ length: 20 }).map((_, i) => (
-                                <TableRow key={i} className="bg-card/20 border-border/20">
+                                <TableRow key={i} className="bg-transparent border-border/20">
                                     <TableCell><Skeleton className="h-6 w-6 rounded-full" /></TableCell>
                                     <TableCell><div className="flex items-center gap-2"><Skeleton className="h-6 w-6 rounded-full" /><Skeleton className="h-4 w-24" /></div></TableCell>
                                     <TableCell><Skeleton className="h-4 w-20" /></TableCell>
@@ -356,7 +339,7 @@ export default function MarketsPage() {
                             ))
                         ) : displayedCoins.length > 0 ? (
                             displayedCoins.map((coin) => (
-                                <TableRow key={coin.id} onClick={() => handleCoinClick(coin)} className="cursor-pointer bg-card/20 hover:bg-card/40 border-border/20">
+                                <TableRow key={coin.id} onClick={() => handleCoinClick(coin)} className="cursor-pointer bg-transparent hover:bg-muted/10 border-border/20">
                                     <TableCell className="font-medium text-muted-foreground">{coin.market_cap_rank || 'N/A'}</TableCell>
                                     <TableCell>
                                         <div className="flex items-center gap-3">
@@ -396,7 +379,7 @@ export default function MarketsPage() {
                 </DialogContent>
             </Dialog>
 
-        </SectionInView>
+        </div>
       </div>
     </div>
   );

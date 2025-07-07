@@ -1,6 +1,8 @@
 {
   "totalUsers": 0,
   "activeSessions": 0,
-  "newsletterSubscribers": 0,
-  "pageViews": 0
+  "pageViews": 0,
+  "subscribers": [
+    "mikeebube14@gmail.com"
+  ]
 }

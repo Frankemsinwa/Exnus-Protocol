@@ -1,21 +1,20 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-white dark:bg-background">
-      {/* Layer 1: Video Background */}
+      {/* Layer 1: Image Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        <Image
+          src="/home.jpg"
+          alt="Exnus Protocol Background"
+          width={1920}
+          height={1080}
           className="w-full h-full object-cover"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          priority
+        />
       </div>
 
       {/* Layer 2: Dark Overlay */}
@@ -31,7 +30,7 @@ export default function Hero() {
         </p>
         <div className="mt-10 flex justify-center items-center gap-4">
           <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 transform hover:scale-105">
-            <a href="https://points.exnus.org">
+            <a href="https://points.exnus.xyz">
               Join Airdrop <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>

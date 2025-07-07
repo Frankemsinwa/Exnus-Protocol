@@ -1,164 +1,116 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Vote, ShieldCheck, FilePlus, Users, CheckCircle, ArrowDown } from "lucide-react";
-import SectionInView from "@/components/section-in-view";
-import Lottie from 'lottie-react';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Lightbulb, Users, Award, Vote, Cpu, Code, ArrowRight } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+
+const pillars = [
+  {
+    icon: <Users className="w-10 h-10 text-primary" />,
+    title: 'Contribution & Recognition',
+    description: "The protocol's engine meticulously tracks a wide array of contributions, from code commits and bug fixes to community moderation and content creation. Every valuable action is recognized and recorded, forming the basis of our meritocratic reward system.",
+  },
+  {
+    icon: <Award className="w-10 h-10 text-primary" />,
+    title: 'Fair & Transparent Rewards',
+    description: 'Leveraging automated smart contracts on Solana, Exnus distributes rewards in a fair and transparent manner. Our dynamic algorithm weighs the impact and quality of contributions, ensuring that compensation is aligned with the value brought to the ecosystem.',
+  },
+  {
+    icon: <Vote className="w-10 h-10 text-primary" />,
+    title: 'Decentralized Ownership',
+    description: 'Earning EXNUS tokens is more than just a reward; it is a key to governance. Token holders become true stakeholders, empowered to propose initiatives, vote on key decisions, and collectively steer the future direction of the protocol through our DAO.',
+  },
+];
+
+const techStack = [
+    {
+        icon: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M10.66 4.93a1.8 1.8 0 0 1 2.68 0l6.33 4.93a1.8 1.8 0 0 1 0 3.28l-6.33 4.93a1.8 1.8 0 0 1-2.68 0L4.33 13.14a1.8 1.8 0 0 1 0-3.28z"/><path d="m4.33 6.86 6.33-4.93a1.8 1.8 0 0 1 2.68 0l6.33 4.93"/><path d="m20.67 17.14-6.33 4.93a1.8 1.8 0 0 1-2.68 0L5.33 17.14"/></svg>,
+        title: 'Built on Solana',
+        description: 'We chose Solana for its unparalleled speed, low transaction costs, and robust security, enabling a seamless and scalable experience for all users.'
+    },
+    {
+        icon: <Code className="w-8 h-8 text-primary" />,
+        title: 'Audited Smart Contracts',
+        description: 'Our smart contracts are rigorously audited by third-party security firms to ensure the safety and integrity of user funds and protocol operations.'
+    },
+    {
+        icon: <Cpu className="w-8 h-8 text-primary" />,
+        title: 'Modular Architecture',
+        description: 'Exnus is built with a modular design, allowing for seamless upgrades and integration of new features as the ecosystem evolves.'
+    },
+];
 
 export default function AboutPage() {
-  const [animationData, setAnimationData] = useState(null);
-
-  useEffect(() => {
-    fetch('/about.json')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => setAnimationData(data))
-      .catch(error => console.error("Failed to load Lottie animation:", error));
-  }, []);
-
   return (
-    <div className="bg-background text-foreground py-20 sm:py-32">
+    <div className="bg-transparent text-foreground pt-24 pb-16 sm:pt-32 sm:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionInView>
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight">
-              About Exnus Protocol
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Discover the core principles and technology that power our innovative ecosystem on the Solana blockchain.
-            </p>
-          </div>
-        </SectionInView>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
-           <SectionInView>
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                  <Zap className="w-8 h-8 text-primary" />
-                </div>
-                <h2 className="font-headline text-3xl font-bold">
-                  Cutting-Edge Staking Rewards
-                </h2>
-              </div>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                The EXNUS Protocol Ecosystem smart contract on the Solana blockchain represents a cutting-edge approach to staking rewards. By utilizing the secure and efficient Solana blockchain, users can participate in staking activities with reduced transaction costs and increased speed compared to traditional blockchain networks.
-              </p>
-            </div>
-           </SectionInView>
-           <SectionInView>
-             <div className="rounded-lg shadow-lg shadow-primary/10 flex items-center justify-center w-full max-w-[600px] mx-auto" style={{ aspectRatio: '3 / 2'}}>
-                {animationData ? (
-                  <Lottie animationData={animationData} loop={true} className="w-full h-full" />
-                ) : (
-                  <Skeleton className="h-full w-full" />
-                )}
-             </div>
-           </SectionInView>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
-          <SectionInView>
-            <div className="bg-card/50 border-border/50 backdrop-blur-sm p-8 rounded-lg w-full h-full flex flex-col justify-center">
-              <h3 className="font-headline text-xl text-card-foreground text-center mb-8">The Governance Process</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                    <FilePlus className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">1. Proposal Submission</h4>
-                    <p className="text-muted-foreground text-base">Community members submit proposals for protocol upgrades or new initiatives.</p>
-                  </div>
-                </div>
-                
-                <div className="pl-4">
-                  <ArrowDown className="w-8 h-8 text-primary/30" />
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                    <Users className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">2. Community Discussion</h4>
-                    <p className="text-muted-foreground text-base">The community discusses, debates, and refines the proposal through open forums.</p>
-                  </div>
-                </div>
-
-                <div className="pl-4">
-                  <ArrowDown className="w-8 h-8 text-primary/30" />
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                    <Vote className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">3. DAO Voting</h4>
-                    <p className="text-muted-foreground text-base">EXNUS token holders use their voting power to decide on the proposal's outcome.</p>
-                  </div>
-                </div>
-                
-                <div className="pl-4">
-                  <ArrowDown className="w-8 h-8 text-primary/30" />
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                    <CheckCircle className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">4. Implementation</h4>
-                    <p className="text-muted-foreground text-base">If passed, the proposal is funded from the DAO treasury and implemented.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SectionInView>
-          <SectionInView>
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                  <Vote className="w-8 h-8 text-primary" />
-                </div>
-                <h2 className="font-headline text-3xl font-bold">
-                  Community-Driven Governance
-                </h2>
-              </div>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                In addition to staking rewards, the EXNUS Protocol Ecosystem smart contract also incorporates a Governance DAO (Decentralized Autonomous Organization) feature. This allows users to have a voice in the decision-making process of the ecosystem, ensuring a fair and transparent governance structure that is driven by the community.
-              </p>
-            </div>
-           </SectionInView>
-        </div>
         
-        <SectionInView>
-          <Card className="bg-card/50 border-border/50 backdrop-blur-sm mt-16">
-            <CardHeader>
-              <div className="flex flex-col items-center text-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                  <ShieldCheck className="w-10 h-10 text-primary" />
-                </div>
-                <CardTitle className="font-headline text-3xl text-card-foreground">
-                  A Robust & Inclusive Platform
-                </CardTitle>
+        <div className="max-w-3xl mx-auto text-center mb-20">
+          <div className="inline-block bg-primary/10 p-4 rounded-full mb-6">
+              <Lightbulb className="w-12 h-12 text-primary" />
+          </div>
+          <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight">
+            About Exnus: The Future of Decentralized Collaboration
+          </h1>
+          <p className="mt-6 text-lg text-muted-foreground">
+            Exnus Protocol was born from a simple yet powerful idea: in a decentralized world, every contribution matters. We are building an ecosystem that not only recognizes but actively rewards the diverse efforts that drive a community forward. Our mission is to create a truly meritocratic environment where value creation is met with fair compensation and genuine ownership.
+          </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto text-center mb-20">
+            <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight mb-4">The Three Pillars of Exnus</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">Our protocol is built on three core principles that ensure a sustainable, fair, and community-owned ecosystem.</p>
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {pillars.map((pillar) => (
+                <Card key={pillar.title} className="bg-transparent border border-border/30 text-left transform hover:-translate-y-2 transition-transform duration-300">
+                <CardHeader>
+                    <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">{pillar.icon}</div>
+                    <CardTitle className="font-headline text-xl text-card-foreground">{pillar.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-muted-foreground">{pillar.description}</p>
+                </CardContent>
+                </Card>
+            ))}
+            </div>
+        </div>
+
+        <div className="max-w-5xl mx-auto text-center mb-20">
+              <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight mb-4">Our Technology</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">Built with security, scalability, and transparency at its core.</p>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {techStack.map((tech) => (
+                    <div key={tech.title} className="flex items-start gap-4">
+                        <div className="bg-primary/10 p-3 rounded-full mt-1 flex-shrink-0">{tech.icon}</div>
+                        <div>
+                            <h4 className="font-semibold text-lg text-foreground text-left">{tech.title}</h4>
+                            <p className="text-sm text-muted-foreground mt-1 text-left">{tech.description}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          <Card className="bg-primary/5 border-primary/20 p-8 sm:p-12">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="text-center md:text-left">
+                <h3 className="font-headline text-2xl sm:text-3xl font-bold text-foreground">Join the Revolution</h3>
+                <p className="mt-2 text-muted-foreground max-w-xl">
+                  Be part of a community that's redefining engagement in Web3. Explore our whitepaper for a deep dive, or join the airdrop to start your journey.
+                </p>
               </div>
-            </CardHeader>
-            <CardContent className="p-8 md:p-12 text-center text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-              <p>
-                The combination of staking rewards and Governance DAO within the EXNUS Protocol Ecosystem smart contract creates a robust and inclusive platform for users to actively participate in the ecosystem. By leveraging the advanced capabilities of the Solana blockchain, users can enjoy a seamless and secure experience while contributing to the growth and development of the ecosystem.
-              </p>
-            </CardContent>
+              <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
+                  <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 transform hover:scale-105">
+                    <a href="/whitepaper">
+                        Read Whitepaper <ArrowRight className="ml-2 h-5 w-5" />
+                    </a>
+                </Button>
+              </div>
+            </div>
           </Card>
-        </SectionInView>
+        </div>
       </div>
     </div>
   );
