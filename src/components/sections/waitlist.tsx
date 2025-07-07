@@ -46,11 +46,11 @@ export default function Waitlist() {
   }, [state, toast]);
 
   return (
-    <section id="newsletter" className="py-20 sm:py-32 bg-background">
+    <section id="newsletter" className="py-20 sm:py-32 light:bg-black dark:bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-foreground tracking-tight">Subscribe to Our Newsletter</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <h2 className="font-headline text-3xl sm:text-4xl font-bold light:text-white dark:text-foreground tracking-tight">Subscribe to Our Newsletter</h2>
+          <p className="mt-4 text-lg light:text-gray-300 dark:text-muted-foreground">
             Stay up to date with the latest news, product updates, and exclusive community events.
           </p>
         </div>

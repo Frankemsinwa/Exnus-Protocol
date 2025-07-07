@@ -26,23 +26,23 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="relative py-20 sm:py-32 bg-background overflow-hidden">
+    <section id="features" className="relative py-20 sm:py-32 light:bg-black dark:bg-background overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-foreground tracking-tight">Core Protocol Features</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <h2 className="font-headline text-3xl sm:text-4xl font-bold light:text-white dark:text-foreground tracking-tight">Core Protocol Features</h2>
+          <p className="mt-4 text-lg light:text-gray-300 dark:text-muted-foreground">
             Discover the innovations that set Exnus Protocol apart and power our user-centric ecosystem.
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="bg-transparent border border-border/30 hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1">
+            <Card key={index} className="bg-transparent light:border-gray-700 dark:border-border/30 hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1">
               <CardHeader className="p-8">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">{feature.icon}</div>
                   <div className="flex-grow">
-                    <CardTitle className="font-headline text-xl text-card-foreground">{feature.title}</CardTitle>
-                    <CardDescription className="mt-2 text-muted-foreground">
+                    <CardTitle className="font-headline text-xl light:text-white dark:text-card-foreground">{feature.title}</CardTitle>
+                    <CardDescription className="mt-2 light:text-gray-400 dark:text-muted-foreground">
                       {feature.description}
                     </CardDescription>
                   </div>

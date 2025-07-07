@@ -34,20 +34,20 @@ const chartConfig = {
 
 export default function Tokenomics() {
   return (
-    <section id="tokenomics" className="py-20 sm:py-32 bg-transparent">
+    <section id="tokenomics" className="py-20 sm:py-32 light:bg-black dark:bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-headline text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
+          <h2 className="font-headline text-3xl sm:text-4xl font-bold light:text-white dark:text-foreground tracking-tight">
              <a href="/whitepaper#tokenomics-distribution" className="hover:text-primary transition-colors">Tokenomics</a>
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 text-lg light:text-gray-300 dark:text-muted-foreground">
             A balanced and sustainable economic model designed for long-term growth and community rewards. Total supply: 2.5 Billion EXNUS.
           </p>
         </div>
         <div className="mt-16 max-w-6xl mx-auto">
-          <Card className="bg-transparent border border-border/30">
+          <Card className="bg-transparent light:border-gray-700 dark:border-border/30">
             <CardHeader>
-              <CardTitle className="font-headline text-card-foreground text-center text-2xl">EXNUS Token Distribution</CardTitle>
+              <CardTitle className="font-headline light:text-white dark:text-card-foreground text-center text-2xl">EXNUS Token Distribution</CardTitle>
             </CardHeader>
             <CardContent className="p-8">
               <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
@@ -85,8 +85,8 @@ export default function Tokenomics() {
                     <div key={item.name} className="flex items-center gap-4 p-2 rounded-md hover:bg-white/5 transition-colors">
                       <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
                       <div className="flex-1 flex justify-between">
-                        <span className="font-medium text-foreground">{item.name}</span>
-                        <span className="text-muted-foreground font-semibold">{item.percentage}%</span>
+                        <span className="font-medium light:text-white dark:text-foreground">{item.name}</span>
+                        <span className="light:text-gray-400 dark:text-muted-foreground font-semibold">{item.percentage}%</span>
                       </div>
                     </div>
                   ))}

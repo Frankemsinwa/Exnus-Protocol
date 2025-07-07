@@ -56,7 +56,7 @@ const roadmapData: {
 
 export default function Roadmap() {
   return (
-    <section id="roadmap" className="py-20 sm:py-32 bg-transparent bg-roadmap-gradient">
+    <section id="roadmap" className="py-20 sm:py-32 bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-headline text-3xl sm:text-4xl font-bold tracking-tight">Exnus Roadmap</h2>
@@ -76,7 +76,7 @@ export default function Roadmap() {
                 return (
                   <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <div className="h-full p-1">
-                      <div className="flex h-full flex-col p-6 rounded-lg bg-transparent border border-border/30 shadow-lg hover:shadow-primary/20 transition-shadow">
+                      <div className="flex h-full flex-col p-6 rounded-lg bg-card border border-border/30 shadow-lg hover:shadow-primary/20 transition-shadow">
                         <div className="flex items-center gap-4 mb-4">
                           <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
                             <Icon className="w-8 h-8 text-primary" />
