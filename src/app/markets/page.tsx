@@ -15,7 +15,6 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ArrowUp, ArrowDown, Search } from 'lucide-react';
-import SectionInView from '@/components/section-in-view';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from '@/components/ui/chart';
@@ -298,7 +297,7 @@ export default function MarketsPage() {
         <div className="absolute inset-0 bg-radial-gradient-gold opacity-20" />
       </div>
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-        <SectionInView>
+        <div>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
                 <h2 className="font-headline text-2xl text-foreground flex-shrink-0">Market Overview</h2>
                 <div className="relative w-full md:max-w-sm">
@@ -380,7 +379,7 @@ export default function MarketsPage() {
                 </DialogContent>
             </Dialog>
 
-        </SectionInView>
+        </div>
       </div>
     </div>
   );

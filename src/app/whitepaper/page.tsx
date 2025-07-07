@@ -41,7 +41,6 @@ import {
   Vote,
   BadgeCheck
 } from 'lucide-react';
-import SectionInView from '@/components/section-in-view';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle as RadixSheetTitle } from '@/components/ui/sheet';
 import {
   ChartContainer,
@@ -782,19 +781,17 @@ management, and governance voting. Contracts are designed for modularity and sec
     <div className="bg-transparent text-foreground pt-16 pb-16">
       <div className="px-4 sm:px-6 lg:px-8">
         {activeIndex === 0 && (
-            <SectionInView>
-                <div className="max-w-4xl mx-auto text-center mb-16">
-                    <div className="inline-block bg-primary/10 p-4 rounded-full mb-6">
-                    <FileText className="w-12 h-12 text-primary" />
-                    </div>
-                    <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-                    Exnus Protocol Whitepaper
-                    </h1>
-                    <p className="mt-4 text-lg text-muted-foreground">
-                    Version 1.0 - Last updated: {currentDate}
-                    </p>
+            <div className="max-w-4xl mx-auto text-center mb-16">
+                <div className="inline-block bg-primary/10 p-4 rounded-full mb-6">
+                <FileText className="w-12 h-12 text-primary" />
                 </div>
-            </SectionInView>
+                <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
+                Exnus Protocol Whitepaper
+                </h1>
+                <p className="mt-4 text-lg text-muted-foreground">
+                Version 1.0 - Last updated: {currentDate}
+                </p>
+            </div>
         )}
 
         {/* Mobile TOC Button */}
