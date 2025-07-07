@@ -3,17 +3,17 @@ import { Button } from '@/components/ui/button';
 
 const steps = [
   {
-    icon: <Handshake className="w-10 h-10 text-primary" />,
+    icon: <Handshake className="w-10 h-10 text-primary-foreground" />,
     title: '1. Contribute & Participate',
     description: 'Engage with the ecosystem by participating in governance, contributing to projects, or helping grow the community. All meaningful efforts are valued and tracked on-chain.'
   },
   {
-    icon: <Coins className="w-10 h-10 text-primary" />,
+    icon: <Coins className="w-10 h-10 text-primary-foreground" />,
     title: '2. Earn EXNUS Rewards',
     description: "Our protocol's automated smart contracts track your contributions and distribute rewards directly to your wallet, ensuring fair and transparent compensation for your efforts."
   },
   {
-    icon: <Vote className="w-10 h-10 text-primary" />,
+    icon: <Vote className="w-10 h-10 text-primary-foreground" />,
     title: '3. Govern & Shape the Future',
     description: 'Use your EXNUS tokens to vote on key proposals, influence the allocation of treasury funds, and guide the future direction of the Exnus Protocol.'
   }
@@ -38,7 +38,7 @@ export default function HowItWorks() {
                 <h3 className="font-headline text-2xl font-bold text-foreground mb-2">{step.title}</h3>
                 <p className="text-muted-foreground">{step.description}</p>
               </div>
-              <div className="flex-shrink-0 w-24 h-24 rounded-full bg-transparent border-2 border-primary/20 flex items-center justify-center my-4 md:my-0 z-10">
+              <div className="flex-shrink-0 w-24 h-24 rounded-full bg-primary flex items-center justify-center my-4 md:my-0 z-10">
                 {step.icon}
               </div>
               <div className={`flex-1 ${index % 2 !== 0 ? 'md:order-1' : ''}`}></div>
