@@ -1,21 +1,20 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-white dark:bg-background">
-      {/* Layer 1: Video Background */}
+      {/* Layer 1: Image Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        <Image
+          src="/home.jpg"
+          alt="Exnus Protocol Background"
+          width={1920}
+          height={1080}
           className="w-full h-full object-cover"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          priority
+        />
       </div>
 
       {/* Layer 2: Dark Overlay */}
