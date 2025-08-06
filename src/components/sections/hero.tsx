@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
@@ -31,14 +33,15 @@ export default function Hero() {
         <div className="mt-10 flex justify-center items-center gap-4">
           <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 transform hover:scale-105">
             <a href="https://points.exnus.xyz">
-              Join Airdrop <ArrowRight className="ml-2 h-5 w-5" />
+              Join Airdrop(web) <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
-          <Button size="lg" variant="outline" asChild className="border-white/30 bg-black/20 text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300 transform hover:scale-105">
-            <a href="https://presale.exnus.org">
-              Buy Presale
+          <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 transform hover:scale-105">
+            <a href="https://t.me/Exnuspoint_bot">
+              Join Airdrop(TG) <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
+ 
         </div>
       </div>
       

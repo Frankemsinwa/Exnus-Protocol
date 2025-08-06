@@ -63,7 +63,10 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-2">
           <ThemeToggle />
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-            <a href="https://points.exnus.xyz">Join Airdrop</a>
+            <a href="https://points.exnus.xyz">Join Airdrop(web)</a>
+          </Button>
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
+            <a href="https://t.me/Exnuspoint_bot">Join Airdrop(TG)</a>
           </Button>
         </div>
         <div className="flex items-center gap-2 md:hidden">
@@ -104,8 +107,12 @@ export default function Header() {
                 </nav>
                 <div className="mt-auto">
                   <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
-                    <a href="https://points.exnus.xyz" onClick={() => setIsMobileMenuOpen(false)}>Join Airdrop</a>
+                    <a href="https://points.exnus.xyz" onClick={() => setIsMobileMenuOpen(false)}>Join Airdrop(web)</a>
                   </Button>
+                  <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20">
+                    <a href="https://t.me/Exnuspoint_bot" onClick={() => setIsMobileMenuOpen(false)}>Join Airdrop(TG)</a>
+                  </Button>
+                  
                 </div>
               </div>
             </SheetContent>
