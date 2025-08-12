@@ -30,7 +30,7 @@ export default function Hero() {
         <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-300">
           Exnus introduces an innovative reward system to actively incentivize meaningful community contributions, fostering a culture of collaboration and shared ownership on the Solana blockchain.
         </p>
-        <div className="mt-10 flex justify-center items-center gap-4">
+        <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 transform hover:scale-105">
             <a href="https://points.exnus.xyz">
               Join Airdrop(web) <ArrowRight className="ml-2 h-5 w-5" />
@@ -41,7 +41,11 @@ export default function Hero() {
               Join Airdrop(TG) <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
- 
+          <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 transform hover:scale-105">
+            <a href="https://presale.exnus.xyz">
+              Join Presale <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+          </Button>
         </div>
       </div>
       
